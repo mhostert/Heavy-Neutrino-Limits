@@ -11,11 +11,11 @@ import os
 from scipy import interpolate
 
 ##
-# Which constraints do you want to exclude from the final combination
+# Which constraints to exclude from the final combination
 EXCLUDE_THESE_CONSTRAINTS = [22]
 
 
-PATH = 'digitized'
+PATH = os.path.dirname(os.path.abspath(__file__))+'/digitized'
 files_ue4 = [ 
         PATH+"/ue4/NA62_2020.dat",
         PATH+"/ue4/PIENU.dat",
