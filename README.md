@@ -10,3 +10,8 @@ All limits are kept track in this [Google Spreadsheet](https://docs.google.com/s
 **std_plots** makes the standard plots of constraints against the HNL mass for single flavor dominance scenario.
 
 **inv_plots** makes plots with only constraints that apply on a HNL that decays invisibly.
+
+---
+Current compilation of bounds:
+
+https://docs.google.com/viewer?url=${https://github.com/mhostert/LimitsHNL/blob/main/pylatex/article.pdf}
