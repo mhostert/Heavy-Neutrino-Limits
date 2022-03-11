@@ -14,8 +14,8 @@ All limits are kept track in this [Google Spreadsheet](https://docs.google.com/s
 ---
 Current compilation of bounds:
 
-![e flavor](https://github.com/mhostert/LimitsHNL/plots/UeN.png)
+![e flavor](https://github.com/mhostert/LimitsHNL/blob/main/plots/UeN.png)
 
-![mu flavor](https://github.com/mhostert/LimitsHNL/plots/UmuN.png)
+![mu flavor](https://github.com/mhostert/LimitsHNL/blob/main/plots/UmuN.png)
 
-![tau flavor](https://github.com/mhostert/LimitsHNL/plots/UtauN.png)
+![tau flavor](https://github.com/mhostert/LimitsHNL/blob/main/plots/UtauN.png)
