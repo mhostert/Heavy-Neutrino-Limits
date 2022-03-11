@@ -55,6 +55,8 @@ def std_fig(ax_form=std_axes_form,
 # standard saving function
 def std_savefig(fig, path, dpi=400, **kwargs):
     fig.savefig(path, dpi = dpi, **kwargs)
+    if '.pdf' in path:
+        fig.savefig(path.replace('.pdf','.png'), dpi = dpi, **kwargs)
 
 # https://stackoverflow.com/questions/37765197/darken-or-lighten-a-color-in-matplotlib
 def lighten_color(color, amount=0.5):

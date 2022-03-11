@@ -14,4 +14,8 @@ All limits are kept track in this [Google Spreadsheet](https://docs.google.com/s
 ---
 Current compilation of bounds:
 
-https://docs.google.com/viewer?url=${https://github.com/mhostert/LimitsHNL/blob/main/pylatex/article.pdf}
+![e flavor](https://github.com/mhostert/LimitsHNL/plots/UeN.png)
+
+![mu flavor](https://github.com/mhostert/LimitsHNL/plots/UmuN.png)
+
+![tau flavor](https://github.com/mhostert/LimitsHNL/plots/UtauN.png)
