@@ -56,7 +56,7 @@ def std_savefig(fig, path, dpi=400, **kwargs):
     fig.savefig(path, dpi = dpi, **kwargs)
     if '.pdf' in path:
         fig.savefig(path.replace('.pdf','.png'), dpi = dpi, **kwargs)
-        fig.savefig(path.replace('.pdf','white_.png'), dpi = dpi, facecolor='white', **kwargs)
+        fig.savefig(path.replace('.pdf','_white.png'), dpi = dpi, facecolor='white', **kwargs)
 
 
 def std_plot_limits(case, skip_ids=[], xrange=(5, 1e5), yrange=(1e-10,1e-1), title=None, 
