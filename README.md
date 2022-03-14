@@ -13,8 +13,6 @@ To add new limits, please send a pull-request adding your data to data/NAME_OF_Y
 
 **std_plots** makes the standard plots of constraints against the HNL mass for single flavor dominance scenario.
 
-**inv_plots** makes plots with only constraints that apply on a HNL that decays invisibly.
-
 ---
 Current compilation of bounds:
 
