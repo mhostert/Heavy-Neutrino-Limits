@@ -14,10 +14,18 @@ To add new limits, please send a pull-request adding your data to data/NAME_OF_Y
 Run **std_plots** to make the standard plots of constraints against the HNL mass for single flavor dominance scenario.
 
 ---
+
+
 Current compilation of bounds:
 
-![e flavor](https://github.com/mhostert/LimitsHNL/blob/main/plots/UeN_nf03.png)
+[<img src="https://render.githubusercontent.com/render/math?math=\color{white}{|U_{e N}|^2}">](https://github.com/mhostert/LimitsHNL/blob/main/plots/UeN_nf03.pdf)
+![e flavor](https://github.com/mhostert/LimitsHNL/blob/main/plots/UeN_nf03.png#gh-light-mode-only)
+![e flavor](https://github.com/mhostert/LimitsHNL/blob/main/plots/UeN_nf03_white.png#gh-dark-mode-only)
 
-![mu flavor](https://github.com/mhostert/LimitsHNL/blob/main/plots/UmuN_nf03.png)
+[<img src="https://render.githubusercontent.com/render/math?math=\color{white}{|U_{\mu N}|^2}">](https://github.com/mhostert/LimitsHNL/blob/main/plots/UmuN_nf03.pdf)
+![mu flavor](https://github.com/mhostert/LimitsHNL/blob/main/plots/UmuN_nf03.png#gh-light-mode-only)
+![mu flavor](https://github.com/mhostert/LimitsHNL/blob/main/plots/UmuN_nf03_white.png#gh-dark-mode-only)
 
-![tau flavor](https://github.com/mhostert/LimitsHNL/blob/main/plots/UtauN_nf03.png)
+[<img src="https://render.githubusercontent.com/render/math?math=\color{white}{|U_{\tau N}|^2}">](https://github.com/mhostert/LimitsHNL/blob/main/plots/UtauN_nf03.pdf)
+![tau flavor](https://github.com/mhostert/LimitsHNL/blob/main/plots/UtauN_nf03.png#gh-light-mode-only)
+![tau flavor](https://github.com/mhostert/LimitsHNL/blob/main/plots/UtauN_nf03_white.png#gh-dark-mode-only)
