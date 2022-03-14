@@ -16,8 +16,8 @@ Run **std_plots** to make the standard plots of constraints against the HNL mass
 ---
 Current compilation of bounds:
 
-![e flavor](https://github.com/mhostert/LimitsHNL/blob/main/plots/UeN.png)
+![e flavor](https://github.com/mhostert/LimitsHNL/blob/main/plots/UeN_nf03.png)
 
-![mu flavor](https://github.com/mhostert/LimitsHNL/blob/main/plots/UmuN.png)
+![mu flavor](https://github.com/mhostert/LimitsHNL/blob/main/plots/UmuN_nf03.png)
 
-![tau flavor](https://github.com/mhostert/LimitsHNL/blob/main/plots/UtauN.png)
+![tau flavor](https://github.com/mhostert/LimitsHNL/blob/main/plots/UtauN_nf03.png)
