@@ -62,7 +62,6 @@ def std_plot_limits(case, skip_ids=[], xrange=(5, 1e5), yrange=(1e-10,1e-1), tit
         new_labelpos={}, new_color={}, new_dash={}, grid=False, color_only = [], npoints_interp = 100000, suffix=''):
 
     fig, ax = std_fig(figsize=(8,4), ax_form=[0.1,0.125,0.88,0.81])
-    background_grey = lighten_color('lightgrey', 0.3)
     
     x=np.geomspace(1,1e5, int(npoints_interp))
 
@@ -82,6 +81,8 @@ def std_plot_limits(case, skip_ids=[], xrange=(5, 1e5), yrange=(1e-10,1e-1), tit
         if limit.id not in skip_ids:
             
             if len(color_only)>0:
+
+                background_grey = lighten_color('lightgrey', 0.1)
                 if limit.id in color_only:
                     c = color_dic[limit.id]
                     LW = 1
@@ -89,8 +90,9 @@ def std_plot_limits(case, skip_ids=[], xrange=(5, 1e5), yrange=(1e-10,1e-1), tit
                 else:
                     c = 'black'
                     LW=0.5
-                    alpha=0.5
+                    alpha=1
             else:
+                background_grey = lighten_color('lightgrey', 0.3)
                 c = color_dic[limit.id]
                 alpha=1
                 LW = 1
