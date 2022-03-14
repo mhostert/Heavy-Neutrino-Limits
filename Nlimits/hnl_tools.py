@@ -12,7 +12,7 @@ def load_google_sheet(sheet_id="1p_fslIlThKMOThGl4leporUsogq9TmgXwILntUZOscg", s
     if drop_empty_cols: 
         cols = pd.read_csv(url, header=0, low_memory=False, nrows=1).columns
         nonempty_cols = [i for i in range(len(cols)) if 'Unnamed' not in cols[i] ]
-        df = pd.read_csv(url, header=0, usecols=nonempty_cols)
+        df = pd.read_csv(url, header=0, usecols=nonempty_cols, dtype={'year': object})
         return df.where(df.notnull(), None)
     else:
         return pd.read_csv(url, header=0)
@@ -39,6 +39,7 @@ class limits:
         return df
 
     def get_data(self, df, top = False):
+
         global_path='data/'
         suffix = "_top" if top else ""
         limit_path = df.file_top if top else df.file_bottom
@@ -62,6 +63,8 @@ class limits:
                     ualpha4 = ualpha4[order]
                     # interpolation 
                     interp_func = plot_tools.log_interp1d(m4, ualpha4, kind='linear', bounds_error=False, fill_value=None, assume_sorted=False)    
+
+                    
 
                 else:
                     raise ValueError(f"HNL mass units of {df['units']} not defined.")
