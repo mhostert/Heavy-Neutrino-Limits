@@ -3,6 +3,7 @@ from scipy.interpolate import splprep, splev
 
 import numpy as np
 
+import seaborn as sns
 import colorsys
 
 import matplotlib
@@ -24,28 +25,26 @@ def log_interp1d(xx, yy, kind='linear', **kwargs):
 
 
 ###########################
-# Matheus 
 fsize=12
 fsize_annotate=10
 
 std_figsize = (1.2*3.7,1.3*2.3617)
 std_axes_form  =[0.16,0.16,0.81,0.76]
 
-rcparams={'axes.labelsize':fsize,'xtick.labelsize':fsize,'ytick.labelsize':fsize,\
-                'figure.figsize':std_figsize, 
-                'legend.frameon': False,
-                'legend.loc': 'best'  }
-plt.rcParams['text.latex.preamble'] = r'\usepackage{amsmath}\usepackage{amssymb}'
-rc('font', **{'family': 'serif', 'serif': ['Computer Modern']})
-rc('text', usetex=True)
-rcParams.update(rcparams)
-matplotlib.rcParams['hatch.linewidth'] = 0.3
-
 # standard figure creation 
 def std_fig(ax_form=std_axes_form, 
             figsize=std_figsize,
             rasterized=False):
 
+    rcparams={'axes.labelsize':fsize,'xtick.labelsize':fsize,'ytick.labelsize':fsize,\
+                    'figure.figsize':std_figsize, 
+                    'legend.frameon': False,
+                    'legend.loc': 'best'  }
+    plt.rcParams['text.latex.preamble'] = r'\usepackage{amsmath}\usepackage{amssymb}'
+    rc('font', **{'family': 'serif', 'serif': ['Computer Modern']})
+    rc('text', usetex=True)
+    rcParams.update(rcparams)
+    matplotlib.rcParams['hatch.linewidth'] = 0.3
     fig = plt.figure(figsize=figsize)
     ax = fig.add_axes(ax_form, rasterized=rasterized)
     ax.patch.set_alpha(0.0)
@@ -57,6 +56,84 @@ def std_savefig(fig, path, dpi=400, **kwargs):
     fig.savefig(path, dpi = dpi, **kwargs)
     if '.pdf' in path:
         fig.savefig(path.replace('.pdf','.png'), dpi = dpi, **kwargs)
+
+
+def std_plot_limits(case, skip_ids=[], xrange=(5, 1e5), yrange=(1e-10,1e-1), title=None, 
+        new_labelpos={}, new_color={}, new_dash={}, grid=False, color_only = [], npoints_interp = 100000, suffix=''):
+
+    fig, ax = std_fig(figsize=(8,4), ax_form=[0.1,0.125,0.88,0.81])
+    background_grey = lighten_color('lightgrey', 0.3)
+    
+    x=np.geomspace(1,1e5, int(npoints_interp))
+
+    # sns.reset_orig()  # get default matplotlib styles back
+    labelpos_dic={}
+    for i, limit in case.limits.iterrows():
+        ilabel, ival = np.nanargmin(limit.interp_func(x)), np.nanmin(limit.interp_func(x))
+        labelpos_dic[limit.id] = (x[ilabel]*0.9, ival/2.5)
+    color_dic = dict(zip(case.limits['id'],sns.color_palette('tab10', n_colors=len(list(case.limits.iterrows()))))) # a list of RGB tuples
+    dash_dic = dict(zip(case.limits['id'], (1+len(color_dic.keys()))*[(1,0)]))
+    
+    labelpos_dic.update(new_labelpos)
+    color_dic.update(new_color)
+    dash_dic.update(new_dash)
+
+    for i, limit in case.limits.iterrows():
+        if limit.id not in skip_ids:
+            
+            if len(color_only)>0:
+                if limit.id in color_only:
+                    c = color_dic[limit.id]
+                    LW = 1
+                    alpha=1
+                else:
+                    c = 'black'
+                    LW=0.5
+                    alpha=0.5
+            else:
+                c = color_dic[limit.id]
+                alpha=1
+                LW = 1
+
+            if (limit.year is None):
+                dash = (4,2)
+            else:
+                dash = dash_dic[limit.id]
+
+            label = fr'\noindent {limit.plot_label}'.replace("(",r" \noindent {\tiny \textsc{(").replace(")", r")} }").replace(r'\\', r"\vspace{-2ex} \\ ")
+            ax.plot(x, limit.interp_func(x), zorder=3, color=c, dashes=dash, lw=LW)
+            ax.plot(x, limit.interp_func_top(x), color=c, dashes=dash,zorder=2, lw=LW)
+            if ('bbn' not in limit.id) and (limit.year is not None):
+                ax.fill_between(x, limit.interp_func(x), x/x,  zorder=1, facecolor=background_grey, edgecolor='None', alpha=alpha)    
+                # ax.fill_between(x, limit.interp_func(x), limit.interp_func_top(x),  zorder=1, facecolor=background_grey, edgecolor='None', alpha=1)    
+            t = ax.annotate(label, xy=labelpos_dic[limit.id], xycoords='data', color=c, zorder=4, fontsize=7.5)
+            # t.set_bbox(dict(facecolor=background_grey, alpha=0.2, edgecolor='None'))
+
+    ax.set_yscale("log")
+    ax.set_xscale("log")
+
+
+    ax.set_ylabel(fr"{case.latexflavor}")
+    ax.set_xlabel(fr"$m_N/$MeV")
+
+    major=np.array([1e-13,1e-12,1e-11, 1e-10,1e-9, 1e-8, 1e-7, 1e-6, 1e-5, 1e-4, 1e-3,1e-2,1e-1,1])
+    minor=np.array([2,3,4,5,6,7,8,9])
+    minor = np.array([m*minor for m in major]).flatten()[:-9]
+    ax.set_yticks(major)
+    ax.set_yticks(minor, minor=True)
+
+    if grid:
+        ax.grid(axis='y', which='both', dashes=(6,1), alpha=0.25, c='black', lw=0.2)
+        ax.grid(axis='x', which='both', dashes=(6,1), alpha=0.25, c='black', lw=0.2)
+
+    ax.set_ylim(*yrange)
+    ax.set_xlim(*xrange)
+    ax.set_title(title)
+    
+    std_savefig(fig, path = f'plots/U{case.flavor}N{suffix}.pdf')
+    
+    return fig, ax 
+
 
 # https://stackoverflow.com/questions/37765197/darken-or-lighten-a-color-in-matplotlib
 def lighten_color(color, amount=0.5):
