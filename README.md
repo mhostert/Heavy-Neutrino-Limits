@@ -18,14 +18,18 @@ Run **std_plots** to make the standard plots of constraints against the HNL mass
 
 Current compilation of bounds:
 
-[<img src="https://render.githubusercontent.com/render/math?math=\color{white}{|U_{e N}|^2}">](https://github.com/mhostert/LimitsHNL/blob/main/plots/UeN_nf03.pdf)
+
+[<img src="https://render.githubusercontent.com/render/math?math=\color{black}{|U_{e N}|^2}">](https://github.com/mhostert/LimitsHNL/blob/main/plots/UeN_nf03.pdf#gh-light-mode-only)
+[<img src="https://render.githubusercontent.com/render/math?math=\color{white}{|U_{e N}|^2}">](https://github.com/mhostert/LimitsHNL/blob/main/plots/UeN_nf03.pdf#gh-dark-mode-only)
 ![e flavor](https://github.com/mhostert/LimitsHNL/blob/main/plots/UeN_nf03.png#gh-light-mode-only)
 ![e flavor](https://github.com/mhostert/LimitsHNL/blob/main/plots/UeN_nf03_white.png#gh-dark-mode-only)
 
-[<img src="https://render.githubusercontent.com/render/math?math=\color{white}{|U_{\mu N}|^2}">](https://github.com/mhostert/LimitsHNL/blob/main/plots/UmuN_nf03.pdf)
+[<img src="https://render.githubusercontent.com/render/math?math=\color{black}{|U_{\mu N}|^2}">](https://github.com/mhostert/LimitsHNL/blob/main/plots/UmuN_nf03.pdf#gh-light-mode-only)
+[<img src="https://render.githubusercontent.com/render/math?math=\color{white}{|U_{\mu N}|^2}">](https://github.com/mhostert/LimitsHNL/blob/main/plots/UmuN_nf03.pdf#gh-dark-mode-only)
 ![mu flavor](https://github.com/mhostert/LimitsHNL/blob/main/plots/UmuN_nf03.png#gh-light-mode-only)
 ![mu flavor](https://github.com/mhostert/LimitsHNL/blob/main/plots/UmuN_nf03_white.png#gh-dark-mode-only)
 
-[<img src="https://render.githubusercontent.com/render/math?math=\color{white}{|U_{\tau N}|^2}">](https://github.com/mhostert/LimitsHNL/blob/main/plots/UtauN_nf03.pdf)
+[<img src="https://render.githubusercontent.com/render/math?math=\color{black}{|U_{\tau N}|^2}">](https://github.com/mhostert/LimitsHNL/blob/main/plots/UtauN_nf03.pdfg#gh-light-mode-only)
+[<img src="https://render.githubusercontent.com/render/math?math=\color{white}{|U_{\tau N}|^2}">](https://github.com/mhostert/LimitsHNL/blob/main/plots/UtauN_nf03.pdfg#gh-dark-mode-only)
 ![tau flavor](https://github.com/mhostert/LimitsHNL/blob/main/plots/UtauN_nf03.png#gh-light-mode-only)
 ![tau flavor](https://github.com/mhostert/LimitsHNL/blob/main/plots/UtauN_nf03_white.png#gh-dark-mode-only)
