@@ -42,3 +42,5 @@ Notes:
 
 * Flavor-blind limits are not shown, just as limits obtained by marginalizing over different flavors are not shown. 
 * We do not include limits from the [PS191 experiment](https://inspirehep.net/literature/252680). For a discussion on this limit, see the discussion in [this study](https://inspirehep.net/literature/1919114) and the beam simulation in [this study](https://inspirehep.net/literature/1988989).
+* For clarity, we ommit certain sub-leading limits. These include:
+    * [FMMF](FMMF:1994yvb)
