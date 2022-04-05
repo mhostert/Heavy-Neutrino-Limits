@@ -33,3 +33,12 @@ Current compilation of bounds:
 [<img src="https://render.githubusercontent.com/render/math?math=\color{white}{|U_{\tau N}|^2}">](https://github.com/mhostert/LimitsHNL/blob/main/plots/UtauN_nf03.pdfg#gh-dark-mode-only)
 ![tau flavor](https://github.com/mhostert/LimitsHNL/blob/main/plots/UtauN_nf03.png#gh-light-mode-only)
 ![tau flavor](https://github.com/mhostert/LimitsHNL/blob/main/plots/UtauN_nf03_white.png#gh-dark-mode-only)
+
+
+
+---
+
+Notes:
+
+* Flavor-blind limits are not shown, just as limits obtained by marginalizing over different flavors are not shown. 
+* We do not include limits from the [PS191 experiment](https://inspirehep.net/literature/252680). For a discussion on this limit, see the discussion in [this study](https://inspirehep.net/literature/1919114) and the beam simulation in [this study](https://inspirehep.net/literature/1988989).
