@@ -59,8 +59,19 @@ def std_savefig(fig, path, dpi=400, **kwargs):
         fig.savefig(path.replace('.pdf','_white.png'), dpi = dpi, facecolor='white', **kwargs)
 
 
-def std_plot_limits(case, skip_ids=[], xrange=(5, 1e5), yrange=(1e-10,1e-1), title=None, 
-        new_labelpos={}, new_color={}, new_dash={}, grid=False, color_only = [], npoints_interp = 100000, suffix=''):
+def std_plot_limits(case, 
+        skip_ids=[], 
+        xrange=(5, 1e5), 
+        yrange=(1e-10,1e-1), 
+        title=None, 
+        new_labelpos={}, 
+        new_color={},               # dic:  override defaul color for a set of limits 
+        new_dash={},                # dic:  override defaul dash style for a set of limits (keys)
+        grid=False,                 # bool: plot a faint x and y grid 
+        color_fill = False,       # bool: filled regions have color
+        color_only = [],            # list: apply color only to these limits
+        npoints_interp = int(1e5),  # int:  number of points to use when drawing the curves
+        suffix=''):                 # string: suffix of the plot name and file name 
 
     fig, ax = std_fig(figsize=(8,4), ax_form=[0.1,0.125,0.88,0.81])
     
