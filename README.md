@@ -7,14 +7,15 @@ All limits are kept track in this [Google Spreadsheet](https://docs.google.com/s
 
 For the main plots and an example TeX file, see the [auto-generated LaTeX files](https://github.com/mhostert/LimitsHNL/blob/main/tex_files/)
 
-To add new limits, please send a pull-request adding your data to data/NAME_OF_YOUR_DIR/ and add a comment to the [Google spreadsheet](https://docs.google.com/spreadsheets/d/1p_fslIlThKMOThGl4leporUsogq9TmgXwILntUZOscg/edit?usp=sharing) with the respective entries.
-
 ---
 
-Run **std_plots** to make the standard plots of constraints against the HNL mass for single flavor dominance scenario.
+Run **Limits-Dimension-4** to make the standard plots of constraints against the HNL mass for single flavor dominance scenario.
+
+Limits on N-SMEFT operators are drawn in the following notebooks:
+   * **Limits-Dimension-5**
+   * **Limits-Dimension-6**
 
 ---
-
 
 Current compilation of bounds:
 
@@ -34,13 +35,3 @@ Current compilation of bounds:
 ![tau flavor](https://github.com/mhostert/LimitsHNL/blob/main/plots/UtauN_nf03.png#gh-light-mode-only)
 ![tau flavor](https://github.com/mhostert/LimitsHNL/blob/main/plots/UtauN_nf03_white.png#gh-dark-mode-only)
 
-
-
----
-
-Notes:
-
-* Flavor-blind limits are not shown, just as limits obtained by marginalizing over different flavors are not shown. 
-* We do not include limits from the [PS191 experiment](https://inspirehep.net/literature/252680). For a discussion on this limit, see the discussion in [this study](https://inspirehep.net/literature/1919114) and the beam simulation in [this study](https://inspirehep.net/literature/1988989).
-* For clarity, we ommit certain sub-leading limits. These include:
-    * [FMMF](FMMF:1994yvb)
