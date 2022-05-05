@@ -80,8 +80,9 @@ def std_plot_limits(case,
     # sns.reset_orig()  # get default matplotlib styles back
     labelpos_dic={}
     for i, limit in case.limits.iterrows():
-        ilabel, ival = np.nanargmin(limit.interp_func(x)), np.nanmin(limit.interp_func(x))
-        labelpos_dic[limit.id] = (x[ilabel]*0.9, ival/2.5)
+        if limit.interp_func is not None:
+            ilabel, ival = np.nanargmin(limit.interp_func(x)), np.nanmin(limit.interp_func(x))
+            labelpos_dic[limit.id] = (x[ilabel]*0.9, ival/2.5)
     color_dic = dict(zip(case.limits['id'],sns.color_palette('tab10', n_colors=len(list(case.limits.iterrows()))))) # a list of RGB tuples
     dash_dic = dict(zip(case.limits['id'], (1+len(color_dic.keys()))*[(1,0)]))
     
@@ -90,7 +91,7 @@ def std_plot_limits(case,
     dash_dic.update(new_dash)
 
     for i, limit in case.limits.iterrows():
-        if limit.id not in skip_ids:
+        if (limit.id not in skip_ids) & (limit.interp_func is not None):
             
             if len(color_only)>0:
 

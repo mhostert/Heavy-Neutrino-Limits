@@ -48,7 +48,7 @@ class limits:
             m4, ualpha4 = None, None 
             interp_func = lambda x: np.ones(np.size(x))
         else:
-            if self.invisible & ~df.is_invisible:
+            if (self.invisible & ~df.is_invisible):
                 m4, ualpha4, interp_func = None, None, None
             else:
                 m4, ualpha4 = np.genfromtxt(f"{global_path}{limit_path}", unpack=True)
@@ -63,8 +63,6 @@ class limits:
                     ualpha4 = ualpha4[order]
                     # interpolation 
                     interp_func = plot_tools.log_interp1d(m4, ualpha4, kind='linear', bounds_error=False, fill_value=None, assume_sorted=False)    
-
-                    
 
                 else:
                     raise ValueError(f"HNL mass units of {df['units']} not defined.")
@@ -86,16 +84,21 @@ class limits:
         for _, limit in self.limits.iterrows():
             ## FIX ME -- no functionality for gaps between top of constraint and other bounds
             # check if it is a closed contour with top and bottom files
-            if ((limit['file_top'] is None) | (limit['interp_func'] is None)) | (no_cosmo and 'bbn' in limit.id):
+            if (not (limit['file_top'] is None) or (limit['interp_func'] is None)) or (no_cosmo and 'bbn' in limit.id):
                 continue
             else:
                 y.append(limit.interp_func(x))
-        y = np.array(y)
-        z = np.ones(len(y[0]))
-        for i in range(0,np.shape(y)[0]):
-            for j in range(0, np.size(y[i])):
-                if y[i,j] < z[j]:
-                    z[j] = y[i,j]
+        
+        if len(y)==0:
+            print("No limits were found when constructing the combination")
+            return None
+        else:
+            y = np.array(y)
+            z = np.ones(len(y[0]))
+            for i in range(0,np.shape(y)[0]):
+                for j in range(0, np.size(y[i])):
+                    if y[i,j] < z[j]:
+                        z[j] = y[i,j]
 
-        return plot_tools.log_interp1d(x, z, kind='linear', bounds_error=False, fill_value=None, assume_sorted=False)
+            return plot_tools.log_interp1d(x, z, kind='linear', bounds_error=False, fill_value=None, assume_sorted=False)
 
