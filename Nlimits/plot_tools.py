@@ -71,7 +71,8 @@ def std_plot_limits(case,
         color_fill = False,       # bool: filled regions have color
         color_only = [],            # list: apply color only to these limits
         npoints_interp = int(1e5),  # int:  number of points to use when drawing the curves
-        suffix=''):                 # string: suffix of the plot name and file name 
+        suffix='',                 # string: suffix of the plot name and file name 
+        colormap='tab20'):          # what colormap to iterate over to color the limits
 
     fig, ax = std_fig(figsize=(8,4), ax_form=[0.1,0.125,0.88,0.81])
     
@@ -83,7 +84,7 @@ def std_plot_limits(case,
         if limit.interp_func is not None:
             ilabel, ival = np.nanargmin(limit.interp_func(x)), np.nanmin(limit.interp_func(x))
             labelpos_dic[limit.id] = (x[ilabel]*0.9, ival/2.5)
-    color_dic = dict(zip(case.limits['id'],sns.color_palette('tab10', n_colors=len(list(case.limits.iterrows()))))) # a list of RGB tuples
+    color_dic = dict(zip(case.limits['id'],sns.color_palette(colormap, n_colors=len(list(case.limits.iterrows()))))) # a list of RGB tuples
     dash_dic = dict(zip(case.limits['id'], (1+len(color_dic.keys()))*[(1,0)]))
     
     labelpos_dic.update(new_labelpos)
@@ -93,7 +94,7 @@ def std_plot_limits(case,
     for i, limit in case.limits.iterrows():
         if (limit.id not in skip_ids) & (limit.interp_func is not None):
             
-            if len(color_only)>0:
+            if color_only:
 
                 background_grey = lighten_color('lightgrey', 0.1)
                 if limit.id in color_only:
@@ -118,15 +119,18 @@ def std_plot_limits(case,
             label = fr'\noindent {limit.plot_label}'.replace("(",r" \noindent {\tiny \textsc{(").replace(")", r")} }").replace(r'\\', r"\vspace{-2ex} \\ ")
             ax.plot(x, limit.interp_func(x), zorder=3, color=c, dashes=dash, lw=LW)
             ax.plot(x, limit.interp_func_top(x), color=c, dashes=dash,zorder=2, lw=LW)
+            
             if ('bbn' not in limit.id) and (limit.year is not None):
-                ax.fill_between(x, limit.interp_func(x), x/x,  zorder=1, facecolor=background_grey, edgecolor='None', alpha=alpha)    
+                if limit.id not in color_only and len(color_only) > 0:
+                    ax.fill_between(x, limit.interp_func(x), x/x,  zorder=1, facecolor=background_grey, edgecolor='None', alpha=0.4)    
+                else:
+                    ax.fill_between(x, limit.interp_func(x), x/x,  zorder=1, facecolor=background_grey, edgecolor='None', alpha=alpha)    
                 # ax.fill_between(x, limit.interp_func(x), limit.interp_func_top(x),  zorder=1, facecolor=background_grey, edgecolor='None', alpha=1)    
             t = ax.annotate(label, xy=labelpos_dic[limit.id], xycoords='data', color=c, zorder=4, fontsize=7.5)
             # t.set_bbox(dict(facecolor=background_grey, alpha=0.2, edgecolor='None'))
 
     ax.set_yscale("log")
     ax.set_xscale("log")
-
 
     ax.set_ylabel(fr"{case.latexflavor}")
     ax.set_xlabel(fr"$m_N/$MeV")
