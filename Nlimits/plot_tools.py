@@ -17,6 +17,17 @@ import matplotlib.colors as mc
 
 
 def log_interp1d(xx, yy, kind='linear', **kwargs):
+    """ Return an interpolating function using Scipy's interp1d for log-spaced data
+
+    Args:
+        xx (ndarray): x-axis data
+        yy (ndarray): y-axis data
+        kind (str, optional): Interpolating method to use. Defaults to 'linear'.
+
+    Returns:
+        scipy.interpolate._interpolate.interp1d: interpolating function.
+    """
+    
     logx = np.log10(xx)
     logy = np.log10(yy)
     lin_interp = scipy.interpolate.interp1d(logx, logy, kind=kind, **kwargs)
@@ -117,8 +128,10 @@ def std_plot_limits(case,
                 dash = dash_dic[limit.id]
 
             label = fr'\noindent {limit.plot_label}'.replace("(",r" \noindent {\tiny \textsc{(").replace(")", r")} }").replace(r'\\', r"\vspace{-2ex} \\ ")
-            ax.plot(x, limit.interp_func(x), zorder=3, color=c, dashes=dash, lw=LW)
-            ax.plot(x, limit.interp_func_top(x), color=c, dashes=dash,zorder=2, lw=LW)
+            ax.plot(x, limit.interp_func(x), color=c, dashes=dash, zorder=3, lw=LW)
+            ax.plot(x, limit.interp_func_top(x), color=c, dashes=dash, zorder=2, lw=LW)
+            # ax.fill(x, limit.interp_func(x), facecolor='None', edgecolor=c, zorder=3)
+            # ax.fill(x, limit.interp_func_top(x), facecolor='None', edgecolor=c, zorder=2)
             
             if ('bbn' not in limit.id) and (limit.year is not None):
                 if limit.id not in color_only and len(color_only) > 0:
@@ -239,8 +252,12 @@ def plot_MB_vertical_region(ax, color='dodgerblue', label=r'MiniBooNE $1 \sigma$
     ax.vlines(xright,0,1e10, zorder=3, lw=0.5, color=color)
 
 
-def plot_closed_region(points, logx=False, logy=False):
+def get_ordered_closed_region(points, logx=False, logy=False):
     x,y = points
+
+    if np.isnan(points).sum()>0:
+        raise ValueError("NaN's were found in input data. Cannot order the contour.")
+
     if logy:
         if (y==0).any():
             raise ValueError("y values cannot contain any zeros in log mode.")
@@ -255,12 +272,15 @@ def plot_closed_region(points, logx=False, logy=False):
         x  = ssx*np.log(x*sx)
 
     points = np.array([x,y]).T
-
     points_s     = (points - points.mean(0))
     angles       = np.angle((points_s[:,0] + 1j*points_s[:,1]))
     points_sort  = points_s[angles.argsort()]
     points_sort += points.mean(0)
 
+    if np.isnan(points_sort).sum()>0:
+        raise ValueError("NaN's were found in sorted points. Cannot order the contour.")
+    # print(points.mean(0))
+    # return points_sort
     tck, u = splprep(points_sort.T, u=None, s=0.0, per=0, k=1)
     u_new = np.linspace(u.min(), u.max(), len(points[:,0]))
     x_new, y_new = splev(u_new, tck, der=0)

@@ -17,8 +17,15 @@ def load_google_sheet(sheet_id="1p_fslIlThKMOThGl4leporUsogq9TmgXwILntUZOscg", s
     else:
         return pd.read_csv(url, header=0)
 
-class limits:
+class Limits:
     def __init__(self, flavor='e', invisible=False):
+        """ Class that contains all limits on a HNL given a certain flavor structure
+
+        Args:
+            flavor (str, optional): The single flavor dominance to be used. Can be 'e', 'mu', or 'tau'. Defaults to 'e'.
+            invisible (bool, optional): If True, include only limits that apply to an invisible HNL. Defaults to False.
+        
+        """
         self.flavor = flavor
         subscript = 'e' if self.flavor == 'e' else f'\{self.flavor}'
         self.latexflavor = fr'$|U_{{{subscript} N}}|^2$'
@@ -27,12 +34,19 @@ class limits:
 
         self.num_of_limits = self.limits.index.size
 
-        self.limits = self.limits.apply(self.load_limit, axis = 1)
+        self.limits = self.limits.apply(self.insert_limit, axis = 1)
         self.interp_func_all = self.get_combined_limit_func()
 
-    # get the data for the limits and interpolations
-    def load_limit(self, df):        
-        
+    def insert_limit(self, df):
+        """ After the data in the Google Spreadsheet, this function can be used to load the limit,
+        its description, raw data, and interpolating function.
+
+        Args:
+            df (pandas DataFrame): the dataframe to which the limit is being inserted
+
+        Returns:
+            pandas DataFrame: after data is inserted.
+        """
         self.get_data(df)
         self.get_data(df, top=True)
         
@@ -48,7 +62,7 @@ class limits:
             m4, ualpha4 = None, None 
             interp_func = lambda x: np.ones(np.size(x))
         else:
-            if (self.invisible & ~df.is_invisible):
+            if (self.invisible and not df.is_invisible):
                 m4, ualpha4, interp_func = None, None, None
             else:
                 m4, ualpha4 = np.genfromtxt(f"{global_path}{limit_path}", unpack=True)
@@ -73,8 +87,19 @@ class limits:
         
         return df
 
-    ## Return a function that takes m4 [GeV] and gives bound on Ualpha4^2
-    def get_combined_limit_func(self, xrange=[1, 1e5], npoints = 1000, logx=True, no_cosmo=True):
+    def get_combined_limit_func(self, xrange=[1, 1e5], npoints = 1000, logx=True, include_cosmo=False):
+        """ Returns a function that takes m4 [GeV] and gives bound on Ualpha4^2
+
+        Args:
+            xrange (list, optional): range of HNL mass in GeV. Defaults to [1, 1e5].
+            npoints (int, optional): number of mass points to return the limit for. Defaults to 1000.
+            logx (bool, optional): If True, return logarithmically spaced points. Defaults to True.
+            include_cosmo (bool, optional): If True, include cosmological bounds in the combination. Defaults to False.
+
+        Returns:
+            scipy.interpolate.interp1d(logx, logy, kind=kind, **kwargs): interpolating function.
+        """
+
         y=[]
         if logx:
             x=np.geomspace(*xrange,npoints)
@@ -82,9 +107,10 @@ class limits:
             x=np.linspace(*xrange,npoints)
         
         for _, limit in self.limits.iterrows():
+            
             ## FIX ME -- no functionality for gaps between top of constraint and other bounds
             # check if it is a closed contour with top and bottom files
-            if (not (limit['file_top'] is None) or (limit['interp_func'] is None)) or (no_cosmo and 'bbn' in limit.id):
+            if (not (limit['file_top'] is None) or (limit['interp_func'] is None)) or (include_cosmo and 'bbn' in limit.id):
                 continue
             else:
                 y.append(limit.interp_func(x))
