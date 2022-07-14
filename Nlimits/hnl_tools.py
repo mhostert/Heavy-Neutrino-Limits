@@ -30,7 +30,8 @@ class Limits:
         subscript = 'e' if self.flavor == 'e' else f'\{self.flavor}'
         self.latexflavor = fr'$|U_{{{subscript} N}}|^2$'
         self.invisible = invisible
-        self.limits = load_google_sheet(sheet_name=f'U{flavor}4')
+        _df = load_google_sheet(sheet_name=f'U{flavor}4')
+        self.limits = _df.set_index('id')
 
         self.num_of_limits = self.limits.index.size
 
@@ -66,6 +67,8 @@ class Limits:
                 m4, ualpha4, interp_func = None, None, None
             else:
                 m4, ualpha4 = np.genfromtxt(f"{global_path}{limit_path}", unpack=True)
+                # m4, ualpha4 = m4[~np.isnan(m4)], ualpha4[~np.isnan(m4)]
+                # m4, ualpha4 = m4[~np.isnan(ualpha4)], ualpha4[~np.isnan(ualpha4)]
                 
                 if df['units'] in unit_dict:
                     # fix units to HEP units (MeV)
@@ -73,10 +76,10 @@ class Limits:
             
                     # order data points
                     order = np.argsort(m4)
-                    m4 = m4[order]
-                    ualpha4 = ualpha4[order]
+                    _m4 = m4[order]
+                    _ualpha4 = ualpha4[order]
                     # interpolation 
-                    interp_func = plot_tools.log_interp1d(m4, ualpha4, kind='linear', bounds_error=False, fill_value=None, assume_sorted=False)    
+                    interp_func = plot_tools.log_interp1d(_m4, _ualpha4, kind='linear', bounds_error=False, fill_value=None, assume_sorted=False)    
 
                 else:
                     raise ValueError(f"HNL mass units of {df['units']} not defined.")

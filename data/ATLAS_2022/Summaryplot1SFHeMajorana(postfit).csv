@@ -1,0 +1,48 @@
+#: table_doi: 10.17182/hepdata.115511.v1/t16
+#: name: Summary plot 1SFH e Majorana (postfit)
+#: description: Expected and observed yields in the different analysis regions (postfit) for the 1SFH e Majorana model (10 GeV, 10mm).
+#: data_file: histogram_e_comb_LNC_plus_LNV_postfit.yaml
+#: keyword reactions: 
+#: keyword observables: 
+#: keyword cmenergies: 13000
+#: keyword phrases: total yield | background | signal | regions
+#: SQRT(s) [GeV],13000
+#: LUMINOSITY [fb$^{-1}$],139
+regions [],total [],error +,error -
+eee_SR,0.4338286766842061,0.2671453665086952,-0.2671453665086952
+eee_CR,3.56828884938498,1.8005244671489342,-1.8005244671489342
+eeu_SR,0.8931076908469088,0.6396040493797405,-0.6396040493797405
+eeu_CR,4.1077564485207585,1.847309511631236,-1.847309511631236
+euu_SR,1.1865121156391694,0.8675013461222909,-0.8675013461222909
+euu_CR,2.8125105159989565,1.6286571355692303,-1.6286571355692303
+
+#: SQRT(s) [GeV],13000
+#: LUMINOSITY [fb$^{-1}$],139
+regions [],data []
+eee_SR,2.0
+eee_CR,2.0
+eeu_SR,0.0
+eeu_CR,5.0
+euu_SR,1.0
+euu_CR,3.0
+
+#: SQRT(s) [GeV],13000
+#: LUMINOSITY [fb$^{-1}$],139
+regions [],background []
+eee_SR,0.4338286708949707
+eee_CR,3.56828884938498
+eeu_SR,0.8931076523667402
+eeu_CR,4.1077564485207585
+euu_SR,1.186512114778295
+euu_CR,2.8125105159989565
+
+#: SQRT(s) [GeV],13000
+#: LUMINOSITY [fb$^{-1}$],139
+regions [],signal []
+eee_SR,0.0
+eee_CR,0.0
+eeu_SR,0.0
+eeu_CR,0.0
+euu_SR,0.0
+euu_CR,0.0
+

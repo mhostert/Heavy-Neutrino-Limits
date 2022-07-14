@@ -1,0 +1,143 @@
+#: table_doi: 10.17182/hepdata.115511.v1/t10
+#: name: Cutflow Data selection
+#: description: Cutflow for the six channels in data showing the number of events passing each successive signal selection for Majorana HNLs.
+#: data_file: data_selection.yaml
+#: keyword phrases: cutflow | efficiency | selection
+Selection,uuu [Events]
+All,101920000.0
+Trigger,22003000.0
+PV,22003000.0
+4-filter,16295000.0
+Medium prompt lep.,8023700.0
+P.lep. overlap,6259900.0
+DV,6259900.0
+Fiducial,3206000.0
+2-track DV,1975900.0
+OS DV,1166700.0
+Lep. type DV,10114.0
+Cosmic veto,10113.0
+Lepton pt,8387.0
+Mat. veto,nan
+Lep. qual. DV,6217.0
+Trig. match,5618.0
+m_{lll},2990.0
+B-hadron veto,16.0
+Z mass veto,16.0
+m_{HNL},2.0
+Charge split (Dirac only),nan
+
+Selection,uue [Events]
+All,101920000.0
+Trigger,22003000.0
+PV,22003000.0
+4-filter,16295000.0
+Medium prompt lep.,8023700.0
+P.lep. overlap,6259900.0
+DV,6259900.0
+Fiducial,3206000.0
+2-track DV,1975900.0
+OS DV,1166700.0
+Lep. type DV,95911.0
+Cosmic veto,95887.0
+Lepton pt,36788.0
+Mat. veto,nan
+Lep. qual. DV,5484.0
+Trig. match,4645.0
+m_{lll},2631.0
+B-hadron veto,30.0
+Z mass veto,29.0
+m_{HNL},2.0
+Charge split (Dirac only),0
+
+Selection,uee [Events]
+All,101920000.0
+Trigger,22003000.0
+PV,22003000.0
+4-filter,16295000.0
+Medium prompt lep.,8023700.0
+P.lep. overlap,6259900.0
+DV,6259900.0
+Fiducial,3206000.0
+2-track DV,1975900.0
+OS DV,1166700.0
+Lep. type DV,1012900.0
+Cosmic veto,1012700.0
+Lepton pt,80998.0
+Mat. veto,47948.0
+Lep. qual. DV,6056.0
+Trig. match,5599.0
+m_{lll},3277.0
+B-hadron veto,7.0
+Z mass veto,7.0
+m_{HNL},1.0
+Charge split (Dirac only),nan
+
+Selection,eee [Events]
+All,101630000.0
+Trigger,21925000.0
+PV,21925000.0
+4-filter,16237000.0
+Medium prompt lep.,6427500.0
+P.lep. overlap,4664300.0
+DV,4664300.0
+Fiducial,2437200.0
+2-track DV,1508500.0
+OS DV,921700.0
+Lep. type DV,808400.0
+Cosmic veto,808300.0
+Lepton pt,65239.0
+Mat. veto,37003.0
+Lep. qual. DV,6218.0
+Trig. match,6080.0
+m_{lll},3649.0
+B-hadron veto,15.0
+Z mass veto,9.0
+m_{HNL},2.0
+Charge split (Dirac only),nan
+
+Selection,eeu [Events]
+All,101920000.0
+Trigger,22003000.0
+PV,22003000.0
+4-filter,16295000.0
+Medium prompt lep.,6449800.0
+P.lep. overlap,4680300.0
+DV,4680300.0
+Fiducial,2445500.0
+2-track DV,1513700.0
+OS DV,924860.0
+Lep. type DV,69704.0
+Cosmic veto,69691.0
+Lepton pt,26871.0
+Mat. veto,nan
+Lep. qual. DV,3349.0
+Trig. match,3157.0
+m_{lll},1813.0
+B-hadron veto,13.0
+Z mass veto,12.0
+m_{HNL},0.0
+Charge split (Dirac only),0
+
+Selection,euu [Events]
+All,101920000.0
+Trigger,22003000.0
+PV,22003000.0
+4-filter,16295000.0
+Medium prompt lep.,6449800.0
+P.lep. overlap,4680300.0
+DV,4680300.0
+Fiducial,2445500.0
+2-track DV,1513700.0
+OS DV,924860.0
+Lep. type DV,6709.0
+Cosmic veto,6706.0
+Lepton pt,5652.0
+Mat. veto,nan
+Lep. qual. DV,4130.0
+Trig. match,3922.0
+m_{lll},2210.0
+B-hadron veto,5.0
+Z mass veto,5.0
+m_{HNL},1.0
+Charge split (Dirac only),nan
+

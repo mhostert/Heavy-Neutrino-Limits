@@ -1,0 +1,48 @@
+#: table_doi: 10.17182/hepdata.115511.v1/t14
+#: name: Summary plot 1SFH e Dirac (postfit)
+#: description: Expected and observed yields in the different analysis regions (postfit) for the 1SFH e Dirac model (10 GeV, 10mm).
+#: data_file: histogram_e_comb_LNC_postfit.yaml
+#: keyword reactions: 
+#: keyword observables: 
+#: keyword cmenergies: 13000
+#: keyword phrases: total yield | background | signal | regions
+#: SQRT(s) [GeV],13000
+#: LUMINOSITY [fb$^{-1}$],139
+regions [],total [],error +,error -
+eee_SR,0.4340327756353481,0.27351548540621906,-0.27351548540621906
+eee_CR,3.5663967482923833,1.8124203366684257,-1.8124203366684257
+eeu_SR,0.558144926879933,0.6345057335857922,-0.6345057335857922
+eeu_CR,2.4413343579095796,1.4234305463671824,-1.4234305463671824
+euu_SR,1.186623840932396,0.8675832875057059,-0.8675832875057059
+euu_CR,2.81275567257473,1.6286934948638332,-1.6286934948638332
+
+#: SQRT(s) [GeV],13000
+#: LUMINOSITY [fb$^{-1}$],139
+regions [],data []
+eee_SR,2.0
+eee_CR,2.0
+eeu_SR,0.0
+eeu_CR,3.0
+euu_SR,1.0
+euu_CR,3.0
+
+#: SQRT(s) [GeV],13000
+#: LUMINOSITY [fb$^{-1}$],139
+regions [],background []
+eee_SR,0.4340326914124903
+eee_CR,3.5663967482923833
+eeu_SR,0.558144422598125
+eeu_CR,2.4413343579095796
+euu_SR,1.1866238281223398
+euu_CR,2.81275567257473
+
+#: SQRT(s) [GeV],13000
+#: LUMINOSITY [fb$^{-1}$],139
+regions [],signal []
+eee_SR,0.0
+eee_CR,0.0
+eeu_SR,0.0
+eeu_CR,0.0
+euu_SR,0.0
+euu_CR,0.0
+
