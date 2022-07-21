@@ -13,8 +13,6 @@ import matplotlib.patches as patches
 import matplotlib.colors as mc
 from matplotlib.pyplot import cm
 
-from . import plot_tools
-
 def log_interp1d(xx, yy, kind='linear', **kwargs):
     """ Return an interpolating function using Scipy's interp1d for log-spaced data
 
