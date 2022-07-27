@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{42}%
+\begin{thebibliography}{46}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -97,9 +97,11 @@
   {Tumasyan} \emph {et~al.}}]{CMS:2022fut}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
-  {Tumasyan}} \emph {et~al.} (\bibinfo {collaboration} {CMS}),\ }\href@noop {}
-  {\  (\bibinfo {year} {2022})},\ \Eprint {http://arxiv.org/abs/2201.05578}
-  {arXiv:2201.05578 [hep-ex]} \BibitemShut {NoStop}%
+  {Tumasyan}} \emph {et~al.} (\bibinfo {collaboration} {CMS}),\ }\href
+  {\doibase 10.1007/JHEP07(2022)081} {\bibfield  {journal} {\bibinfo  {journal}
+  {JHEP}\ }\textbf {\bibinfo {volume} {07}},\ \bibinfo {pages} {081} (\bibinfo
+  {year} {2022})},\ \Eprint {http://arxiv.org/abs/2201.05578} {arXiv:2201.05578
+  [hep-ex]} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Bryman}\ and\ \citenamefont
   {Shrock}(2019)}]{Bryman:2019bjg}%
   \BibitemOpen
@@ -178,6 +180,24 @@
   {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo
   {volume} {46}},\ \bibinfo {pages} {R885} (\bibinfo {year}
   {1992})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Aguilar-Arevalo}\ \emph {et~al.}(2018)\citenamefont
+  {Aguilar-Arevalo} \emph {et~al.}}]{PIENU:2017wbj}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Aguilar-Arevalo}} \emph {et~al.} (\bibinfo {collaboration} {PIENU}),\ }\href
+  {\doibase 10.1103/PhysRevD.97.072012} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {97}},\ \bibinfo
+  {pages} {072012} (\bibinfo {year} {2018})},\ \Eprint
+  {http://arxiv.org/abs/1712.03275} {arXiv:1712.03275 [hep-ex]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Altmannshofer}\ \emph {et~al.}(2022)\citenamefont
+  {Altmannshofer} \emph {et~al.}}]{PIONEER:2022alm}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {W.}~\bibnamefont
+  {Altmannshofer}} \emph {et~al.} (\bibinfo {collaboration} {PIONEER}),\ }in\
+  \href@noop {} {\emph {\bibinfo {booktitle} {{2022 Snowmass Summer Study}}}}\
+  (\bibinfo {year} {2022})\ \Eprint {http://arxiv.org/abs/2203.05505}
+  {arXiv:2203.05505 [hep-ex]} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Ahdida}\ \emph {et~al.}(2019)\citenamefont {Ahdida}
   \emph {et~al.}}]{SHiP:2018xqw}%
   \BibitemOpen
@@ -229,6 +249,14 @@
   {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {101}},\ \bibinfo
   {pages} {052001} (\bibinfo {year} {2020})},\ \Eprint
   {http://arxiv.org/abs/1911.10545} {arXiv:1911.10545 [hep-ex]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Abratenko}\ \emph {et~al.}(2022)\citenamefont
+  {Abratenko} \emph {et~al.}}]{MicroBooNE:2022ctm}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Abratenko}} \emph {et~al.} (\bibinfo {collaboration} {MicroBooNE}),\
+  }\href@noop {} {\  (\bibinfo {year} {2022})},\ \Eprint
+  {http://arxiv.org/abs/2207.03840} {arXiv:2207.03840 [hep-ex]} \BibitemShut
   {NoStop}%
 \bibitem [{\citenamefont {Kelly}\ and\ \citenamefont
   {Machado}(2021)}]{Kelly:2021xbv}%
@@ -391,6 +419,11 @@
   {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {127}},\ \bibinfo
   {pages} {121801} (\bibinfo {year} {2021})},\ \Eprint
   {http://arxiv.org/abs/2106.13684} {arXiv:2106.13684 [hep-ex]} \BibitemShut
+  {NoStop}%
+\bibitem [{BaB(2022)}]{BaBar:2022cqj}%
+  \BibitemOpen
+  \href@noop {} {\  (\bibinfo {year} {2022})},\ \Eprint
+  {http://arxiv.org/abs/2207.09575} {arXiv:2207.09575 [hep-ex]} \BibitemShut
   {NoStop}%
 \bibitem [{\citenamefont {Plestid}(2021)}]{Plestid:2020ssy}%
   \BibitemOpen

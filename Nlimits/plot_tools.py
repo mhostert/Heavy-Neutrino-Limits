@@ -150,7 +150,7 @@ def std_plot_limits(case,
                 dash = dash_dic[id]
             
             label = fr'\noindent {limit.plot_label}'.replace("(",r" \noindent {\tiny \textsc{(").replace(")", r")} }").replace(r'\\', r"\vspace{-2ex} \\ ")
-            t = ax.annotate(label, xy=labelpos_dic[id], xycoords='data', color=label_color, zorder=100, fontsize=7.5, rotation=rot_dic[id])
+            t = ax.annotate(label, xy=labelpos_dic[id], xycoords='data', color=label_color, zorder=100, fontsize=6.5, rotation=rot_dic[id])
             # t.set_bbox(dict(facecolor=background_grey, alpha=0.2, edgecolor='None'))
             if limit.file_top == limit.file_bottom and limit.m4 is not None and limit.ualpha4 is not None:
                 ax.plot(limit.m4, limit.ualpha4, color=contour_color, dashes=dash, zorder=3, lw=LW)
