@@ -20,10 +20,10 @@ Limits on N-SMEFT operators are drawn in the following notebooks:
 Current compilation of bounds:
 
 
-[<img src="https://render.githubusercontent.com/render/math?math=\color{black}{|U_{e N}|^2}">](https://github.com/mhostert/N-MEFT-Limits/main/plots/mixing/UeN_majorana.pdf#gh-light-mode-only)
-[<img src="https://render.githubusercontent.com/render/math?math=\color{white}{|U_{e N}|^2}">](https://github.com/mhostert/LimitsHNL/blob/main/plots/mixing/UeN_majorana.pdf#gh-dark-mode-only)
-![e flavor](https://github.com/mhostert/LimitsHNL/blob/main/plots/mixing/UeN_majorana.pdf#gh-light-mode-only)
-![e flavor](https://github.com/mhostert/LimitsHNL/blob/main/plots/mixing/UeN_majorana.pdf#gh-dark-mode-only)
+[<img src="https://render.githubusercontent.com/render/math?math=\color{black}{|U_{e N}|^2}">](https://github.com/mhostert/N-SMEFT-Limits/main/plots/mixing/UeN_majorana.pdf#gh-light-mode-only)
+[<img src="https://render.githubusercontent.com/render/math?math=\color{white}{|U_{e N}|^2}">](https://github.com/mhostert//N-SMEFT-Limits/main/plots/mixing/UeN_majorana.pdf#gh-dark-mode-only)
+![e flavor](https://github.com/mhostert/N-SMEFT-Limits/main/plots/mixing/UeN_majorana.pdf#gh-light-mode-only)
+![e flavor](https://github.com/mhostert/N-SMEFT-Limits/main/plots/mixing/UeN_majorana.pdf#gh-dark-mode-only)
 
 [<img src="https://render.githubusercontent.com/render/math?math=\color{black}{|U_{\mu N}|^2}">](https://github.com/mhostert/LimitsHNL/blob/main/plots/UmuN_nf03.pdf#gh-light-mode-only)
 [<img src="https://render.githubusercontent.com/render/math?math=\color{white}{|U_{\mu N}|^2}">](https://github.com/mhostert/LimitsHNL/blob/main/plots/UmuN_nf03.pdf#gh-dark-mode-only)
