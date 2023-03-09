@@ -9,7 +9,7 @@
 #: Limit,Observed
 #: SQRT(S) [GeV],13000
 #: LUMINOSITY [fb$^{-1}$],36.1
-# mass [GeV],limit [dimensionless],stat +,stat -
+mass [GeV],limit [dimensionless],stat +,stat -
 5.34529,0.000170545,0,0
 5.43125,0.000155236,0,0
 5.64875,0.000121173,0,0
