@@ -1,0 +1,28 @@
+#: table_doi: 10.17182/hepdata.91136.v1/t6
+#: name: Table 6
+#: description: Prompt HNL search observed and expected 95% confidence level exclusion upper limits in $|U_{\mu}|^2$ as a function of HNL mass.
+#: data_file: HEPdata_limit_HNLprompt_mu.yaml
+#: keyword SQRT(S): 13000
+#: keyword LUMINOSITY: 36.1
+#: keyword reactions: P P --> W X
+#: keyword observables: CLS
+#: Limit,Observed
+#: SQRT(S) [GeV],13000
+#: LUMINOSITY [fb$^{-1}$],36.1
+mass [GeV],limit [dimensionless],1-sigma +,1-sigma -
+5,7.13095e-05,0,0
+10,3.18407e-05,0,0
+20,1.14699e-05,0,0
+30,1.34867e-05,0,0
+50,2.49816e-05,0,0
+
+#: Limit,Expected
+#: SQRT(S) [GeV],13000
+#: LUMINOSITY [fb$^{-1}$],36.1
+mass [GeV],expected_limit [dimensionless],1-sigma +,1-sigma -
+5,6.14439e-05,2.22608e-05,-2.22608e-05
+10,2.7645e-05,8.76404e-06,-8.76404e-06
+20,8.95645e-06,2.90244e-06,-2.90244e-06
+30,1.04761e-05,3.04814e-06,-3.04814e-06
+50,1.92301e-05,5.9781e-06,-5.9781e-06
+

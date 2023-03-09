@@ -1,0 +1,137 @@
+#: table_doi: 10.17182/hepdata.115511.v1/t9
+#: name: Cutflow One HNL Majorana
+#: description: Cutflow for six simulated signal channels showing the weighted number of expected events based on the single-flavour mixing model in the Majorana limit. Each column uses the generated signal sample with the mass hypothesis $m_N = 10$ GeV and proper decay length $c\tau_N = 10$ mm.
+#: data_file: one_hnl_majorana.yaml
+#: keyword phrases: cutflow | efficiency | selection
+Selection,uuu [Events]
+All,60.055
+Trigger,23.315
+PV,23.315
+4-filter,14.939
+Medium prompt lep.,14.063
+P.lep. overlap,14.03
+DV,5.1133
+Fiducial,4.8144
+2-track DV,4.6593
+OS DV,4.6342
+Lep. type DV,4.5213
+Cosmic veto,4.5213
+Lepton pt,4.3888
+Mat. veto,nan
+Lep. qual. DV,4.009
+Trig. match,3.6462
+m_{lll},3.5742
+B-hadron veto,1.8692
+Z mass veto,1.8692
+m_{HNL},1.8692
+
+Selection,uue [Events]
+All,174.44
+Trigger,64.974
+PV,64.974
+4-filter,39.843
+Medium prompt lep.,37.306
+P.lep. overlap,37.261
+DV,12.053
+Fiducial,11.356
+2-track DV,10.874
+OS DV,10.767
+Lep. type DV,10.509
+Cosmic veto,10.509
+Lepton pt,8.3337
+Mat. veto,nan
+Lep. qual. DV,7.4779
+Trig. match,6.7876
+m_{lll},6.5465
+B-hadron veto,3.6438
+Z mass veto,3.6438
+m_{HNL},3.6438
+
+Selection,uee [Events]
+All,2.7876
+Trigger,0.9937
+PV,0.9937
+4-filter,0.54727
+Medium prompt lep.,0.51106
+P.lep. overlap,0.51066
+DV,0.14791
+Fiducial,0.14295
+2-track DV,0.13485
+OS DV,0.13287
+Lep. type DV,0.13081
+Cosmic veto,0.13081
+Lepton pt,0.088784
+Mat. veto,0.063277
+Lep. qual. DV,0.057004
+Trig. match,0.05181
+m_{lll},0.050314
+B-hadron veto,0.026432
+Z mass veto,0.026432
+m_{HNL},0.026432
+
+Selection,eee [Events]
+All,60.847
+Trigger,17.626
+PV,17.626
+4-filter,9.9401
+Medium prompt lep.,8.1123
+P.lep. overlap,8.085
+DV,2.3505
+Fiducial,2.1863
+2-track DV,2.0429
+OS DV,2.016
+Lep. type DV,1.9995
+Cosmic veto,1.9995
+Lepton pt,1.3532
+Mat. veto,0.96874
+Lep. qual. DV,0.85182
+Trig. match,0.85224
+m_{lll},0.83425
+B-hadron veto,0.44436
+Z mass veto,0.44436
+m_{HNL},0.44436
+
+Selection,eeu [Events]
+All,177.42
+Trigger,54.47
+PV,54.47
+4-filter,32.845
+Medium prompt lep.,26.816
+P.lep. overlap,26.691
+DV,9.1487
+Fiducial,8.3767
+2-track DV,8.0702
+OS DV,8.009
+Lep. type DV,7.8573
+Cosmic veto,7.8573
+Lepton pt,6.3174
+Mat. veto,nan
+Lep. qual. DV,5.6939
+Trig. match,5.6554
+m_{lll},5.4998
+B-hadron veto,2.9771
+Z mass veto,2.9621
+m_{HNL},2.9621
+
+Selection,euu [Events]
+All,2.8003
+Trigger,0.88373
+PV,0.88373
+4-filter,0.57316
+Medium prompt lep.,0.46221
+P.lep. overlap,0.45938
+DV,0.17874
+Fiducial,0.16549
+2-track DV,0.16012
+OS DV,0.15941
+Lep. type DV,0.15493
+Cosmic veto,0.15493
+Lepton pt,0.14872
+Mat. veto,nan
+Lep. qual. DV,0.13368
+Trig. match,0.13313
+m_{lll},0.12811
+B-hadron veto,0.066197
+Z mass veto,0.066197
+m_{HNL},0.066197
+

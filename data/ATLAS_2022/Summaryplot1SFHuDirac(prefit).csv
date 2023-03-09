@@ -1,0 +1,48 @@
+#: table_doi: 10.17182/hepdata.115511.v1/t17
+#: name: Summary plot 1SFH u Dirac (prefit)
+#: description: Expected and observed yields in the different analysis regions (prefit) for the 1SFH u Dirac model (10 GeV, 10mm).
+#: data_file: histogram_u_comb_LNC_prefit.yaml
+#: keyword reactions: 
+#: keyword observables: 
+#: keyword cmenergies: 13000
+#: keyword phrases: total yield | background | signal | regions
+#: SQRT(s) [GeV],13000
+#: LUMINOSITY [fb$^{-1}$],139
+regions [],total [],error +,error -
+uuu_SR,4.060891465785879,2.0907883898997603,-2.0907883898997603
+uuu_CR,3.6526912181303275,2.3722442803562043,-2.3722442803562043
+uue_SR,3.778583737638677,0.59793975474454,-0.59793975474454
+uue_CR,2.8203137379150554,1.7852507476407977,-1.7852507476407977
+uee_SR,0.3597285264505392,0.1907956041649082,-0.1907956041649082
+uee_CR,3.6634272421747016,1.83396070128269,-1.83396070128269
+
+#: SQRT(s) [GeV],13000
+#: LUMINOSITY [fb$^{-1}$],139
+regions [],data []
+uuu_SR,2.0
+uuu_CR,9.0
+uue_SR,0.0
+uue_CR,10.0
+uee_SR,1.0
+uee_CR,1.0
+
+#: SQRT(s) [GeV],13000
+#: LUMINOSITY [fb$^{-1}$],139
+regions [],background []
+uuu_SR,2.3473087818696983
+uuu_CR,3.6526912181303275
+uue_SR,0.6796862620824372
+uue_CR,2.8203137379150554
+uee_SR,0.3365727578185717
+uee_CR,3.6634272421747016
+
+#: SQRT(s) [GeV],13000
+#: LUMINOSITY [fb$^{-1}$],139
+regions [],signal []
+uuu_SR,1.7135826839161812
+uuu_CR,0.0
+uue_SR,3.0988974755562397
+uue_CR,0.0
+uee_SR,0.023155768631967496
+uee_CR,0.0
+
