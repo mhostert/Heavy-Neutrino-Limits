@@ -21,9 +21,9 @@ Current compilation of bounds:
 
 
 [<img src="https://render.githubusercontent.com/render/math?math=\color{black}{|U_{e N}|^2}">](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UeN_majorana.png#gh-light-mode-only)
-[<img src="https://render.githubusercontent.com/render/math?math=\color{white}{|U_{e N}|^2}">](https://github.com/mhostert/N-SMEFT-Limits/blob/a338dc1bca9dfd378bad1788c7ca9e51f1bb0819/plots/mixing/UeN_majorana.png#gh-dark-mode-only)
-![e flavor](https://github.com/mhostert/N-SMEFT-Limits/blob/a338dc1bca9dfd378bad1788c7ca9e51f1bb0819/plots/mixing/UeN_majorana.png#gh-light-mode-only)
-![e flavor](https://https://github.com/mhostert/N-SMEFT-Limits/blob/a338dc1bca9dfd378bad1788c7ca9e51f1bb0819/plots/mixing/UeN_majorana_white.png#gh-dark-mode-only)
+[<img src="https://render.githubusercontent.com/render/math?math=\color{white}{|U_{e N}|^2}">](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UeN_majorana.png#gh-dark-mode-only)
+![e flavor](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UeN_majorana.png#gh-light-mode-only)
+![e flavor](https://https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UeN_majorana_white.png#gh-dark-mode-only)
 
 [<img src="https://render.githubusercontent.com/render/math?math=\color{black}{|U_{\mu N}|^2}">](https://github.com/mhostert/LimitsHNL/blob/main/plots/UmuN_nf03.pdf#gh-light-mode-only)
 [<img src="https://render.githubusercontent.com/render/math?math=\color{white}{|U_{\mu N}|^2}">](https://github.com/mhostert/LimitsHNL/blob/main/plots/UmuN_nf03.pdf#gh-dark-mode-only)
