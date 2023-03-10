@@ -9,7 +9,7 @@ For the main plots and an example TeX file, see the [auto-generated LaTeX files]
 
 ---
 
-Run **Limits-Dimension-4** to make the standard plots of constraints against the HNL mass for single flavor dominance scenario.
+Run **Limits-Dimension-4** to make the standard plots of constraints against the HNL mass for single flavor dominance scenario. HNLs are assumed to be Majorana particles.
 
 Limits on N-SMEFT operators are drawn in the following notebooks:
    * **Limits-Dimension-5**
