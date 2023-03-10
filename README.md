@@ -25,13 +25,13 @@ Current compilation of bounds:
 ![e flavor](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UeN_majorana.png#gh-light-mode-only)
 ![e flavor](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UeN_majorana_white.png#gh-dark-mode-only)
 
-[<img src="https://render.githubusercontent.com/render/math?math=\color{black}{|U_{\mu N}|^2}">](https://github.com/mhostert/LimitsHNL/blob/main/plots/UmuN_nf03.pdf#gh-light-mode-only)
-[<img src="https://render.githubusercontent.com/render/math?math=\color{white}{|U_{\mu N}|^2}">](https://github.com/mhostert/LimitsHNL/blob/main/plots/UmuN_nf03.pdf#gh-dark-mode-only)
-![mu flavor](https://github.com/mhostert/LimitsHNL/blob/main/plots/UmuN_nf03.png#gh-light-mode-only)
-![mu flavor](https://github.com/mhostert/LimitsHNL/blob/main/plots/UmuN_nf03_white.png#gh-dark-mode-only)
+[<img src="https://render.githubusercontent.com/render/math?math=\color{black}{|U_{\mu N}|^2}">](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UmuN_majorana.png#gh-light-mode-only)
+[<img src="https://render.githubusercontent.com/render/math?math=\color{white}{|U_{\mu N}|^2}">](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UmuN_majorana.png#gh-dark-mode-only)
+![mu flavor](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UmuN_majorana.png#gh-light-mode-only)
+![mu flavor](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UmuN_majorana_white.png#gh-dark-mode-only)
 
-[<img src="https://render.githubusercontent.com/render/math?math=\color{black}{|U_{\tau N}|^2}">](https://github.com/mhostert/LimitsHNL/blob/main/plots/UtauN_nf03.pdfg#gh-light-mode-only)
-[<img src="https://render.githubusercontent.com/render/math?math=\color{white}{|U_{\tau N}|^2}">](https://github.com/mhostert/LimitsHNL/blob/main/plots/UtauN_nf03.pdfg#gh-dark-mode-only)
-![tau flavor](https://github.com/mhostert/LimitsHNL/blob/main/plots/UtauN_nf03.png#gh-light-mode-only)
-![tau flavor](https://github.com/mhostert/LimitsHNL/blob/main/plots/UtauN_nf03_white.png#gh-dark-mode-only)
+[<img src="https://render.githubusercontent.com/render/math?math=\color{black}{|U_{\tau N}|^2}">](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UtauN_majorana.png#gh-light-mode-only)
+[<img src="https://render.githubusercontent.com/render/math?math=\color{white}{|U_{\tau N}|^2}">](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UtauN_majorana.png#gh-dark-mode-only)
+![tau flavor](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UtauN_majorana.png#gh-light-mode-only)
+![tau flavor](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UtauN_majorana_white.png#gh-dark-mode-only)
 
