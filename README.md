@@ -1,6 +1,6 @@
 # Heavy Neutrino Limits
 
-This package and repo tracks the constraints on the coupling and masses of heavy neutral leptons (HNL). 
+This package and repo tracks the constraints on the coupling and masses of heavy neutral leptons (HNL). To access it, simply clone this repository. To access the underlying functions and create your own plots, you can install it as a standard PyPI package via ``python -m pip install heavy-neutrino-limits`` and import it in your Python script ``import HNLimits``.
 
 All limits are kept track in this [![Google Spreadsheets](https://img.shields.io/badge/Google_Sheets-Database-brightgreen.svg)](https://docs.google.com/spreadsheets/d/1p_fslIlThKMOThGl4leporUsogq9TmgXwILntUZOscg/edit?usp=sharing)
 
@@ -52,17 +52,8 @@ xxx
 Current compilation of bounds:
 
 
-[<img src="https://render.githubusercontent.com/render/math?math=\color{black}{|U_{e N}|^2}">](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UeN_majorana.png#gh-light-mode-only)
-[<img src="https://render.githubusercontent.com/render/math?math=\color{white}{|U_{e N}|^2}">](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UeN_majorana.png#gh-dark-mode-only)
-![e flavor](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UeN_majorana.png#gh-light-mode-only)
-![e flavor](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UeN_majorana_white.png#gh-dark-mode-only)
+[electron](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UeN_majorana.png)
 
-[<img src="https://render.githubusercontent.com/render/math?math=\color{black}{|U_{\mu N}|^2}">](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UmuN_majorana.png#gh-light-mode-only)
-[<img src="https://render.githubusercontent.com/render/math?math=\color{white}{|U_{\mu N}|^2}">](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UmuN_majorana.png#gh-dark-mode-only)
-![mu flavor](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UmuN_majorana.png#gh-light-mode-only)
-![mu flavor](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UmuN_majorana_white.png#gh-dark-mode-only)
+[muon](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UmuN_majorana.png)
 
-[<img src="https://render.githubusercontent.com/render/math?math=\color{black}{|U_{\tau N}|^2}">](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UtauN_majorana.png#gh-light-mode-only)
-[<img src="https://render.githubusercontent.com/render/math?math=\color{white}{|U_{\tau N}|^2}">](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UtauN_majorana.png#gh-dark-mode-only)
-![tau flavor](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UtauN_majorana.png#gh-light-mode-only)
-![tau flavor](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UtauN_majorana_white.png#gh-dark-mode-only)
+[tau](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UtauN_majorana.png)

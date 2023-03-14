@@ -8,26 +8,27 @@ def add_plot(doc, case):
     citations = fr"Constraints on {case.latexflavor} as a function of the HNL mass $m_N$. Limits shown: "
     names = sorted(case.limits.plot_label)
     for name in names:
-        citations += fr'{name}~\cite{{{list(case.limits.reference[case.limits.plot_label == name])[0]}}}, '.replace('\\\\','')
+        inspires_key = list(case.limits.reference[case.limits.plot_label == name])[0].replace(' ', '')
+        citations += fr'{name}~\cite{{{inspires_key}}}, '.replace('\\\\','')
     citations = citations[:-2]+'.'
 
     # figure
     with doc.create(pylatex.Figure(position='h!')) as latexfig:
-        latexfig.add_image(f'../plots/U{case.flavor}N.pdf', width=NoEscape(r'1\textwidth'))
+        latexfig.add_image(case.path_to_plot, width=NoEscape(r'1\textwidth'))
         latexfig.add_caption(NoEscape(citations))
 
 # Basic document
-def create_latex_doc(cases, PATH = 'tex_files/'):
+def create_latex_doc(cases, TEX_PATH = 'tex_files/'):
 
-    if not os.path.exists(PATH):
-        os.makedirs(PATH)
+    if not os.path.exists(TEX_PATH):
+        os.makedirs(TEX_PATH)
 
-    doc = pylatex.Document(f'{PATH}/std_plots', documentclass=NoEscape(r'revtex4-2'))
+    doc = pylatex.Document(f'{TEX_PATH}/mixing_plots', documentclass=NoEscape(r'revtex4-1'))
 
     for case in cases:
         add_plot(doc, case)
 
-    with open(f'{PATH}/std_plots.bib','w', encoding='utf-8') as f:
+    with open(f'{TEX_PATH}/mixing_plots.bib','w', encoding='utf-8') as f:
         added_ids = []
         for case in cases:
             for ref in case.limits.reference:
@@ -37,11 +38,11 @@ def create_latex_doc(cases, PATH = 'tex_files/'):
                         f.write((response.content).decode("utf-8") )
                         added_ids.append(ref)
                     else:
-                        print(f"Could not find Inspire entry for texkey={ref}.")
+                        print(f"Could not find Inspire entry for texkey={ref}. Skipping it.")
 
 
     doc.append(pylatex.Command('bibliographystyle', arguments=NoEscape(r'apsrev4-1')))
-    doc.append(pylatex.Command('bibliography', arguments=NoEscape(r'std_plots')))
+    doc.append(pylatex.Command('bibliography', arguments=NoEscape(r'mixing_plots')))
 
     doc.generate_pdf(clean_tex=True)
     doc.generate_tex()

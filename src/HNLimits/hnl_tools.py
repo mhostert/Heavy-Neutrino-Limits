@@ -1,3 +1,4 @@
+import os
 import numpy as np
 import pandas as pd
 from importlib.resources import open_text
@@ -58,9 +59,8 @@ class Limits:
         self.latexflavor = fr'$|U_{{{subscript} N}}|^2$'
         self.invisible = invisible
         self.nature = nature 
-        if self.nature != 'dirac':
-            if self.nature != 'majorana':
-                raise ValueError("Define the right nature of the HNL.")
+        if self.nature not in ['dirac', 'majorana']:
+                raise ValueError(f"Could not find HNL nature {self.nature}. Try 'dirac' or 'majorana'.")
         if work_environment == 'online':
             _df = load_google_sheet(sheet_name=f'U{flavor}4')
         else:
@@ -69,8 +69,10 @@ class Limits:
 
         self.num_of_limits = self.limits.index.size
 
-        self.limits = self.limits.apply(self.insert_limit, axis = 1)
+        self.limits = self.limits.apply(self.insert_limit, axis=1)
         self.interp_func_all = self.get_combined_limit_func()
+
+        self.path_to_plot = os.path.join(os.getcwd(), f'plots/mixing/U{self.flavor}N_{self.nature}.pdf')
 
     def insert_limit(self, df):
         """ After the data in the Google Spreadsheet, this function can be used to load the limit,
@@ -89,12 +91,12 @@ class Limits:
 
     def get_data(self, df, top = False):
 
-        global_path='data/'
+        global_path='src/HNLimits/include/data/'
         suffix = "_top" if top else ""
         limit_path = df.file_top if top else df.file_bottom
         
         if (limit_path is None):
-            m4, ualpha4 = None, None 
+            m4, ualpha4 = None, None
             interp_func = lambda x: np.ones(np.size(x))
         else:
             if (self.invisible and not df.is_invisible):

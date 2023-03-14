@@ -1,8 +1,6 @@
 import scipy
 from scipy.interpolate import splprep, splev
-
 import numpy as np
-
 import colorsys
 
 import matplotlib
@@ -35,19 +33,18 @@ def log_interp1d(xx, yy, kind='linear', **kwargs):
 ###########################
 fsize=12
 fsize_annotate=10
+std_figsize = (9,3.75)
+std_axes_form  = [0.085,0.14,0.9,0.81]
 
-std_figsize = (1.2*3.7,1.3*2.3617)
-std_axes_form  =[0.16,0.16,0.81,0.76]
-
-# standard figure creation 
-def std_fig(ax_form=std_axes_form, 
+# standard figure creation
+def std_fig(ax_form=std_axes_form,
             figsize=std_figsize,
-            rasterized=False):
+            rasterized=True):
 
     rcparams={'axes.labelsize':fsize,'xtick.labelsize':fsize,'ytick.labelsize':fsize,\
-                    'figure.figsize':std_figsize, 
+                    'figure.figsize':std_figsize,
                     'legend.frameon': False,
-                    'legend.loc': 'best'  }
+                    'legend.loc': 'best'}
     plt.rcParams['text.latex.preamble'] = r'\usepackage{amsmath}\usepackage{amssymb}'
     rc('font', **{'family': 'serif', 'serif': ['Computer Modern']})
     rc('text', usetex=True)
@@ -55,12 +52,11 @@ def std_fig(ax_form=std_axes_form,
     matplotlib.rcParams['hatch.linewidth'] = 0.3
     fig = plt.figure(figsize=figsize)
     ax = fig.add_axes(ax_form, rasterized=rasterized)
-    ax.patch.set_alpha(0.0)
-
+    # ax.patch.set_alpha(0.0)
     return fig,ax
 
 # standard saving function
-def std_savefig(fig, path, dpi=400, **kwargs):
+def std_savefig(fig, path, dpi=500, **kwargs):
     fig.savefig(path, dpi = dpi, **kwargs)
     if '.pdf' in path:
        fig.savefig(path.replace('.pdf','.png'), dpi = dpi, **kwargs)
@@ -68,23 +64,60 @@ def std_savefig(fig, path, dpi=400, **kwargs):
 
 
 def std_plot_limits(case,
-        nature = '',
         skip_ids=[],
         xrange=(1e-3, 1e2),
         yrange=(1e-10,1e-1),
         title=None, 
         new_labelpos={},
-        new_color={},               # dic:  override defaul color for a set of limits 
-        new_dash={},                # dic:  override defaul dash style for a set of limits (keys)
-        new_rotation={},            # dic:  override defaul rotation of the labels
-        grid=False,                 # bool: plot a faint x and y grid 
-        color_fill = False,         # bool: filled regions have color
-        color_only = [],            # list: apply color only to these limits
-        npoints_interp = int(1e5),  # int:  number of points to use when drawing the curves
-        suffix='',                  # string: suffix of the plot name and file name 
-        colormap='tab20'):          # what colormap to iterate over to color the limits
+        new_color={},
+        new_dash={},
+        new_rotation={},
+        grid=False,
+        color_fill = False,
+        color_only = [],
+        npoints_interp = int(1e5),
+        suffix='',
+        colormap='tab20'):
+    """std_plot_limits Plotting the mixing limits in the standard format
 
-    fig, ax = std_fig(figsize=(8,4), ax_form=[0.1,0.125,0.88,0.81])
+    Parameters
+    ----------
+    case : HNLimits.Limits()
+        The class containing all the limits, data, and additional information on this particular case.
+    skip_ids : list, optional
+        A list of strings containing the ids of the limits to be skipped, by default []
+    xrange : tuple, optional
+        the x axis range, by default (1e-3, 1e2)
+    yrange : tuple, optional
+        the y axis range, by default (1e-10,1e-1)
+    title : str, optional
+        the title of the plot to be added to the axis, by default None
+    new_labelpos : dict, optional
+        dictionary with the ids of the limits and the corresponding desired new labels, by default {}
+    new_color : dict, optional
+        dictionary with the ids of the limits and the correspoinding desired new colors, by default {}
+    new_rotation : dict, optional
+        dictionary with the ids of the limits and the correspoinding desired new rotations of the label, by default {}
+    grid : bool, optional
+        whether to add a grid to the plot, by default False
+    color_fill : list, optional
+        list with the ids of the limits to be colorfilled, by default {}
+    color_only: list, optional
+        color only the limits in this list, by default []
+    npoints_interp : int, optional
+        number of points to use when drawing the curves, by default int(1e5)
+    suffix : str, optional
+        suffix of the plot name and file name, by default ''
+    colormap : str, optional
+        what colormap to iterate over to color the limits, by default 'tab20'
+
+    Returns
+    -------
+    fig, ax
+        The figure and axis objects.
+    """
+
+    fig, ax = std_fig()
 
     x=np.geomspace(1e-3,1e2, int(npoints_interp))
 
@@ -157,7 +190,7 @@ def std_plot_limits(case,
                 dash = dash_dic[id]
             
             label = fr'\noindent {limit.plot_label}'.replace("(",r" \noindent {\tiny \textsc{(").replace(")", r")} }").replace(r'\\', r"\vspace{-2ex} \\ ")
-            t = ax.annotate(label, xy=labelpos_dic[id], xycoords='data', color=label_color, zorder=100, fontsize=6.5, rotation=rot_dic[id])
+            t = ax.annotate(label, xy=labelpos_dic[id], xycoords='data', color=label_color, zorder=4, fontsize=6.5, rotation=rot_dic[id])
             # t.set_bbox(dict(facecolor=background_grey, alpha=0.2, edgecolor='None'))
             if limit.file_top == limit.file_bottom and limit.m4 is not None and limit.ualpha4 is not None:
                 ax.plot(limit.m4, limit.ualpha4, color=contour_color, dashes=dash, zorder=3, lw=LW)
@@ -185,7 +218,6 @@ def std_plot_limits(case,
                 else:
                     if limit.interp_func_top(x) is not None and limit.interp_func(x) is not None and U_MEAN is not None:
                         ax.fill_between(x, limit.interp_func(x), limit.interp_func_top(x), facecolor=fill_color, edgecolor='None', alpha=ALPHA, zorder=U_MEAN)
-
 
     ax.set_yscale("log")
     ax.set_xscale("log")
@@ -215,7 +247,7 @@ def std_plot_limits(case,
     ax.set_xlim(*xrange)
     ax.set_title(title)
     
-    std_savefig(fig, path = f'plots/mixing/U{case.flavor}N{suffix}_{case.nature}.pdf')
+    std_savefig(fig, path = case.path_to_plot)
     
     return fig, ax 
 
@@ -244,7 +276,7 @@ def double_axes_fig(height = 0.5,
                     figsize=std_figsize,
                     split_y=False,
                     split_x=False,
-                    rasterized=False):
+                    rasterized=True):
 
     fig = plt.figure(figsize=figsize)
 
@@ -268,13 +300,13 @@ def double_axes_fig(height = 0.5,
 
     return fig, [ax1, ax2]
 
-def data_plot(ax, X, Y, xerr, yerr, zorder=2, label='data'):
+def data_plot(ax, X, Y, xerr, yerr, zorder=1, label='data'):
     return ax.errorbar(X, Y, yerr= yerr, xerr = xerr, \
                     marker="o", markeredgewidth=0.5, capsize=1.0,markerfacecolor="black",\
                     markeredgecolor="black",ms=2,  lw = 0.0, elinewidth=0.8,
                     color='black', label=label, zorder=zorder)
 
-def step_plot(ax, x, y, lw=1, color='red', label='signal', where = 'post', dashes=(3,0), zorder=3):
+def step_plot(ax, x, y, lw=1, color='red', label='signal', where = 'post', dashes=(3,0), zorder=1):
     return ax.step( np.append(x, np.max(x)+x[-1]),
                     np.append(y, 0.0),
                     where=where,
@@ -282,28 +314,6 @@ def step_plot(ax, x, y, lw=1, color='red', label='signal', where = 'post', dashe
                     dashes=dashes,
                     color = color, 
                     label = label, zorder=zorder)
-
-
-def plot_MB_vertical_region(ax, color='dodgerblue', label=r'MiniBooNE $1 \sigma$'):
-    ##########
-    # MINIBOONE 2018
-    matplotlib.rcParams['hatch.linewidth'] = 0.7
-    y = [0,1e10]
-    NEVENTS=381.2
-    ERROR = 85.2
-    xleft = (NEVENTS-ERROR)/NEVENTS
-    xright = (NEVENTS+ERROR)/NEVENTS
-    ax.fill_betweenx(y,[xleft,xleft],[xright,xright], 
-                        zorder=3,
-                        ec=color, fc='None',
-                        hatch='\\\\\\\\\\',
-                        lw=0,
-                        label=label)
-
-    ax.vlines(1,0,1e10, zorder=3, lw=1, color=color)
-    ax.vlines(xleft,0,1e10, zorder=3, lw=0.5, color=color)
-    ax.vlines(xright,0,1e10, zorder=3, lw=0.5, color=color)
-
 
 def get_ordered_closed_region(points, logx=False, logy=False):
     x,y = points
@@ -478,16 +488,3 @@ def error_histogram(ax, df, var, color='black', label=r'new', density=True, ls='
             alpha=0.5,
             )
             )
-
-
-###########################################
-def data_plot(ax, X, DATA, xerr=None, yerr=None, zorder=2, color='black', edgecolor='black'):
-    ax.errorbar(X, DATA, yerr= yerr, xerr = xerr, \
-                marker="o", markeredgewidth=1.0, capsize=1.0,markerfacecolor=color,\
-                markeredgecolor=edgecolor,ms=2, color=color, lw = 0.0, elinewidth=0.8, zorder=zorder)
-
-
-
-
-
-
