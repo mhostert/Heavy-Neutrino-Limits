@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+from importlib.resources import open_text
 from . import plot_tools
 
 from hepunits import units as u
@@ -7,6 +8,7 @@ from hepunits.units import prefixes as _pre
 
 from math import sqrt
 
+from HNLimits import DEFAULT_SHEET
 
 dirac_to_majorana_dic = {'PS': 1, 'BD': 1/sqrt(2), 'C': 1/2, 'UPMNS': 1}
 majorana_to_dirac_dic = {'PS': 1, 'BD': sqrt(2), 'C': 2, 'UPMNS': 1}
@@ -15,13 +17,10 @@ cl90_dict = {'1sigma': sqrt(4.61/2.30), '68.27': sqrt(4.61/2.30), 90: 1, 95: sqr
 
 unit_dict ={'microeV': _pre.micro*u.eV, 'millieV': _pre.milli*u.eV, 'eV': u.eV, 'keV': u.keV, 'MeV': u.MeV, 'GeV': u.GeV, 'TeV': u.TeV, 'PeV': u.PeV}
 
-#https://docs.google.com/spreadsheets/d/1p_fslIlThKMOThGl4leporUsogq9TmgXwILntUZOscg/edit?usp=sharing original version
-#https://docs.google.com/spreadsheets/d/1T_EKnPEL3Ntoy1m5z4vI4KGkKtJxQCdgxmiQxSs43DY/edit?usp=sharing Josu debug version
-#https://docs.google.com/spreadsheets/d/1WAbk-k_mcgMyzQ3fg5BhnWdYY-tq8OJ9IRLNqzQXgJ8/edit?usp=sharing Josu final version
 
 work_environment = 'online' # i.e. 'online', 'offline' 
 
-def load_google_sheet(sheet_id="1WAbk-k_mcgMyzQ3fg5BhnWdYY-tq8OJ9IRLNqzQXgJ8", sheet_name = "Umu4", drop_empty_cols=True):
+def load_google_sheet(sheet_id=DEFAULT_SHEET, sheet_name = "Umu4", drop_empty_cols=True):
     url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
     if drop_empty_cols: 
         cols = pd.read_csv(url, header=0, nrows=1, low_memory=False).columns
@@ -34,7 +33,8 @@ def load_google_sheet(sheet_id="1WAbk-k_mcgMyzQ3fg5BhnWdYY-tq8OJ9IRLNqzQXgJ8", s
         return pd.read_csv(url, header=0)
 
 def load_local_sheet(sheet_location='/Users/sissa/Downloads/Heavy-Neutrino-Limits-main/data_offline', sheet_name = 'Umu4', drop_empty_cols=True):
-    direc = f'{sheet_location}/{sheet_name}.csv'
+    # direc = f'{sheet_location}/{sheet_name}.csv'
+    direc = open_text("HNLimits.include", "local_HNL_database.xlsx")
     if drop_empty_cols:
         cols = pd.read_csv(direc, header=0, low_memory=False, nrows=1).columns
         cols = cols.str.strip()
@@ -60,7 +60,7 @@ class Limits:
         self.nature = nature 
         if self.nature != 'dirac':
             if self.nature != 'majorana':
-                raise ValueError(f"Define the right nature of the HNL.")
+                raise ValueError("Define the right nature of the HNL.")
         if work_environment == 'online':
             _df = load_google_sheet(sheet_name=f'U{flavor}4')
         else:
