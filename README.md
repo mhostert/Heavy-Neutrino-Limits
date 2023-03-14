@@ -1,26 +1,27 @@
 # Heavy Neutrino Limits
 
-This package and repo tracks the constraints on the coupling and masses of heavy neutral leptons (HNL). To access it, simply clone this repository. To access the underlying functions and create your own plots, you can install it as a standard PyPI package via ``python -m pip install heavy-neutrino-limits`` and import it in your Python script ``import HNLimits``.
+This package and repo tracks the constraints on the coupling and masses of heavy neutral leptons (HNL). To access it, simply clone this repository. 
 
-All limits are kept track in this [![Google Spreadsheets](https://img.shields.io/badge/Google_Sheets-Database-brightgreen.svg)](https://docs.google.com/spreadsheets/d/1p_fslIlThKMOThGl4leporUsogq9TmgXwILntUZOscg/edit?usp=sharing)
+To use the underlying functions to create your own plots and latex files, you can install HNLimits as you would a standard PyPI package, ``python -m pip install HNLimits``. You can tehn import it in your Python script ``import HNLimits``.
+
+* All limits are kept track in this [![Google Spreadsheets](https://img.shields.io/badge/Google_Sheets-Database-brightgreen.svg)](https://docs.google.com/spreadsheets/d/1p_fslIlThKMOThGl4leporUsogq9TmgXwILntUZOscg/edit?usp=sharing)
 
 * We consider single flavor dominance scenarios, where the HNL mixes predominantly with either the electron, muon, or tau flavor. 
 
-* In addition, following the [accompanying paper](www.arxiv.org/abs/XXXXXXX), we also recast limits and derived new ones on the Wilson coefficients of dimesnion-six $\nu$ SMEFT operators as a function of the HNL mass $m_{N}$.
+* Following the [accompanying paper](www.arxiv.org/abs/XXXXXXX), we provide limits on the Wilson coefficients of dimesnion-six $\nu$ SMEFT operators as a function of the HNL mass $m\_{N}$.
 
 * So far, the code keeps track of limits in the region 1 MeV $< m_{N} < 100$ GeV.
 
 Additions, comments, or suggestions should be directed to:
-   
-* Josu Hernández-García (garcia.josu.hernandez@ttk.elte.hu)
+   * Josu Hernández-García (garcia.josu.hernandez@ttk.elte.hu)
 * Matheus Hostert (mhostert@pitp.ca)
 
 --- 
 **Citation info:**
 
 ```
-@article{Fernandez-Martinez2023:xxx, 
-xxx
+@article{Fernandez-Martinez2023:TBA, 
+
 }
 ```
 
@@ -49,14 +50,14 @@ xxx
 ---
 ## Limits on the mixing
 
-Current compilation of bounds:
+Current compilation of bounds on the mixing of HNLs with a single flavor:
 
 
-[electron mixing](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UeN_majorana.png)
-![e flavor](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UeN_majorana.png)
+[Electron mixing](https://raw.githubusercontent.com/mhostert/N-SMEFT-Limits/main/plots/mixing/UeN_majorana.png)
+![e flavor](https://raw.githubusercontent.com/mhostert/N-SMEFT-Limits/main/plots/mixing/UeN_majorana.png)
 
-[muon mixing](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UmuN_majorana.png)
-![mu flavor](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UmuN_majorana.png)
+[Muon mixing](https://raw.githubusercontent.com/mhostert/N-SMEFT-Limits/main/plots/mixing/UmuN_majorana.png)
+![mu flavor](https://raw.githubusercontent.com/mhostert/N-SMEFT-Limits/main/plots/mixing/UmuN_majorana.png)
 
-[tau mixing](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UtauN_majorana.png)
-![tau flavor](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UtauN_majorana.png)
+[Tau mixing](https://raw.githubusercontent.com/mhostert/N-SMEFT-Limits/main/plots/mixing/UtauN_majorana.png)
+![tau flavor](https://raw.githubusercontent.com/mhostert/N-SMEFT-Limits/main/plots/mixing/UtauN_majorana.png)
