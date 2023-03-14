@@ -2,9 +2,9 @@
 
 This package and repo tracks the constraints on the coupling and masses of heavy neutral leptons (HNL). To access it, simply clone this repository. 
 
-To use the underlying functions to create your own plots and latex files, you can install HNLimits as you would a standard PyPI package, ``python -m pip install HNLimits``. You can tehn import it in your Python script ``import HNLimits``.
+To use the underlying functions to create your own plots and latex files, you can install HNLimits as you would a standard PyPI package, ``python -m pip install HNLimits``. You can then import it in your Python script ``import HNLimits``.
 
-* All limits are kept track in this [![Google Spreadsheets](https://img.shields.io/badge/Google_Sheets-Database-brightgreen.svg)](https://docs.google.com/spreadsheets/d/1p_fslIlThKMOThGl4leporUsogq9TmgXwILntUZOscg/edit?usp=sharing)
+All limits are kept track in this [![Google Spreadsheets](https://img.shields.io/badge/Google_Sheets-Database-brightgreen.svg)](https://docs.google.com/spreadsheets/d/1p_fslIlThKMOThGl4leporUsogq9TmgXwILntUZOscg/edit?usp=sharing)
 
 * We consider single flavor dominance scenarios, where the HNL mixes predominantly with either the electron, muon, or tau flavor. 
 
