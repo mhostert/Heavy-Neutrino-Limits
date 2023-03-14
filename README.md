@@ -52,8 +52,11 @@ xxx
 Current compilation of bounds:
 
 
-[electron](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UeN_majorana.png)
+[electron mixing](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UeN_majorana.png)
+![e flavor](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UeN_majorana.png)
 
-[muon](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UmuN_majorana.png)
+[muon mixing](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UmuN_majorana.png)
+![mu flavor](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UmuN_majorana.png)
 
-[tau](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UtauN_majorana.png)
+[tau mixing](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UtauN_majorana.png)
+![tau flavor](https://github.com/mhostert/N-SMEFT-Limits/blob/main/plots/mixing/UtauN_majorana.png)
