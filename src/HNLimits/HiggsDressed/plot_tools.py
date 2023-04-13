@@ -11,6 +11,15 @@ import matplotlib.patches as patches
 import matplotlib.colors as mc
 from matplotlib.pyplot import cm
 
+lepton = 'e'
+operator_e = fr'$\mathcal{{O}}_{{\rm{{LNH}}}}^{{{lepton}}}: \overline{{L_{{{lepton}}}}}\widetilde{{H}} N (H^{{\dagger}} H)$'
+lepton = '\mu'
+operator_mu = fr'$\mathcal{{O}}_{{\rm{{LNH}}}}^{{{lepton}}}: \overline{{L_{{{lepton}}}}}\widetilde{{H}} N (H^{{\dagger}} H)$'
+lepton = '\\tau'
+operator_tau = fr'$\mathcal{{O}}_{{\rm{{LNH}}}}^{{{lepton}}}: \overline{{L_{{{lepton}}}}}\widetilde{{H}} N (H^{{\dagger}} H)$'
+
+o_dic = {'e': operator_e, 'mu': operator_mu, 'tau': operator_tau}
+
 def log_interp1d(xx, yy, kind='linear', **kwargs):
     """ Return an interpolating function using Scipy's interp1d for log-spaced data
 
@@ -212,13 +221,14 @@ def std_plot_limits(case,
                 
                 # Filling
                 if ('cosmo' in  id) or (limit.year is None):
-                    #continue
-                    ax.fill_between(x, limit.interp_func(x), limit.interp_func_top(x), facecolor=fill_color, edgecolor='None', alpha=0.06, zorder=U_MEAN)
+                    continue
+                    #ax.fill_between(x, limit.interp_func(x), limit.interp_func_top(x), facecolor=fill_color, edgecolor='None', alpha=0.06, zorder=U_MEAN)
 
                 else:
                     if limit.interp_func_top(x) is not None and limit.interp_func(x) is not None and U_MEAN is not None:
                         ax.fill_between(x, limit.interp_func(x), limit.interp_func_top(x), facecolor=fill_color, edgecolor='None', alpha=ALPHA, zorder=U_MEAN)
-
+    
+    ax.legend(title=o_dic['%s'%case.flavor], loc='lower right', fontsize=8)
     ax.set_yscale("log")
     ax.set_xscale("log")
 
