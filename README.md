@@ -17,14 +17,13 @@ Additions, comments, or suggestions should be directed to:
 * Matheus Hostert (mhostert@pitp.ca)
 
 --- 
-** Citation info:**
+** Citation info: **
 
 ```
 @article{Fernandez-Martinez2023:TBA, 
 
 }
 ```
-
 ---
 ## Limits on the dimension-six $\nu$ SMEFT operators
 
