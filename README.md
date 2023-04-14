@@ -8,9 +8,9 @@ All limits are kept track in this [![Google Spreadsheets](https://img.shields.io
 
 * We consider single flavor dominance scenarios, where the HNL mixes predominantly with either the electron, muon, or tau flavor. 
 
-* Following the [accompanying paper](www.arxiv.org/abs/XXXXXXX), we provide limits on the Wilson coefficients of dimesnion-six $\nu$ SMEFT operators as a function of the HNL mass $m\_{N}$.
+* Following the [accompanying paper](www.arxiv.org/abs/XXXXXXX), we provide limits on the Wilson coefficients of dimesnion-six $\nu$ SMEFT operators as a function of the HNL mass $M\_{N}$.
 
-* So far, the code keeps track of limits in the region 1 MeV $< m_{N} < 100$ GeV.
+* So far, the code keeps track of limits in the region 1 MeV $< M_{N} < 100$ GeV.
 
 Additions, comments, or suggestions should be directed to:
 * Josu Hernández-García (garcia.josu.hernandez@ttk.elte.hu)
