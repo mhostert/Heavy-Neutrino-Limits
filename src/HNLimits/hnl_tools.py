@@ -1,7 +1,6 @@
 import os
 import numpy as np
 import pandas as pd
-from importlib.resources import open_text
 from . import plot_tools
 
 from hepunits import units as u
@@ -9,19 +8,21 @@ from hepunits.units import prefixes as _pre
 
 from math import sqrt
 
-from HNLimits import DEFAULT_SHEET
 
 dirac_to_majorana_dic = {'PS': 1, 'BD': 1/sqrt(2), 'C': 1/2, 'UPMNS': 1}
 majorana_to_dirac_dic = {'PS': 1, 'BD': sqrt(2), 'C': 2, 'UPMNS': 1}
 
-cl90_dict = {'1sigma': sqrt(4.61/2.30), '68.27': sqrt(4.61/2.30), 90: 1, 95: sqrt(4.61/5.99), '2sigma': sqrt(4.61/6.18), 95.45: sqrt(4.61/6.18), 99: sqrt(4.61/9.21)} # 2dof chi^2 relations 
+#cl90_dict = {'1sigma': sqrt(4.61/2.30), 68.27: sqrt(4.61/2.30), 90: 1, 95: sqrt(4.61/5.99), '2sigma': sqrt(4.61/6.18), 95.45: sqrt(4.61/6.18), 99: sqrt(4.61/9.21)} # 2dof chi^2 relations 
+cl90_dict = {'1sigma': sqrt(2.71/1), 68.27: sqrt(2.71/1), 90: 1, 95: sqrt(2.71/3.84), '2sigma': sqrt(2.71/4), 95.45: sqrt(2.71/4), 99: sqrt(2.71/6.63)} # 1dof chi^2 relations 
 
 unit_dict ={'microeV': _pre.micro*u.eV, 'millieV': _pre.milli*u.eV, 'eV': u.eV, 'keV': u.keV, 'MeV': u.MeV, 'GeV': u.GeV, 'TeV': u.TeV, 'PeV': u.PeV}
 
+#https://docs.google.com/spreadsheets/d/1p_fslIlThKMOThGl4leporUsogq9TmgXwILntUZOscg/edit?usp=sharing original version
+#https://docs.google.com/spreadsheets/d/1TIpmkgOa63-8Sy75qh0YutI5XdRtiClU3aquUdmjqpc/edit?usp=sharing Josu final version
 
 work_environment = 'online' # i.e. 'online', 'offline' 
 
-def load_google_sheet(sheet_id=DEFAULT_SHEET, sheet_name = "Umu4", drop_empty_cols=True):
+def load_google_sheet(sheet_id="1TIpmkgOa63-8Sy75qh0YutI5XdRtiClU3aquUdmjqpc", sheet_name = "Umu4", drop_empty_cols=True):
     url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
     if drop_empty_cols: 
         cols = pd.read_csv(url, header=0, nrows=1, low_memory=False).columns
@@ -34,8 +35,7 @@ def load_google_sheet(sheet_id=DEFAULT_SHEET, sheet_name = "Umu4", drop_empty_co
         return pd.read_csv(url, header=0)
 
 def load_local_sheet(sheet_location='/Users/sissa/Downloads/Heavy-Neutrino-Limits-main/data_offline', sheet_name = 'Umu4', drop_empty_cols=True):
-    # direc = f'{sheet_location}/{sheet_name}.csv'
-    direc = open_text("HNLimits.include", "local_HNL_database.xlsx")
+    direc = f'{sheet_location}/{sheet_name}.csv'
     if drop_empty_cols:
         cols = pd.read_csv(direc, header=0, low_memory=False, nrows=1).columns
         cols = cols.str.strip()
@@ -59,8 +59,9 @@ class Limits:
         self.latexflavor = fr'$|U_{{{subscript} N}}|^2$'
         self.invisible = invisible
         self.nature = nature 
-        if self.nature not in ['dirac', 'majorana']:
-                raise ValueError(f"Could not find HNL nature {self.nature}. Try 'dirac' or 'majorana'.")
+        if self.nature != 'dirac':
+            if self.nature != 'majorana':
+                raise ValueError(f"Define the right nature of the HNL.")
         if work_environment == 'online':
             _df = load_google_sheet(sheet_name=f'U{flavor}4')
         else:
@@ -69,7 +70,7 @@ class Limits:
 
         self.num_of_limits = self.limits.index.size
 
-        self.limits = self.limits.apply(self.insert_limit, axis=1)
+        self.limits = self.limits.apply(self.insert_limit, axis = 1)
         self.interp_func_all = self.get_combined_limit_func()
 
         self.path_to_plot = os.path.join(os.getcwd(), f'plots/mixing/U{self.flavor}N_{self.nature}.pdf')
@@ -96,7 +97,7 @@ class Limits:
         limit_path = df.file_top if top else df.file_bottom
         
         if (limit_path is None):
-            m4, ualpha4 = None, None
+            m4, ualpha4 = None, None 
             interp_func = lambda x: np.ones(np.size(x))
         else:
             if (self.invisible and not df.is_invisible):

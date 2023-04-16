@@ -57,10 +57,10 @@ def std_fig(ax_form=std_axes_form,
 
 # standard saving function
 def std_savefig(fig, path, dpi=500, **kwargs):
-    fig.savefig(path, dpi = dpi, **kwargs)
+    fig.savefig(path, dpi = dpi, **kwargs, bbox_inches='tight')
     if '.pdf' in path:
-       fig.savefig(path.replace('.pdf','.png'), dpi = dpi, **kwargs)
-       fig.savefig(path.replace('.pdf','_white.png'), dpi = dpi, facecolor='white', **kwargs)
+       fig.savefig(path.replace('.pdf','.png'), dpi = dpi, **kwargs, bbox_inches='tight')
+       fig.savefig(path.replace('.pdf','_white.png'), dpi = dpi, facecolor='white', **kwargs, bbox_inches='tight')
 
 
 def std_plot_limits(case,

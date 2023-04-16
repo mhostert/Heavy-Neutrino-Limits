@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{28}%
+\begin{thebibliography}{32}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -104,6 +104,16 @@
   {\doibase 10.1016/0370-2693(86)91601-1} {\bibfield  {journal} {\bibinfo
   {journal} {Phys. Lett. B}\ }\textbf {\bibinfo {volume} {166}},\ \bibinfo
   {pages} {473} (\bibinfo {year} {1986})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Sirunyan}\ \emph {et~al.}(2018)\citenamefont
+  {Sirunyan} \emph {et~al.}}]{CMS:2018iaf}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~M.}\ \bibnamefont
+  {Sirunyan}} \emph {et~al.} (\bibinfo {collaboration} {CMS}),\ }\href
+  {\doibase 10.1103/PhysRevLett.120.221801} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {120}},\ \bibinfo
+  {pages} {221801} (\bibinfo {year} {2018})},\ \Eprint
+  {http://arxiv.org/abs/1802.02965} {arXiv:1802.02965 [hep-ex]} \BibitemShut
+  {NoStop}%
 \bibitem [{\citenamefont {Tumasyan}\ \emph {et~al.}(2022)\citenamefont
   {Tumasyan} \emph {et~al.}}]{CMS:2022fut}%
   \BibitemOpen
@@ -143,6 +153,15 @@
   {100}},\ \bibinfo {pages} {073011} (\bibinfo {year} {2019})},\ \Eprint
   {http://arxiv.org/abs/1909.11198} {arXiv:1909.11198 [hep-ph]} \BibitemShut
   {NoStop}%
+\bibitem [{\citenamefont {Achard}\ \emph {et~al.}(2001)\citenamefont {Achard}
+  \emph {et~al.}}]{L3:2001zfe}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Achard}} \emph {et~al.} (\bibinfo {collaboration} {L3}),\ }\href {\doibase
+  10.1016/S0370-2693(01)00993-5} {\bibfield  {journal} {\bibinfo  {journal}
+  {Phys. Lett. B}\ }\textbf {\bibinfo {volume} {517}},\ \bibinfo {pages} {67}
+  (\bibinfo {year} {2001})},\ \Eprint {http://arxiv.org/abs/hep-ex/0107014}
+  {arXiv:hep-ex/0107014} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Cortina~Gil}\ \emph {et~al.}(2020)\citenamefont
   {Cortina~Gil} \emph {et~al.}}]{NA62:2020mcv}%
   \BibitemOpen
@@ -199,6 +218,24 @@
   {\doibase 10.1016/0370-2693(85)91493-5} {\bibfield  {journal} {\bibinfo
   {journal} {Phys. Lett. B}\ }\textbf {\bibinfo {volume} {160}},\ \bibinfo
   {pages} {207} (\bibinfo {year} {1985})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Sirunyan}\ \emph {et~al.}(2019)\citenamefont
+  {Sirunyan} \emph {et~al.}}]{CMS:2018jxx}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~M.}\ \bibnamefont
+  {Sirunyan}} \emph {et~al.} (\bibinfo {collaboration} {CMS}),\ }\href
+  {\doibase 10.1007/JHEP01(2019)122} {\bibfield  {journal} {\bibinfo  {journal}
+  {JHEP}\ }\textbf {\bibinfo {volume} {01}},\ \bibinfo {pages} {122} (\bibinfo
+  {year} {2019})},\ \Eprint {http://arxiv.org/abs/1806.10905} {arXiv:1806.10905
+  [hep-ex]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Khachatryan}\ \emph {et~al.}(2016)\citenamefont
+  {Khachatryan} \emph {et~al.}}]{CMS:2016aro}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {V.}~\bibnamefont
+  {Khachatryan}} \emph {et~al.} (\bibinfo {collaboration} {CMS}),\ }\href
+  {\doibase 10.1007/JHEP04(2016)169} {\bibfield  {journal} {\bibinfo  {journal}
+  {JHEP}\ }\textbf {\bibinfo {volume} {04}},\ \bibinfo {pages} {169} (\bibinfo
+  {year} {2016})},\ \Eprint {http://arxiv.org/abs/1603.02248} {arXiv:1603.02248
+  [hep-ex]} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Badier}\ \emph {et~al.}(1986)\citenamefont {Badier}
   \emph {et~al.}}]{NA3:1986ahv}%
   \BibitemOpen
@@ -288,13 +325,16 @@
   {JHEP}\ }\textbf {\bibinfo {volume} {08}},\ \bibinfo {pages} {010} (\bibinfo
   {year} {2018})},\ \Eprint {http://arxiv.org/abs/1803.10661} {arXiv:1803.10661
   [hep-ph]} \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Lees}\ \emph {et~al.}(2022)\citenamefont {Lees} \emph
+\bibitem [{\citenamefont {Lees}\ \emph {et~al.}(2023)\citenamefont {Lees} \emph
   {et~al.}}]{BaBar:2022cqj}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~P.}\ \bibnamefont
-  {Lees}} \emph {et~al.} (\bibinfo {collaboration} {BaBar}),\ }\href@noop {} {\
-   (\bibinfo {year} {2022})},\ \Eprint {http://arxiv.org/abs/2207.09575}
-  {arXiv:2207.09575 [hep-ex]} \BibitemShut {NoStop}%
+  {Lees}} \emph {et~al.} (\bibinfo {collaboration} {BaBar}),\ }\href {\doibase
+  10.1103/PhysRevD.107.052009} {\bibfield  {journal} {\bibinfo  {journal}
+  {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {107}},\ \bibinfo {pages}
+  {052009} (\bibinfo {year} {2023})},\ \Eprint
+  {http://arxiv.org/abs/2207.09575} {arXiv:2207.09575 [hep-ex]} \BibitemShut
+  {NoStop}%
 \bibitem [{\citenamefont {Plestid}(2021)}]{Plestid:2020ssy}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
