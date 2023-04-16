@@ -8,6 +8,7 @@ from hepunits.units import prefixes as _pre
 
 from math import sqrt
 
+from HNLimits import DEFAULT_SHEET
 
 dirac_to_majorana_dic = {'PS': 1, 'BD': 1/sqrt(2), 'C': 1/2, 'UPMNS': 1}
 majorana_to_dirac_dic = {'PS': 1, 'BD': sqrt(2), 'C': 2, 'UPMNS': 1}
@@ -17,12 +18,9 @@ cl90_dict = {'1sigma': sqrt(2.71/1), 68.27: sqrt(2.71/1), 90: 1, 95: sqrt(2.71/3
 
 unit_dict ={'microeV': _pre.micro*u.eV, 'millieV': _pre.milli*u.eV, 'eV': u.eV, 'keV': u.keV, 'MeV': u.MeV, 'GeV': u.GeV, 'TeV': u.TeV, 'PeV': u.PeV}
 
-#https://docs.google.com/spreadsheets/d/1p_fslIlThKMOThGl4leporUsogq9TmgXwILntUZOscg/edit?usp=sharing original version
-#https://docs.google.com/spreadsheets/d/1TIpmkgOa63-8Sy75qh0YutI5XdRtiClU3aquUdmjqpc/edit?usp=sharing Josu final version
+work_environment = 'online' # i.e. 'online', 'offline'
 
-work_environment = 'online' # i.e. 'online', 'offline' 
-
-def load_google_sheet(sheet_id="1TIpmkgOa63-8Sy75qh0YutI5XdRtiClU3aquUdmjqpc", sheet_name = "Umu4", drop_empty_cols=True):
+def load_google_sheet(sheet_id=DEFAULT_SHEET, sheet_name = "Umu4", drop_empty_cols=True):
     url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
     if drop_empty_cols: 
         cols = pd.read_csv(url, header=0, nrows=1, low_memory=False).columns
@@ -34,7 +32,7 @@ def load_google_sheet(sheet_id="1TIpmkgOa63-8Sy75qh0YutI5XdRtiClU3aquUdmjqpc", s
     else:
         return pd.read_csv(url, header=0)
 
-def load_local_sheet(sheet_location='/Users/sissa/Downloads/Heavy-Neutrino-Limits-main/data_offline', sheet_name = 'Umu4', drop_empty_cols=True):
+def load_local_sheet(sheet_location, sheet_name = 'Umu4', drop_empty_cols=True):
     direc = f'{sheet_location}/{sheet_name}.csv'
     if drop_empty_cols:
         cols = pd.read_csv(direc, header=0, low_memory=False, nrows=1).columns
@@ -104,8 +102,6 @@ class Limits:
                 m4, ualpha4, interp_func = None, None, None
             else:
                 m4, ualpha4 = np.genfromtxt(f"{global_path}{limit_path}", unpack=True)
-                # m4, ualpha4 = m4[~np.isnan(m4)], ualpha4[~np.isnan(m4)]
-                # m4, ualpha4 = m4[~np.isnan(ualpha4)], ualpha4[~np.isnan(ualpha4)]
                 
                 if df['CL'] in cl90_dict:
                     # fix the CL to 90%CL
@@ -163,7 +159,7 @@ class Limits:
         
         for _, limit in self.limits.iterrows():
             
-            ## FIX ME -- no functionality for gaps between top of constraint and other bounds
+            # NOTE: no functionality for gaps between top of constraint and other bounds
             # check if it is a closed contour with top and bottom files
             if (not (limit['file_top'] is None) or (limit['interp_func'] is None)) or (include_cosmo and 'bbn' in limit.id):
                 continue

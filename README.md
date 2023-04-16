@@ -1,16 +1,16 @@
 # Heavy Neutrino Limits
 
-This package and repo tracks the constraints on the coupling and masses of heavy neutral leptons (HNL). To access it, simply clone this repository. 
+This package and repo tracks the constraints on the coupling and masses of heavy neutral leptons (HNL). To access it, simply clone this repository.
 
 To use the underlying functions to create your own plots and latex files, you can install HNLimits as you would a standard PyPI package, ``python -m pip install HNLimits``. You can then import it in your Python script ``import HNLimits``.
 
-All limits are kept track in this [![Google Spreadsheets](https://img.shields.io/badge/Google_Sheets-Database-brightgreen.svg)](https://docs.google.com/spreadsheets/d/1p_fslIlThKMOThGl4leporUsogq9TmgXwILntUZOscg/edit?usp=sharing)
+All limits are kept track in this [![Google Spreadsheets](https://img.shields.io/badge/Google_Sheets-Database-brightgreen.svg)](https://docs.google.com/spreadsheets/d/1TIpmkgOa63-8Sy75qh0YutI5XdRtiClU3aquUdmjqpc/edit?usp=sharing).
 
-* We consider single flavor dominance scenarios, where the HNL mixes predominantly with either the electron, muon, or tau flavor. 
+* We consider single flavor dominance scenarios, where the HNL mixes predominantly with either the electron, muon, or tau flavor.
 
 * Following the [accompanying paper](www.arxiv.org/abs/XXXXXXX), we provide limits on the Wilson coefficients of dimesnion-six $\nu$ SMEFT operators as a function of the HNL mass $M\_{N}$.
 
-* So far, the code keeps track of limits in the region 1 MeV $< M_{N} < 100$ GeV.
+* The code keeps track of limits in the region 1 MeV $< M_{N} < 100$ GeV.
 
 Additions, comments, or suggestions should be directed to:
 * Josu Hernández-García (garcia.josu.hernandez@ttk.elte.hu)
@@ -25,7 +25,7 @@ Additions, comments, or suggestions should be directed to:
 }
 ```
 ---
-## Limits on the dimension-six $\nu$ SMEFT operators
+## Limits on the dimension-six $\nu$SMEFT operators
 
 | Type                 | Name                                      | Operator                                                                                              | Notebook                               | Figure                                                                                                                                                                                                                                                                                                                                                 |
 |----------------------|-------------------------------------------|-------------------------------------------------------------------------------------------------------|----------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

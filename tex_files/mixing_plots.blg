@@ -1,6 +1,6 @@
-This is BibTeX, Version 0.99d (TeX Live 2017)
-Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
-The top-level auxiliary file: hd_plots.aux
+This is BibTeX, Version 0.99d (TeX Live 2022)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: mixing_plots.aux
 The style file: apsrev4-1.bst
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
@@ -9,9 +9,8 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-Database file #1: hd_plotsNotes.bib
-Database file #2: hd_plots.bib
-Warning--I didn't find a database entry for "Workinprogress"
+Database file #1: mixing_plotsNotes.bib
+Database file #2: mixing_plots.bib
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 merlin.mbs apsrev4-1.bst 2010-07-25 4.21a (PWD, AO, DPC) hacked
 Control: key (0) 
@@ -21,45 +20,48 @@ Control: production of article title (-1) disabled
 Control: page (0) single
 Control: year (1) truncated
 Control: production of eprint (0) enabled
-You've used 9 entries,
+Warning--empty author in ATLAS:2022atq
+Warning--missing journal in ATLAS:2022atq
+Warning--empty year in Workinprogress
+You've used 33 entries,
             5847 wiz_defined-function locations,
-            1685 strings with 16581 characters,
-and the built_in function-call counts, 9558 in all, are:
-= -- 629
-> -- 224
-< -- 59
-+ -- 72
-- -- 52
-* -- 1567
-:= -- 934
-add.period$ -- 9
-call.type$ -- 9
-change.case$ -- 38
-chr.to.int$ -- 9
-cite$ -- 9
-duplicate$ -- 883
-empty$ -- 694
-format.name$ -- 133
-if$ -- 1866
+            1881 strings with 20999 characters,
+and the built_in function-call counts, 31759 in all, are:
+= -- 2225
+> -- 668
+< -- 180
++ -- 220
+- -- 152
+* -- 5052
+:= -- 3173
+add.period$ -- 33
+call.type$ -- 33
+change.case$ -- 135
+chr.to.int$ -- 33
+cite$ -- 40
+duplicate$ -- 2982
+empty$ -- 2404
+format.name$ -- 420
+if$ -- 6271
 int.to.chr$ -- 1
-int.to.str$ -- 17
-missing$ -- 109
-newline$ -- 79
-num.names$ -- 27
-pop$ -- 318
+int.to.str$ -- 41
+missing$ -- 368
+newline$ -- 151
+num.names$ -- 93
+pop$ -- 1093
 preamble$ -- 1
-purify$ -- 45
+purify$ -- 164
 quote$ -- 0
-skip$ -- 347
+skip$ -- 1189
 stack$ -- 0
-substring$ -- 247
-swap$ -- 865
-text.length$ -- 22
+substring$ -- 879
+swap$ -- 2821
+text.length$ -- 55
 text.prefix$ -- 0
 top$ -- 8
-type$ -- 125
-warning$ -- 0
-while$ -- 27
+type$ -- 439
+warning$ -- 3
+while$ -- 93
 width$ -- 0
-write$ -- 133
-(There was 1 warning)
+write$ -- 339
+(There were 3 warnings)
