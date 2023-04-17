@@ -22,8 +22,14 @@ Additions, comments, or suggestions should be directed to:
 ``arxiv.org/abs/2304.06772``
 
 ```
-@article{Fernandez-Martinez2023:TBA, 
-    
+@article{Fernandez-Martinez:2023phj,
+    author = "Fern\'andez-Mart\'\i{}nez, Enrique and Gonz\'alez-L\'opez, Manuel and Hern\'andez-Garc\'\i{}a, Josu and Hostert, Matheus and L\'opez-Pav\'on, Jacobo",
+    title = "{Effective portals to heavy neutral leptons}",
+    eprint = "2304.06772",
+    archivePrefix = "arXiv",
+    primaryClass = "hep-ph",
+    month = "4",
+    year = "2023"
 }
 ```
 ---
