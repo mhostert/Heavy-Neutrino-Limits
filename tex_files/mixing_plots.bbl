@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{33}%
+\begin{thebibliography}{35}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -59,9 +59,14 @@
   }\textbf {\bibinfo {volume} {10}},\ \bibinfo {pages} {265} (\bibinfo {year}
   {2019})},\ \Eprint {http://arxiv.org/abs/1905.09787} {arXiv:1905.09787
   [hep-ex]} \BibitemShut {NoStop}%
-\bibitem [{ATL(2022)}]{ATLAS:2022atq}%
+\bibitem [{\citenamefont {Aad}\ \emph {et~al.}(2023)\citenamefont {Aad} \emph
+  {et~al.}}]{ATLAS:2022atq}%
   \BibitemOpen
-  \href@noop {} {\  (\bibinfo {year} {2022})},\ \Eprint
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {Aad}} \emph {et~al.} (\bibinfo {collaboration} {ATLAS}),\ }\href {\doibase
+  10.1103/PhysRevLett.131.061803} {\bibfield  {journal} {\bibinfo  {journal}
+  {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {131}},\ \bibinfo {pages}
+  {061803} (\bibinfo {year} {2023})},\ \Eprint
   {http://arxiv.org/abs/2204.11988} {arXiv:2204.11988 [hep-ex]} \BibitemShut
   {NoStop}%
 \bibitem [{\citenamefont {Barouki}\ \emph {et~al.}(2022)\citenamefont
@@ -162,6 +167,16 @@
   {Phys. Lett. B}\ }\textbf {\bibinfo {volume} {517}},\ \bibinfo {pages} {67}
   (\bibinfo {year} {2001})},\ \Eprint {http://arxiv.org/abs/hep-ex/0107014}
   {arXiv:hep-ex/0107014} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Ema}\ \emph {et~al.}(2023)\citenamefont {Ema},
+  \citenamefont {Liu}, \citenamefont {Lyu},\ and\ \citenamefont
+  {Pospelov}}]{Ema:2023buz}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont
+  {Ema}}, \bibinfo {author} {\bibfnamefont {Z.}~\bibnamefont {Liu}}, \bibinfo
+  {author} {\bibfnamefont {K.-F.}\ \bibnamefont {Lyu}}, \ and\ \bibinfo
+  {author} {\bibfnamefont {M.}~\bibnamefont {Pospelov}},\ }\href@noop {} {\
+  (\bibinfo {year} {2023})},\ \Eprint {http://arxiv.org/abs/2306.07315}
+  {arXiv:2306.07315 [hep-ph]} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Cortina~Gil}\ \emph {et~al.}(2020)\citenamefont
   {Cortina~Gil} \emph {et~al.}}]{NA62:2020mcv}%
   \BibitemOpen
@@ -222,6 +237,16 @@
   {\doibase 10.1016/0370-2693(85)91493-5} {\bibfield  {journal} {\bibinfo
   {journal} {Phys. Lett. B}\ }\textbf {\bibinfo {volume} {160}},\ \bibinfo
   {pages} {207} (\bibinfo {year} {1985})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Artamonov}\ \emph {et~al.}(2015)\citenamefont
+  {Artamonov} \emph {et~al.}}]{E949:2014gsn}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~V.}\ \bibnamefont
+  {Artamonov}} \emph {et~al.} (\bibinfo {collaboration} {E949}),\ }\href
+  {\doibase 10.1103/PhysRevD.91.052001} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {91}},\ \bibinfo
+  {pages} {052001} (\bibinfo {year} {2015})},\ \bibinfo {note} {[Erratum:
+  Phys.Rev.D 91, 059903 (2015)]},\ \Eprint {http://arxiv.org/abs/1411.3963}
+  {arXiv:1411.3963 [hep-ex]} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Sirunyan}\ \emph {et~al.}(2019)\citenamefont
   {Sirunyan} \emph {et~al.}}]{CMS:2018jxx}%
   \BibitemOpen
