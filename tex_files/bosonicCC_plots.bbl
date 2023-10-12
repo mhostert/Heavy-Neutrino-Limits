@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{36}%
+\begin{thebibliography}{22}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -59,14 +59,9 @@
   }\textbf {\bibinfo {volume} {10}},\ \bibinfo {pages} {265} (\bibinfo {year}
   {2019})},\ \Eprint {http://arxiv.org/abs/1905.09787} {arXiv:1905.09787
   [hep-ex]} \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Aad}\ \emph {et~al.}(2023)\citenamefont {Aad} \emph
-  {et~al.}}]{ATLAS:2022atq}%
+\bibitem [{ATL(2022)}]{ATLAS:2022atq}%
   \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
-  {Aad}} \emph {et~al.} (\bibinfo {collaboration} {ATLAS}),\ }\href {\doibase
-  10.1103/PhysRevLett.131.061803} {\bibfield  {journal} {\bibinfo  {journal}
-  {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {131}},\ \bibinfo {pages}
-  {061803} (\bibinfo {year} {2023})},\ \Eprint
+  \href@noop {} {\  (\bibinfo {year} {2022})},\ \Eprint
   {http://arxiv.org/abs/2204.11988} {arXiv:2204.11988 [hep-ex]} \BibitemShut
   {NoStop}%
 \bibitem [{\citenamefont {Barouki}\ \emph {et~al.}(2022)\citenamefont
@@ -128,26 +123,6 @@
   {JHEP}\ }\textbf {\bibinfo {volume} {07}},\ \bibinfo {pages} {081} (\bibinfo
   {year} {2022})},\ \Eprint {http://arxiv.org/abs/2201.05578} {arXiv:2201.05578
   [hep-ex]} \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Sabti}\ \emph {et~al.}(2020)\citenamefont {Sabti},
-  \citenamefont {Magalich},\ and\ \citenamefont {Filimonova}}]{Sabti:2020yrt}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.}~\bibnamefont
-  {Sabti}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Magalich}}, \
-  and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Filimonova}},\
-  }\href {\doibase 10.1088/1475-7516/2020/11/056} {\bibfield  {journal}
-  {\bibinfo  {journal} {JCAP}\ }\textbf {\bibinfo {volume} {11}},\ \bibinfo
-  {pages} {056} (\bibinfo {year} {2020})},\ \Eprint
-  {http://arxiv.org/abs/2006.07387} {arXiv:2006.07387 [hep-ph]} \BibitemShut
-  {NoStop}%
-\bibitem [{\citenamefont {Abreu}\ \emph {et~al.}(1997)\citenamefont {Abreu}
-  \emph {et~al.}}]{DELPHI:1996qcc}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
-  {Abreu}} \emph {et~al.} (\bibinfo {collaboration} {DELPHI}),\ }\href
-  {\doibase 10.1007/s002880050370} {\bibfield  {journal} {\bibinfo  {journal}
-  {Z. Phys. C}\ }\textbf {\bibinfo {volume} {74}},\ \bibinfo {pages} {57}
-  (\bibinfo {year} {1997})},\ \bibinfo {note} {[Erratum: Z.Phys.C 75, 580
-  (1997)]}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Bryman}\ and\ \citenamefont
   {Shrock}(2019)}]{Bryman:2019bjg}%
   \BibitemOpen
@@ -158,27 +133,6 @@
   {100}},\ \bibinfo {pages} {073011} (\bibinfo {year} {2019})},\ \Eprint
   {http://arxiv.org/abs/1909.11198} {arXiv:1909.11198 [hep-ph]} \BibitemShut
   {NoStop}%
-\bibitem [{\citenamefont {Achard}\ \emph {et~al.}(2001)\citenamefont {Achard}
-  \emph {et~al.}}]{L3:2001zfe}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
-  {Achard}} \emph {et~al.} (\bibinfo {collaboration} {L3}),\ }\href {\doibase
-  10.1016/S0370-2693(01)00993-5} {\bibfield  {journal} {\bibinfo  {journal}
-  {Phys. Lett. B}\ }\textbf {\bibinfo {volume} {517}},\ \bibinfo {pages} {67}
-  (\bibinfo {year} {2001})},\ \Eprint {http://arxiv.org/abs/hep-ex/0107014}
-  {arXiv:hep-ex/0107014} \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Ema}\ \emph {et~al.}(2023)\citenamefont {Ema},
-  \citenamefont {Liu}, \citenamefont {Lyu},\ and\ \citenamefont
-  {Pospelov}}]{Ema:2023buz}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont
-  {Ema}}, \bibinfo {author} {\bibfnamefont {Z.}~\bibnamefont {Liu}}, \bibinfo
-  {author} {\bibfnamefont {K.-F.}\ \bibnamefont {Lyu}}, \ and\ \bibinfo
-  {author} {\bibfnamefont {M.}~\bibnamefont {Pospelov}},\ }\href {\doibase
-  10.1007/JHEP08(2023)169} {\bibfield  {journal} {\bibinfo  {journal} {JHEP}\
-  }\textbf {\bibinfo {volume} {08}},\ \bibinfo {pages} {169} (\bibinfo {year}
-  {2023})},\ \Eprint {http://arxiv.org/abs/2306.07315} {arXiv:2306.07315
-  [hep-ph]} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Cortina~Gil}\ \emph {et~al.}(2020)\citenamefont
   {Cortina~Gil} \emph {et~al.}}]{NA62:2020mcv}%
   \BibitemOpen
@@ -199,22 +153,6 @@
   {pages} {072012} (\bibinfo {year} {2018})},\ \Eprint
   {http://arxiv.org/abs/1712.03275} {arXiv:1712.03275 [hep-ex]} \BibitemShut
   {NoStop}%
-\bibitem [{\citenamefont {Blennow}\ \emph {et~al.}(2023)\citenamefont
-  {Blennow}, \citenamefont {Fern\'andez-Mart\'\i{}nez}, \citenamefont
-  {Hern\'andez-Garc\'\i{}a}, \citenamefont {L\'opez-Pav\'on}, \citenamefont
-  {Marcano},\ and\ \citenamefont {Naredo-Tuero}}]{Blennow:2023mqx}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
-  {Blennow}}, \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
-  {Fern\'andez-Mart\'\i{}nez}}, \bibinfo {author} {\bibfnamefont
-  {J.}~\bibnamefont {Hern\'andez-Garc\'\i{}a}}, \bibinfo {author}
-  {\bibfnamefont {J.}~\bibnamefont {L\'opez-Pav\'on}}, \bibinfo {author}
-  {\bibfnamefont {X.}~\bibnamefont {Marcano}}, \ and\ \bibinfo {author}
-  {\bibfnamefont {D.}~\bibnamefont {Naredo-Tuero}},\ }\href {\doibase
-  10.1007/JHEP08(2023)030} {\bibfield  {journal} {\bibinfo  {journal} {JHEP}\
-  }\textbf {\bibinfo {volume} {08}},\ \bibinfo {pages} {030} (\bibinfo {year}
-  {2023})},\ \Eprint {http://arxiv.org/abs/2306.01040} {arXiv:2306.01040
-  [hep-ph]} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Abe}\ \emph {et~al.}(2019)\citenamefont {Abe} \emph
   {et~al.}}]{T2K:2019jwa}%
   \BibitemOpen
@@ -233,14 +171,6 @@
   {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo
   {volume} {46}},\ \bibinfo {pages} {R885} (\bibinfo {year}
   {1992})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Abratenko}\ \emph {et~al.}(2023)\citenamefont
-  {Abratenko} \emph {et~al.}}]{MicroBooNE:2023icy}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
-  {Abratenko}} \emph {et~al.} (\bibinfo {collaboration} {MicroBooNE}),\
-  }\href@noop {} {\  (\bibinfo {year} {2023})},\ \Eprint
-  {http://arxiv.org/abs/2310.07660} {arXiv:2310.07660 [hep-ex]} \BibitemShut
-  {NoStop}%
 \bibitem [{\citenamefont {Kelly}\ and\ \citenamefont
   {Machado}(2021)}]{Kelly:2021xbv}%
   \BibitemOpen
@@ -251,6 +181,14 @@
   {104}},\ \bibinfo {pages} {055015} (\bibinfo {year} {2021})},\ \Eprint
   {http://arxiv.org/abs/2106.06548} {arXiv:2106.06548 [hep-ph]} \BibitemShut
   {NoStop}%
+\bibitem [{\citenamefont {Workman}\ \emph {et~al.}(2022)\citenamefont {Workman}
+  \emph {et~al.}}]{ParticleDataGroup:2022pth}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.~L.}\ \bibnamefont
+  {Workman}} \emph {et~al.} (\bibinfo {collaboration} {Particle Data Group}),\
+  }\href {\doibase 10.1093/ptep/ptac097} {\bibfield  {journal} {\bibinfo
+  {journal} {PTEP}\ }\textbf {\bibinfo {volume} {2022}},\ \bibinfo {pages}
+  {083C01} (\bibinfo {year} {2022})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Cooper-Sarkar}\ \emph {et~al.}(1985)\citenamefont
   {Cooper-Sarkar} \emph {et~al.}}]{WA66:1985mfx}%
   \BibitemOpen
@@ -259,34 +197,6 @@
   {\doibase 10.1016/0370-2693(85)91493-5} {\bibfield  {journal} {\bibinfo
   {journal} {Phys. Lett. B}\ }\textbf {\bibinfo {volume} {160}},\ \bibinfo
   {pages} {207} (\bibinfo {year} {1985})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Artamonov}\ \emph {et~al.}(2015)\citenamefont
-  {Artamonov} \emph {et~al.}}]{E949:2014gsn}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~V.}\ \bibnamefont
-  {Artamonov}} \emph {et~al.} (\bibinfo {collaboration} {E949}),\ }\href
-  {\doibase 10.1103/PhysRevD.91.052001} {\bibfield  {journal} {\bibinfo
-  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {91}},\ \bibinfo
-  {pages} {052001} (\bibinfo {year} {2015})},\ \bibinfo {note} {[Erratum:
-  Phys.Rev.D 91, 059903 (2015)]},\ \Eprint {http://arxiv.org/abs/1411.3963}
-  {arXiv:1411.3963 [hep-ex]} \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Sirunyan}\ \emph {et~al.}(2019)\citenamefont
-  {Sirunyan} \emph {et~al.}}]{CMS:2018jxx}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~M.}\ \bibnamefont
-  {Sirunyan}} \emph {et~al.} (\bibinfo {collaboration} {CMS}),\ }\href
-  {\doibase 10.1007/JHEP01(2019)122} {\bibfield  {journal} {\bibinfo  {journal}
-  {JHEP}\ }\textbf {\bibinfo {volume} {01}},\ \bibinfo {pages} {122} (\bibinfo
-  {year} {2019})},\ \Eprint {http://arxiv.org/abs/1806.10905} {arXiv:1806.10905
-  [hep-ex]} \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Khachatryan}\ \emph {et~al.}(2016)\citenamefont
-  {Khachatryan} \emph {et~al.}}]{CMS:2016aro}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {V.}~\bibnamefont
-  {Khachatryan}} \emph {et~al.} (\bibinfo {collaboration} {CMS}),\ }\href
-  {\doibase 10.1007/JHEP04(2016)169} {\bibfield  {journal} {\bibinfo  {journal}
-  {JHEP}\ }\textbf {\bibinfo {volume} {04}},\ \bibinfo {pages} {169} (\bibinfo
-  {year} {2016})},\ \Eprint {http://arxiv.org/abs/1603.02248} {arXiv:1603.02248
-  [hep-ex]} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Badier}\ \emph {et~al.}(1986)\citenamefont {Badier}
   \emph {et~al.}}]{NA3:1986ahv}%
   \BibitemOpen
@@ -349,74 +259,5 @@
   {journal} {\bibinfo  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume}
   {105}},\ \bibinfo {pages} {095006} (\bibinfo {year} {2022})},\ \Eprint
   {http://arxiv.org/abs/2109.03831} {arXiv:2109.03831 [hep-ph]} \BibitemShut
-  {NoStop}%
-\bibitem [{\citenamefont {Acciarri}\ \emph {et~al.}(2021)\citenamefont
-  {Acciarri} \emph {et~al.}}]{ArgoNeuT:2021clc}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
-  {Acciarri}} \emph {et~al.} (\bibinfo {collaboration} {ArgoNeuT}),\ }\href
-  {\doibase 10.1103/PhysRevLett.127.121801} {\bibfield  {journal} {\bibinfo
-  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {127}},\ \bibinfo
-  {pages} {121801} (\bibinfo {year} {2021})},\ \Eprint
-  {http://arxiv.org/abs/2106.13684} {arXiv:2106.13684 [hep-ex]} \BibitemShut
-  {NoStop}%
-\bibitem [{\citenamefont {Dentler}\ \emph {et~al.}(2018)\citenamefont
-  {Dentler}, \citenamefont {Hern\'andez-Cabezudo}, \citenamefont {Kopp},
-  \citenamefont {Machado}, \citenamefont {Maltoni}, \citenamefont
-  {Martinez-Soler},\ and\ \citenamefont {Schwetz}}]{Dentler:2018sju}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
-  {Dentler}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
-  {Hern\'andez-Cabezudo}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
-  {Kopp}}, \bibinfo {author} {\bibfnamefont {P.~A.~N.}\ \bibnamefont
-  {Machado}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Maltoni}},
-  \bibinfo {author} {\bibfnamefont {I.}~\bibnamefont {Martinez-Soler}}, \ and\
-  \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {Schwetz}},\ }\href
-  {\doibase 10.1007/JHEP08(2018)010} {\bibfield  {journal} {\bibinfo  {journal}
-  {JHEP}\ }\textbf {\bibinfo {volume} {08}},\ \bibinfo {pages} {010} (\bibinfo
-  {year} {2018})},\ \Eprint {http://arxiv.org/abs/1803.10661} {arXiv:1803.10661
-  [hep-ph]} \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Lees}\ \emph {et~al.}(2023)\citenamefont {Lees} \emph
-  {et~al.}}]{BaBar:2022cqj}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~P.}\ \bibnamefont
-  {Lees}} \emph {et~al.} (\bibinfo {collaboration} {BaBar}),\ }\href {\doibase
-  10.1103/PhysRevD.107.052009} {\bibfield  {journal} {\bibinfo  {journal}
-  {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {107}},\ \bibinfo {pages}
-  {052009} (\bibinfo {year} {2023})},\ \Eprint
-  {http://arxiv.org/abs/2207.09575} {arXiv:2207.09575 [hep-ex]} \BibitemShut
-  {NoStop}%
-\bibitem [{\citenamefont {Plestid}(2021)}]{Plestid:2020ssy}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
-  {Plestid}},\ }\href {\doibase 10.1103/PhysRevD.104.075028} {\bibfield
-  {journal} {\bibinfo  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume}
-  {104}},\ \bibinfo {pages} {075028} (\bibinfo {year} {2021})},\ \bibinfo
-  {note} {[Erratum: Phys.Rev.D 105, 099901 (2022), Erratum: Phys.Rev.D 105,
-  099901 (2022)]},\ \Eprint {http://arxiv.org/abs/2010.09523} {arXiv:2010.09523
-  [hep-ph]} \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Boiarska}\ \emph {et~al.}(2021)\citenamefont
-  {Boiarska}, \citenamefont {Boyarsky}, \citenamefont {Mikulenko},\ and\
-  \citenamefont {Ovchynnikov}}]{Boiarska:2021yho}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {I.}~\bibnamefont
-  {Boiarska}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Boyarsky}},
-  \bibinfo {author} {\bibfnamefont {O.}~\bibnamefont {Mikulenko}}, \ and\
-  \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Ovchynnikov}},\ }\href
-  {\doibase 10.1103/PhysRevD.104.095019} {\bibfield  {journal} {\bibinfo
-  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {104}},\ \bibinfo
-  {pages} {095019} (\bibinfo {year} {2021})},\ \Eprint
-  {http://arxiv.org/abs/2107.14685} {arXiv:2107.14685 [hep-ph]} \BibitemShut
-  {NoStop}%
-\bibitem [{\citenamefont {Orloff}\ \emph {et~al.}(2002)\citenamefont {Orloff},
-  \citenamefont {Rozanov},\ and\ \citenamefont {Santoni}}]{Orloff:2002de}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
-  {Orloff}}, \bibinfo {author} {\bibfnamefont {A.~N.}\ \bibnamefont {Rozanov}},
-  \ and\ \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Santoni}},\ }\href
-  {\doibase 10.1016/S0370-2693(02)02769-7} {\bibfield  {journal} {\bibinfo
-  {journal} {Phys. Lett. B}\ }\textbf {\bibinfo {volume} {550}},\ \bibinfo
-  {pages} {8} (\bibinfo {year} {2002})},\ \Eprint
-  {http://arxiv.org/abs/hep-ph/0208075} {arXiv:hep-ph/0208075} \BibitemShut
   {NoStop}%
 \end{thebibliography}%
