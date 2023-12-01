@@ -14,7 +14,7 @@ All limits are kept track in this [![Google Spreadsheets](https://img.shields.io
 
 Additions, comments, or suggestions should be directed to:
 * Josu Hernández-García (garcia.josu.hernandez@ttk.elte.hu)
-* Matheus Hostert (mhostert@pitp.ca)
+* Matheus Hostert (mhostert@g.harvard.edu)
 
 --- 
 **Citation info:**
@@ -28,7 +28,11 @@ Additions, comments, or suggestions should be directed to:
     eprint = "2304.06772",
     archivePrefix = "arXiv",
     primaryClass = "hep-ph",
-    month = "4",
+    reportNumber = "FTUV-23-0303.1224, IFIC/23-09",
+    doi = "10.1007/JHEP09(2023)001",
+    journal = "JHEP",
+    volume = "09",
+    pages = "001",
     year = "2023"
 }
 ```
