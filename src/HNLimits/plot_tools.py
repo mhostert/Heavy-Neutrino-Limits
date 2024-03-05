@@ -1,5 +1,5 @@
 import scipy
-from scipy.interpolate import splprep, splev
+from scipy.spatial.distance import pdist, squareform
 import numpy as np
 import colorsys
 
@@ -83,8 +83,12 @@ def std_plot_limits(
     color_fill=False,
     color_only=[],
     npoints_interp=int(1e5),
-    suffix="",
     colormap="tab20",
+    colormap_range=(0, 1),
+    force_label_color=None,
+    force_contour_color=None,
+    linewidth=0.5,
+    alpha=1,
 ):
     """std_plot_limits Plotting the mixing limits in the standard format
 
@@ -118,6 +122,16 @@ def std_plot_limits(
         suffix of the plot name and file name, by default ''
     colormap : str, optional
         what colormap to iterate over to color the limits, by default 'tab20'
+    colormap_range : tuple, optional
+        the range of the colormap, by default (0, 1)
+    force_label_color : str, optional
+        force the label color to be this color, by default None
+    force_contour_color : str, optional
+        force the contour color to be this color, by default None
+    linewidth : float, optional
+        the linewidth of the limits, by default 0.5
+    alpha : float, optional
+        the alpha of the filled regions, by default 1
 
     Returns
     -------
@@ -127,7 +141,7 @@ def std_plot_limits(
 
     fig, ax = std_fig(figsize=figsize, ax_form=ax_form)
 
-    x = np.geomspace(1e-3, 1e2, int(npoints_interp))
+    x = np.geomspace(xrange[0], xrange[1], int(npoints_interp))
 
     labelpos_dic = {}
     for id, limit in case.limits.iterrows():
@@ -135,18 +149,21 @@ def std_plot_limits(
             ilabel, ival = np.nanargmin(limit.interp_func(x)), np.nanmin(limit.interp_func(x))
             labelpos_dic[id] = (x[ilabel] * 0.9, ival / 2.5)
 
-    n_colors = len(list(case.limits.iterrows()))
     ##########
     # find the average value of U, and determine the zorder based on that
     df_order = 1 / case.limits.ualpha4.apply(lambda x: np.mean(-np.log10(x), where=~np.isnan(x)) if x is not None else 1)
-    df_order_in_x = case.limits.m4.apply(lambda x: np.min(x[~np.isnan(x)]) if x is not None else 1)
+    df_order_in_x = case.limits.m4.apply(lambda x: np.mean(np.log10(x)[~np.isnan(x)]) if x is not None else 1)
+    df_order_in_x = (df_order_in_x - np.min(df_order_in_x)) / np.max(df_order_in_x - np.min(df_order_in_x))
+    df_order_in_x = df_order_in_x * (colormap_range[1] - colormap_range[0]) + colormap_range[0]
 
-    sequence_of_colors = np.linspace(0, 1, n_colors)
-    sequence_of_colors = sequence_of_colors[np.argsort(df_order_in_x)]
-    color_dic = dict(zip(case.limits.index[np.argsort(df_order_in_x)], getattr(cm, colormap)(sequence_of_colors)))  # a list of RGB tuples
-
-    dash_dic = dict(zip(case.limits.index, (1 + len(color_dic.keys())) * [(1, 0)]))
+    # sequence_of_colors = np.linspace(0, 1, n_colors)  # [np.argsort(df_order_in_x)]
+    color_dic = dict(zip(case.limits.index, getattr(cm, colormap)(df_order_in_x)))  # a list of RGB tuples
+    dash_dic = dict(zip(case.limits.index, (1 + len(color_dic.keys())) * [(1, (1, 0))]))
     rot_dic = dict(zip(case.limits.index, (1 + len(color_dic.keys())) * [0]))
+    if force_label_color is not None:
+        label_color = force_label_color
+    if force_contour_color is not None:
+        contour_color = force_contour_color
 
     labelpos_dic.update(new_labelpos)
     color_dic.update(new_color)
@@ -162,66 +179,63 @@ def std_plot_limits(
 
             if len(color_only) > 0:
                 if id in color_only:
-                    contour_color = lighten_color(color_dic[id], 1)
+                    if force_contour_color is None:
+                        contour_color = lighten_color(color_dic[id], 1)
                     fill_color = contour_color if color_fill else lighten_color("lightgrey", 0.3)
-                    label_color = color_dic[id]
-                    LW = 0.75
-                    ALPHA = 1
+                    if force_label_color is None:
+                        label_color = color_dic[id]
                 # else:
                 #     contour_color = 'black'
                 #     fill_color = lighten_color('lightgrey', 0.3)
-                #     label_color = 'black'
-                #     LW= 0.1#0.5
-                #     ALPHA = 1
                 else:
-                    contour_color = "grey"
+                    if force_contour_color is None:
+                        contour_color = "grey"
                     fill_color = lighten_color("lightgrey", 0.3)
-                    label_color = "grey"
-                    LW = 0.5
-                    ALPHA = 1
+                    if force_label_color is None:
+                        label_color = "black"
             else:
-                contour_color = lighten_color(color_dic[id], 1)
-                fill_color = contour_color if color_fill else lighten_color("lightgrey", 0.3)
-                label_color = color_dic[id]
-                ALPHA = 1
-                LW = 0.75
+                # contour_color = lighten_color(color_dic[id], 1)
+                if force_contour_color is None:
+                    contour_color = color_dic[id]
+                fill_color = color_dic[id] if color_fill else lighten_color("lightgrey", 0.3)
+                if force_label_color is None:
+                    label_color = color_dic[id]
 
             # independently of what happened -- color the regions accordingly to color_fill or not at all.
 
             if limit.year is None:
-                dash = (4, 2)
+                dash = (1, (4, 2))
                 contour_color = color_dic[id]
             else:
                 dash = dash_dic[id]
 
             label = rf"\noindent {limit.plot_label}".replace("(", r" \noindent {\tiny \textsc{(").replace(")", r")} }").replace(r"\\", r"\vspace{-2ex} \\ ")
-            t = ax.annotate(label, xy=labelpos_dic[id], xycoords="data", color=label_color, zorder=4, fontsize=6.5, rotation=rot_dic[id])
+            _ = ax.annotate(label, xy=labelpos_dic[id], xycoords="data", color=label_color, zorder=4, fontsize=6.5, rotation=rot_dic[id])
             # t.set_bbox(dict(facecolor=background_grey, alpha=0.2, edgecolor='None'))
-            if limit.file_top == limit.file_bottom and limit.m4 is not None and limit.ualpha4 is not None:
-                ax.plot(limit.m4, limit.ualpha4, color=contour_color, dashes=dash, zorder=3, lw=LW)
+
+            if (limit.file_top == limit.file_bottom) and limit.m4 is not None and limit.ualpha4 is not None:
+
+                x_ordered, y_ordered = get_ordered_closed_region((limit.m4, limit.ualpha4), logx=False, logy=True)
+                ax.fill(x_ordered, y_ordered, edgecolor=contour_color, facecolor="None", linestyle=dash, zorder=3, lw=linewidth)
 
                 # Filling
                 if ("cosmo" in id) or (limit.year is None):
                     continue
                 else:
-                    ax.fill(limit.m4, limit.ualpha4, facecolor=fill_color, edgecolor="None", alpha=ALPHA, zorder=U_MEAN)
+                    ax.fill(x_ordered, y_ordered, facecolor=fill_color, edgecolor="None", alpha=alpha, zorder=U_MEAN)
 
             else:
-                if "bebc_barouki" == id:
-                    ax.plot(x, limit.interp_func(x), color=contour_color, dashes=dash, zorder=3, lw=LW)
-                    ax.plot(x, limit.interp_func_top(x), color=contour_color, dashes=dash, zorder=3, lw=LW)
-                else:
-                    ax.plot(x, limit.interp_func(x), color=contour_color, dashes=dash, zorder=3, lw=LW)
-                    ax.plot(x, limit.interp_func_top(x), color=contour_color, dashes=dash, zorder=3, lw=LW)
+                ax.plot(x, limit.interp_func(x), color=contour_color, linestyle=dash, zorder=3, lw=linewidth)
+                ax.plot(x, limit.interp_func_top(x), color=contour_color, linestyle=dash, zorder=3, lw=linewidth)
 
                 # Filling
                 if ("cosmo" in id) or (limit.year is None):
                     # continue
-                    ax.fill_between(x, limit.interp_func(x), limit.interp_func_top(x), facecolor=fill_color, edgecolor="None", alpha=0.06, zorder=U_MEAN)
+                    ax.fill_between(x, limit.interp_func(x), limit.interp_func_top(x), facecolor=fill_color, edgecolor="None", alpha=0.1, zorder=U_MEAN)
 
                 else:
                     if limit.interp_func_top(x) is not None and limit.interp_func(x) is not None and U_MEAN is not None:
-                        ax.fill_between(x, limit.interp_func(x), limit.interp_func_top(x), facecolor=fill_color, edgecolor="None", alpha=ALPHA, zorder=U_MEAN)
+                        ax.fill_between(x, limit.interp_func(x), limit.interp_func_top(x), facecolor=fill_color, edgecolor="None", alpha=alpha, zorder=U_MEAN)
 
     ax.set_yscale("log")
     ax.set_xscale("log")
@@ -323,50 +337,76 @@ def step_plot(ax, x, y, lw=1, color="red", label="signal", where="post", dashes=
 
 
 def get_ordered_closed_region(points, logx=False, logy=False):
-    x, y = points
+    xraw, yraw = points
 
     # check for nans
     if np.isnan(points).sum() > 0:
         raise ValueError("NaN's were found in input data. Cannot order the contour.")
 
-    # check for repeated x-entries --
-    # this is an error because
-    x, mask_diff = np.unique(x, return_index=True)
-    y = y[mask_diff]
+    # check for repeated x-entries -- remove them
+    # x, mask_diff = np.unique(x, return_index=True)
+    # y = y[mask_diff]
 
     if logy:
-        if (y == 0).any():
+        if (yraw == 0).any():
             raise ValueError("y values cannot contain any zeros in log mode.")
-        sy = np.sign(y)
-        ssy = (np.abs(y) < 1) * (-1) + (np.abs(y) > 1) * (1)
-        y = ssy * np.log10(y * sy)
+        yraw = np.log10(yraw)
     if logx:
-        if (x == 0).any():
+        if (xraw == 0).any():
             raise ValueError("x values cannot contain any zeros in log mode.")
-        sx = np.sign(x)
-        ssx = (x < 1) * (-1) + (x > 1) * (1)
-        x = ssx * np.log10(x * sx)
+        xraw = np.log10(xraw)
+
+    # Transform to unit square space:
+    xmin, xmax = np.min(xraw), np.max(xraw)
+    ymin, ymax = np.min(yraw), np.max(yraw)
+
+    x = (xraw - xmin) / (xmax - xmin)
+    y = (yraw - ymin) / (ymax - ymin)
 
     points = np.array([x, y]).T
-    points_s = points - points.mean(0)
-    angles = np.angle((points_s[:, 0] + 1j * points_s[:, 1]))
-    points_sort = points_s[angles.argsort()]
-    points_sort += points.mean(0)
+    # points_s     = (points - points.mean(0))
+    # angles       = np.angle((points_s[:,0] + 1j*points_s[:,1]))
+    # points_sort  = points_s[angles.argsort()]
+    # points_sort += points.mean(0)
 
-    if np.isnan(points_sort).sum() > 0:
-        raise ValueError("NaN's were found in sorted points. Cannot order the contour.")
-    # print(points.mean(0))
-    # return points_sort
-    tck, u = splprep(points_sort.T, u=None, s=0.0, per=0, k=1)
-    # u_new = np.linspace(u.min(), u.max(), len(points[:,0]))
-    x_new, y_new = splev(u, tck, der=0)
-    # x_new, y_new = splev(u_new, tck, der=0)
+    # if np.isnan(points_sort).sum()>0:
+    #     raise ValueError("NaN's were found in sorted points. Cannot order the contour.")
+    # # print(points.mean(0))
+    # # return points_sort
+    # tck, u = splprep(points_sort.T, u=None, s=0.0, per=0, k=1)
+    # # u_new = np.linspace(u.min(), u.max(), len(points[:,0]))
+    # x_new, y_new = splev(u, tck, der=0)
+    # # x_new, y_new = splev(u_new, tck, der=0)
+    dist_matrix = squareform(pdist(points))
+
+    # Set diagonal to a large number to avoid self-loop
+    np.fill_diagonal(dist_matrix, np.inf)
+
+    # Start from the first point
+    current_point = 0
+    path = [current_point]
+
+    # Find the nearest neighbor of each point
+    while len(path) < len(points):
+        # Find the nearest point that is not already in the path
+        nearest = np.argmin(dist_matrix[current_point])
+        # Add the nearest point to the path
+        path.append(nearest)
+        # Update the current point
+        current_point = nearest
+        # Mark the visited point so it's not revisited
+        dist_matrix[:, current_point] = np.inf
+
+    # Return the ordered path indices and the corresponding points
+    x_new, y_new = points[path].T
+
+    x_new = x_new * (xmax - xmin) + xmin
+    y_new = y_new * (ymax - ymin) + ymin
 
     if logx:
-        x_new = sx * 10 ** (ssx * x_new)
+        x_new = 10 ** (x_new)
     if logy:
-        y_new = sy * 10 ** (ssy * y_new)
-
+        y_new = 10 ** (y_new)
     return x_new, y_new
 
 

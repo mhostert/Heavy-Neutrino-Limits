@@ -8,7 +8,7 @@ from hepunits.units import prefixes as _pre
 
 from math import sqrt
 
-from HNLimits import DEFAULT_SHEET
+from . import DEFAULT_SHEET
 
 dirac_to_majorana_dic = {"PS": 1, "BD": 1 / sqrt(2), "C": 1 / 2, "UPMNS": 1}
 majorana_to_dirac_dic = {"PS": 1, "BD": sqrt(2), "C": 2, "UPMNS": 1}
