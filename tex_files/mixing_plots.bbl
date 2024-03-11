@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{37}%
+\begin{thebibliography}{39}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -128,13 +128,24 @@
   {JHEP}\ }\textbf {\bibinfo {volume} {07}},\ \bibinfo {pages} {081} (\bibinfo
   {year} {2022})},\ \Eprint {http://arxiv.org/abs/2201.05578} {arXiv:2201.05578
   [hep-ex]} \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Hayrapetyan}\ \emph {et~al.}(2024)\citenamefont
-  {Hayrapetyan} \emph {et~al.}}]{CMS:2024xdq}%
+\bibitem [{\citenamefont {Hayrapetyan}\ \emph
+  {et~al.}(2024{\natexlab{a}})\citenamefont {Hayrapetyan} \emph
+  {et~al.}}]{CMS:2024ake}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
   {Hayrapetyan}} \emph {et~al.} (\bibinfo {collaboration} {CMS}),\ }\href@noop
-  {} {\  (\bibinfo {year} {2024})},\ \Eprint {http://arxiv.org/abs/2403.00100}
-  {arXiv:2403.00100 [hep-ex]} \BibitemShut {NoStop}%
+  {} {\  (\bibinfo {year} {2024}{\natexlab{a}})},\ \Eprint
+  {http://arxiv.org/abs/2402.18658} {arXiv:2402.18658 [hep-ex]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Hayrapetyan}\ \emph
+  {et~al.}(2024{\natexlab{b}})\citenamefont {Hayrapetyan} \emph
+  {et~al.}}]{CMS:2024xdq}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Hayrapetyan}} \emph {et~al.} (\bibinfo {collaboration} {CMS}),\ }\href@noop
+  {} {\  (\bibinfo {year} {2024}{\natexlab{b}})},\ \Eprint
+  {http://arxiv.org/abs/2403.00100} {arXiv:2403.00100 [hep-ex]} \BibitemShut
+  {NoStop}%
 \bibitem [{\citenamefont {Sabti}\ \emph {et~al.}(2020)\citenamefont {Sabti},
   \citenamefont {Magalich},\ and\ \citenamefont {Filimonova}}]{Sabti:2020yrt}%
   \BibitemOpen
@@ -277,6 +288,15 @@
   {JHEP}\ }\textbf {\bibinfo {volume} {01}},\ \bibinfo {pages} {122} (\bibinfo
   {year} {2019})},\ \Eprint {http://arxiv.org/abs/1806.10905} {arXiv:1806.10905
   [hep-ex]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Hayrapetyan}\ \emph
+  {et~al.}(2024{\natexlab{c}})\citenamefont {Hayrapetyan} \emph
+  {et~al.}}]{CMS:2024ita}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Hayrapetyan}} \emph {et~al.} (\bibinfo {collaboration} {CMS}),\ }\href@noop
+  {} {\  (\bibinfo {year} {2024}{\natexlab{c}})},\ \Eprint
+  {http://arxiv.org/abs/2403.04584} {arXiv:2403.04584 [hep-ex]} \BibitemShut
+  {NoStop}%
 \bibitem [{\citenamefont {Khachatryan}\ \emph {et~al.}(2016)\citenamefont
   {Khachatryan} \emph {et~al.}}]{CMS:2016aro}%
   \BibitemOpen
