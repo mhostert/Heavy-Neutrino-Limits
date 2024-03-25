@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{39}%
+\begin{thebibliography}{41}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -50,6 +50,16 @@
 \providecommand \BibitemShut  [1]{\csname bibitem#1\endcsname}%
 \let\auto@bib@innerbib\@empty
 %</preamble>
+\bibitem [{\citenamefont {Deutsch}\ \emph {et~al.}(1990)\citenamefont
+  {Deutsch}, \citenamefont {Lebrun},\ and\ \citenamefont
+  {Prieels}}]{Deutsch:1990ut}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Deutsch}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Lebrun}}, \
+  and\ \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Prieels}},\ }\href
+  {\doibase 10.1016/0375-9474(90)90541-S} {\bibfield  {journal} {\bibinfo
+  {journal} {Nucl. Phys. A}\ }\textbf {\bibinfo {volume} {518}},\ \bibinfo
+  {pages} {149} (\bibinfo {year} {1990})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Aad}\ \emph {et~al.}(2019)\citenamefont {Aad} \emph
   {et~al.}}]{ATLAS:2019kpx}%
   \BibitemOpen
@@ -69,6 +79,10 @@
   {061803} (\bibinfo {year} {2023})},\ \Eprint
   {http://arxiv.org/abs/2204.11988} {arXiv:2204.11988 [hep-ex]} \BibitemShut
   {NoStop}%
+\bibitem [{240()}]{2403.15085}%
+  \BibitemOpen
+  \href@noop {} {}\bibinfo {note} {{No entry found in Inspire for
+  2403.15085}}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Barouki}\ \emph {et~al.}(2022)\citenamefont
   {Barouki}, \citenamefont {Marocco},\ and\ \citenamefont
   {Sarkar}}]{Barouki:2022bkt}%
