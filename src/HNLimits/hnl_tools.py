@@ -107,6 +107,8 @@ class Limits:
         if limit_path is None or not os.path.isfile(f"{global_path}{limit_path}"):
             m4, ualpha4 = None, None
             interp_func = lambda x: np.ones(np.size(x))
+            if os.path.isfile(f"{global_path}{limit_path}"):
+                print(f"Warning: {limit_path} not found in {global_path}.")
         else:
             if self.invisible and not df.is_invisible:
                 m4, ualpha4, interp_func = None, None, None

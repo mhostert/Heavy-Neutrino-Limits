@@ -87,6 +87,7 @@ def std_plot_limits(
     colormap_range=(0, 1),
     force_label_color=None,
     force_contour_color=None,
+    label_fontsize=6,
     linewidth=0.5,
     alpha=1,
 ):
@@ -151,12 +152,12 @@ def std_plot_limits(
 
     ##########
     # find the average value of U, and determine the zorder based on that
-    df_order = 1 / case.limits.ualpha4.apply(lambda x: np.mean(-np.log10(x), where=~np.isnan(x)) if x is not None else 1)
+    df_order = case.limits.ualpha4.apply(lambda x: np.min(x) if x is not None else 0)
+
     df_order_in_x = case.limits.m4.apply(lambda x: np.mean(np.log10(x)[~np.isnan(x)]) if x is not None else 1)
     df_order_in_x = (df_order_in_x - np.min(df_order_in_x)) / np.max(df_order_in_x - np.min(df_order_in_x))
     df_order_in_x = df_order_in_x * (colormap_range[1] - colormap_range[0]) + colormap_range[0]
 
-    # sequence_of_colors = np.linspace(0, 1, n_colors)  # [np.argsort(df_order_in_x)]
     color_dic = dict(zip(case.limits.index, getattr(cm, colormap)(df_order_in_x)))  # a list of RGB tuples
     dash_dic = dict(zip(case.limits.index, (1 + len(color_dic.keys())) * [(1, (1, 0))]))
     rot_dic = dict(zip(case.limits.index, (1 + len(color_dic.keys())) * [0]))
@@ -172,10 +173,8 @@ def std_plot_limits(
 
     for id, limit in case.limits.iterrows():
         if (id not in skip_ids) & (limit.interp_func is not None):
-            if limit.ualpha4 is not None:
-                U_MEAN = df_order[f"{id}"] / df_order.max()
-            else:
-                U_MEAN = 0
+
+            limit_zorder = df_order[f"{id}"] / df_order.max()
 
             if len(color_only) > 0:
                 if id in color_only:
@@ -210,7 +209,7 @@ def std_plot_limits(
                 dash = dash_dic[id]
 
             label = rf"\noindent {limit.plot_label}".replace("(", r" \noindent {\tiny \textsc{(").replace(")", r")} }").replace(r"\\", r"\vspace{-2ex} \\ ")
-            _ = ax.annotate(label, xy=labelpos_dic[id], xycoords="data", color=label_color, zorder=4, fontsize=6.5, rotation=rot_dic[id])
+            _ = ax.annotate(label, xy=labelpos_dic[id], xycoords="data", color=label_color, zorder=5, fontsize=label_fontsize, rotation=rot_dic[id])
             # t.set_bbox(dict(facecolor=background_grey, alpha=0.2, edgecolor='None'))
 
             if (limit.file_top == limit.file_bottom) and limit.m4 is not None and limit.ualpha4 is not None:
@@ -222,7 +221,7 @@ def std_plot_limits(
                 if ("cosmo" in id) or (limit.year is None):
                     continue
                 else:
-                    ax.fill(x_ordered, y_ordered, facecolor=fill_color, edgecolor="None", alpha=alpha, zorder=U_MEAN)
+                    ax.fill(x_ordered, y_ordered, facecolor=fill_color, edgecolor="None", alpha=alpha, zorder=limit_zorder)
 
             else:
                 ax.plot(x, limit.interp_func(x), color=contour_color, linestyle=dash, zorder=3, lw=linewidth)
@@ -231,11 +230,13 @@ def std_plot_limits(
                 # Filling
                 if ("cosmo" in id) or (limit.year is None):
                     # continue
-                    ax.fill_between(x, limit.interp_func(x), limit.interp_func_top(x), facecolor=fill_color, edgecolor="None", alpha=0.1, zorder=U_MEAN)
+                    ax.fill_between(x, limit.interp_func(x), limit.interp_func_top(x), facecolor=fill_color, edgecolor="None", alpha=0.1, zorder=limit_zorder)
 
                 else:
-                    if limit.interp_func_top(x) is not None and limit.interp_func(x) is not None and U_MEAN is not None:
-                        ax.fill_between(x, limit.interp_func(x), limit.interp_func_top(x), facecolor=fill_color, edgecolor="None", alpha=alpha, zorder=U_MEAN)
+                    if limit.interp_func_top(x) is not None and limit.interp_func(x) is not None and limit_zorder is not None:
+                        ax.fill_between(
+                            x, limit.interp_func(x), limit.interp_func_top(x), facecolor=fill_color, edgecolor="None", alpha=alpha, zorder=limit_zorder
+                        )
 
     ax.set_yscale("log")
     ax.set_xscale("log")
