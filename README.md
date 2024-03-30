@@ -36,6 +36,24 @@ Additions, comments, or suggestions should be directed to:
     year = "2023"
 }
 ```
+
+
+---
+## Limits on the mixing
+
+Current compilation of bounds on the mixing of HNLs with a single flavor:
+
+
+[Electron mixing](https://raw.githubusercontent.com/mhostert/N-SMEFT-Limits/main/plots/mixing/UeN_majorana.png)
+![e flavor](https://raw.githubusercontent.com/mhostert/N-SMEFT-Limits/main/plots/mixing/UeN_majorana.png)
+
+[Muon mixing](https://raw.githubusercontent.com/mhostert/N-SMEFT-Limits/main/plots/mixing/UmuN_majorana.png)
+![mu flavor](https://raw.githubusercontent.com/mhostert/N-SMEFT-Limits/main/plots/mixing/UmuN_majorana.png)
+
+[Tau mixing](https://raw.githubusercontent.com/mhostert/N-SMEFT-Limits/main/plots/mixing/UtauN_majorana.png)
+![tau flavor](https://raw.githubusercontent.com/mhostert/N-SMEFT-Limits/main/plots/mixing/UtauN_majorana.png)
+
+
 ---
 ## Limits on the dimension-six $\nu$SMEFT operators
 
@@ -54,19 +72,3 @@ Additions, comments, or suggestions should be directed to:
 | 4-fermion CC               | $\mathcal{O}_{\rm duN\ell}^{\alpha}$      | $\mathcal{Z}\_{ij}^{\rm duN\ell}(\overline{d}\_i \gamma^\mu u\_j) (\overline{N} \gamma_\mu \ell_\alpha)$ | [``9_NSMEFT_4fermion_CC_duNell.ipynb``](https://github.com/mhostert/Heavy-Neutrino-Limits/blob/f8abe77c5588d3891425ce6519fb3ac918982ec4/9_NSMEFT_4fermion_CC_duNell.ipynb) | [4-fermion duNell: electron]() <br /> [4-fermion duNell: muon]() <br /> [4-fermion duNell: tau]() <br />                                                                                                                                                                                                                                                                                                                                |
 |                      | $\mathcal{O}_{\rm LNQd}^\alpha$           | $\mathcal{Z}^{\rm LNQd}\_{ij} (\overline{L}\_\alpha N)\epsilon (\overline{Q_i} d\_j)$                    | [``10_NSMEFT_4fermion_CC_LNQd.ipynb``](https://github.com/mhostert/Heavy-Neutrino-Limits/blob/f8abe77c5588d3891425ce6519fb3ac918982ec4/10_NSMEFT_4fermion_CC_LNQd.ipynb)   | [4-fermion LNQd: electron]()  <br /> [4-fermion LNQd: muon]()  <br /> [4-fermion LNQd: tau]()  <br />                                                                                                                                                                                                                                                                                                                                |
 |                      | $\mathcal{O}_{\rm QuNL}^\alpha$           | $\mathcal{Z}^{\rm QuNL}\_{ij}(\overline{Q}\_i u\_j)(\overline{N} L\_\alpha)$                              | [``11_NSMEFT_4fermion_CC_QuNL.ipynb``](https://github.com/mhostert/Heavy-Neutrino-Limits/blob/f8abe77c5588d3891425ce6519fb3ac918982ec4/11_NSMEFT_4fermion_CC_QuNL.ipynb)   | [4-fermion QuNL: electron]()   <br /> [4-fermion QuNL: muon]()   <br /> [4-fermion QuNL: tau]()   <br />                                                                                                                                                                                                                                                                                                                                 |
-
-
----
-## Limits on the mixing
-
-Current compilation of bounds on the mixing of HNLs with a single flavor:
-
-
-[Electron mixing](https://raw.githubusercontent.com/mhostert/N-SMEFT-Limits/main/plots/mixing/UeN_majorana.png)
-![e flavor](https://raw.githubusercontent.com/mhostert/N-SMEFT-Limits/main/plots/mixing/UeN_majorana.png)
-
-[Muon mixing](https://raw.githubusercontent.com/mhostert/N-SMEFT-Limits/main/plots/mixing/UmuN_majorana.png)
-![mu flavor](https://raw.githubusercontent.com/mhostert/N-SMEFT-Limits/main/plots/mixing/UmuN_majorana.png)
-
-[Tau mixing](https://raw.githubusercontent.com/mhostert/N-SMEFT-Limits/main/plots/mixing/UtauN_majorana.png)
-![tau flavor](https://raw.githubusercontent.com/mhostert/N-SMEFT-Limits/main/plots/mixing/UtauN_majorana.png)
