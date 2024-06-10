@@ -1,4 +1,4 @@
-__version__ = "0.1.0"
+__version__ = "1.0.0"
 
 # Default Google Sheet ID
-DEFAULT_SHEET = '1TIpmkgOa63-8Sy75qh0YutI5XdRtiClU3aquUdmjqpc'
+DEFAULT_SHEET = "1TIpmkgOa63-8Sy75qh0YutI5XdRtiClU3aquUdmjqpc"
