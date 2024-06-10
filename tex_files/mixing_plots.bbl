@@ -50,6 +50,16 @@
 \providecommand \BibitemShut  [1]{\csname bibitem#1\endcsname}%
 \let\auto@bib@innerbib\@empty
 %</preamble>
+\bibitem [{\citenamefont {Bryman}\ and\ \citenamefont
+  {Shrock}(2019)}]{Bryman:2019bjg}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~A.}\ \bibnamefont
+  {Bryman}}\ and\ \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Shrock}},\ }\href {\doibase 10.1103/PhysRevD.100.073011} {\bibfield
+  {journal} {\bibinfo  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume}
+  {100}},\ \bibinfo {pages} {073011} (\bibinfo {year} {2019})},\ \Eprint
+  {http://arxiv.org/abs/1909.11198} {arXiv:1909.11198 [hep-ph]} \BibitemShut
+  {NoStop}%
 \bibitem [{\citenamefont {Deutsch}\ \emph {et~al.}(1990)\citenamefont
   {Deutsch}, \citenamefont {Lebrun},\ and\ \citenamefont
   {Prieels}}]{Deutsch:1990ut}%
@@ -79,10 +89,13 @@
   {061803} (\bibinfo {year} {2023})},\ \Eprint
   {http://arxiv.org/abs/2204.11988} {arXiv:2204.11988 [hep-ex]} \BibitemShut
   {NoStop}%
-\bibitem [{240()}]{2403.15085}%
+\bibitem [{\citenamefont {Aad}\ \emph {et~al.}(2024)\citenamefont {Aad} \emph
+  {et~al.}}]{ATLAS:2024erm}%
   \BibitemOpen
-  \href@noop {} {}\bibinfo {note} {{No entry found in Inspire for
-  2403.15085}}\BibitemShut {NoStop}%
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {Aad}} \emph {et~al.} (\bibinfo {collaboration} {ATLAS}),\ }\href@noop {} {\
+  (\bibinfo {year} {2024})},\ \Eprint {http://arxiv.org/abs/2403.15085}
+  {arXiv:2403.15085 [hep-ex]} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Barouki}\ \emph {et~al.}(2022)\citenamefont
   {Barouki}, \citenamefont {Marocco},\ and\ \citenamefont
   {Sarkar}}]{Barouki:2022bkt}%
@@ -180,16 +193,6 @@
   {Z. Phys. C}\ }\textbf {\bibinfo {volume} {74}},\ \bibinfo {pages} {57}
   (\bibinfo {year} {1997})},\ \bibinfo {note} {[Erratum: Z.Phys.C 75, 580
   (1997)]}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Bryman}\ and\ \citenamefont
-  {Shrock}(2019)}]{Bryman:2019bjg}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~A.}\ \bibnamefont
-  {Bryman}}\ and\ \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
-  {Shrock}},\ }\href {\doibase 10.1103/PhysRevD.100.073011} {\bibfield
-  {journal} {\bibinfo  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume}
-  {100}},\ \bibinfo {pages} {073011} (\bibinfo {year} {2019})},\ \Eprint
-  {http://arxiv.org/abs/1909.11198} {arXiv:1909.11198 [hep-ph]} \BibitemShut
-  {NoStop}%
 \bibitem [{\citenamefont {Achard}\ \emph {et~al.}(2001)\citenamefont {Achard}
   \emph {et~al.}}]{L3:2001zfe}%
   \BibitemOpen

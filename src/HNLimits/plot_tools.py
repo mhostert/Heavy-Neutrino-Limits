@@ -266,8 +266,6 @@ def std_plot_limits(
     ax.set_xlim(*xrange)
     ax.set_title(title)
 
-    std_savefig(fig, path=case.path_to_plot)
-
     return fig, ax
 
 
