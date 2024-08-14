@@ -1,4 +1,5 @@
 import os
+import pathlib
 import numpy as np
 import pandas as pd
 from . import plot_tools
@@ -100,20 +101,23 @@ class Limits:
         return df
 
     def get_data(self, df, top=False):
-        global_path = "src/HNLimits/include/data/"
+        # global_path = "src/HNLimits/include/data/"
+        # print(os.path.join(pathlib.Path(__file__).parent.resolve(), pathlib.Path("./include/data/")))
+        global_path = os.path.join(pathlib.Path(__file__).parent.resolve(), pathlib.Path("./include/data/"))
         suffix = "_top" if top else ""
         limit_path = df.file_top if top else df.file_bottom
 
-        if limit_path is None or not os.path.isfile(f"{global_path}{limit_path}"):
+        if limit_path is None:
             m4, ualpha4 = None, None
             interp_func = lambda x: np.ones(np.size(x))
-            if os.path.isfile(f"{global_path}{limit_path}"):
-                print(f"Warning: {limit_path} not found in {global_path}.")
         else:
+            full_limit_path = os.path.join(global_path, pathlib.Path(limit_path))
+            if not os.path.isfile(full_limit_path):
+                raise ValueError(f"Limit file {full_limit_path} does not exist.")
             if self.invisible and not df.is_invisible:
                 m4, ualpha4, interp_func = None, None, None
             else:
-                m4, ualpha4 = np.genfromtxt(f"{global_path}{limit_path}", unpack=True)
+                m4, ualpha4 = np.genfromtxt(full_limit_path, unpack=True)
 
                 if df["CL"] in cl90_dict:
                     # fix the CL to 90%CL

@@ -80,13 +80,16 @@ def std_plot_limits(
     new_dash={},
     new_rotation={},
     grid=False,
+    annotate=True,
     color_fill=False,
+    color_contour=False,
     color_only=[],
     npoints_interp=int(1e5),
     colormap="tab20",
     colormap_range=(0, 1),
     force_label_color=None,
     force_contour_color=None,
+    grey_fill_color="lightgrey",
     label_fontsize=6,
     linewidth=0.5,
     alpha=1,
@@ -113,9 +116,13 @@ def std_plot_limits(
         dictionary with the ids of the limits and the correspoinding desired new rotations of the label, by default {}
     grid : bool, optional
         whether to add a grid to the plot, by default False
+    annotate: bool, optional
+        whether to add annotations to the plot, by default True
     color_fill : list, optional
         list with the ids of the limits to be colorfilled, by default {}
     color_only: list, optional
+        color only the limits in this list, by default []
+    color_contour: list, optional
         color only the limits in this list, by default []
     npoints_interp : int, optional
         number of points to use when drawing the curves, by default int(1e5)
@@ -148,7 +155,11 @@ def std_plot_limits(
     for id, limit in case.limits.iterrows():
         if limit.interp_func is not None:
             ilabel, ival = np.nanargmin(limit.interp_func(x)), np.nanmin(limit.interp_func(x))
-            labelpos_dic[id] = (x[ilabel] * 0.9, ival / 2.5)
+            if ilabel is None or ival is None:
+                print("Could not find label position for ", id)
+                labelpos_dic[id] = (None, None)
+            else:
+                labelpos_dic[id] = (x[ilabel] * 0.9, ival / 2.5)
 
     ##########
     # find the average value of U, and determine the zorder based on that
@@ -179,8 +190,8 @@ def std_plot_limits(
             if len(color_only) > 0:
                 if id in color_only:
                     if force_contour_color is None:
-                        contour_color = lighten_color(color_dic[id], 1)
-                    fill_color = contour_color if color_fill else lighten_color("lightgrey", 0.3)
+                        contour_color = lighten_color(color_dic[id], 1) if color_contour else "None"
+                    fill_color = contour_color if color_fill else grey_fill_color
                     if force_label_color is None:
                         label_color = color_dic[id]
                 # else:
@@ -188,15 +199,15 @@ def std_plot_limits(
                 #     fill_color = lighten_color('lightgrey', 0.3)
                 else:
                     if force_contour_color is None:
-                        contour_color = "grey"
-                    fill_color = lighten_color("lightgrey", 0.3)
+                        contour_color = "grey" if color_contour else "None"
+                    fill_color = grey_fill_color
                     if force_label_color is None:
                         label_color = "black"
             else:
                 # contour_color = lighten_color(color_dic[id], 1)
                 if force_contour_color is None:
-                    contour_color = color_dic[id]
-                fill_color = color_dic[id] if color_fill else lighten_color("lightgrey", 0.3)
+                    contour_color = color_dic[id] if color_contour else "None"
+                fill_color = color_dic[id] if color_fill else grey_fill_color
                 if force_label_color is None:
                     label_color = color_dic[id]
 
@@ -204,12 +215,13 @@ def std_plot_limits(
 
             if limit.year is None:
                 dash = (1, (4, 2))
-                contour_color = color_dic[id]
+                contour_color = color_dic[id] if color_contour else "None"
             else:
                 dash = dash_dic[id]
 
-            label = rf"\noindent {limit.plot_label}".replace("(", r" \noindent {\tiny \textsc{(").replace(")", r")} }").replace(r"\\", r"\vspace{-2ex} \\ ")
-            _ = ax.annotate(label, xy=labelpos_dic[id], xycoords="data", color=label_color, zorder=5, fontsize=label_fontsize, rotation=rot_dic[id])
+            if annotate:
+                label = rf"\noindent {limit.plot_label}".replace("(", r" \noindent {\tiny \textsc{(").replace(")", r")} }").replace(r"\\", r"\vspace{-2ex} \\ ")
+                _ = ax.annotate(label, xy=labelpos_dic[id], xycoords="data", color=label_color, zorder=5, fontsize=label_fontsize, rotation=rot_dic[id])
             # t.set_bbox(dict(facecolor=background_grey, alpha=0.2, edgecolor='None'))
 
             if (limit.file_top == limit.file_bottom) and limit.m4 is not None and limit.ualpha4 is not None:
@@ -231,12 +243,24 @@ def std_plot_limits(
                 if ("cosmo" in id) or (limit.year is None):
                     # continue
                     ax.fill_between(x, limit.interp_func(x), limit.interp_func_top(x), facecolor=fill_color, edgecolor="None", alpha=0.1, zorder=limit_zorder)
+                    ax.fill_between(
+                        x, limit.interp_func(x), limit.interp_func_top(x), facecolor="None", edgecolor="black", alpha=1, linestyle=dash, zorder=limit_zorder + 1
+                    )
 
                 else:
                     if limit.interp_func_top(x) is not None and limit.interp_func(x) is not None and limit_zorder is not None:
                         ax.fill_between(
                             x, limit.interp_func(x), limit.interp_func_top(x), facecolor=fill_color, edgecolor="None", alpha=alpha, zorder=limit_zorder
                         )
+                        # ax.fill_between(
+                        #     x,
+                        #     limit.interp_func(x),
+                        #     limit.interp_func_top(x),
+                        #     facecolor="None",
+                        #     edgecolor=fill_color,
+                        #     alpha=1,
+                        #     zorder=limit_zorder + 1,
+                        # )
 
     ax.set_yscale("log")
     ax.set_xscale("log")
