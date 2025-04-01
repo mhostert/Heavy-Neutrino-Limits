@@ -13,7 +13,7 @@ All limits are kept track in this [![Google Spreadsheets](https://img.shields.io
 * The code keeps track of limits in the region 1 MeV $< M_{N} < 100$ GeV.
 
 Additions, comments, or suggestions should be directed to:
-* Josu Hernández-García (garcia.josu.hernandez@ttk.elte.hu)
+* Josu Hernández-García (josu.hernandez@ific.uv.es)
 * Matheus Hostert (mhostert@g.harvard.edu)
 
 --- 
