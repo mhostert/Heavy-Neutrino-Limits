@@ -360,31 +360,31 @@ def step_plot(ax, x, y, lw=1, color="red", label="signal", where="post", dashes=
 
 
 def get_ordered_closed_region(points, logx=False, logy=False):
-    xraw, yraw = points
-
+    x, y = points
     # check for nans
     if np.isnan(points).sum() > 0:
         raise ValueError("NaN's were found in input data. Cannot order the contour.")
 
-    # check for repeated x-entries -- remove them
-    # x, mask_diff = np.unique(x, return_index=True)
-    # y = y[mask_diff]
+    # check for repeated x-entries --
+    # this is an error because
+    x, mask_diff = np.unique(x, return_index=True)
+    y = y[mask_diff]
 
     if logy:
-        if (yraw == 0).any():
+        if (y == 0).any():
             raise ValueError("y values cannot contain any zeros in log mode.")
-        yraw = np.log10(yraw)
+        sy = 1  # np.sign(y)
+        ssy = 1  # (np.abs(y) < 1) * (-1) + (np.abs(y) > 1) * (1)
+        y = ssy * np.log10(y * sy)
     if logx:
-        if (xraw == 0).any():
+        if (x == 0).any():
             raise ValueError("x values cannot contain any zeros in log mode.")
-        xraw = np.log10(xraw)
+        sx = 1  # np.sign(x)
+        ssx = 1  # (x < 1) * (-1) + (x > 1) * (1)
+        x = ssx * np.log10(x * sx)
 
-    # Transform to unit square space:
-    xmin, xmax = np.min(xraw), np.max(xraw)
-    ymin, ymax = np.min(yraw), np.max(yraw)
-
-    x = (xraw - xmin) / (xmax - xmin)
-    y = (yraw - ymin) / (ymax - ymin)
+    xmin, ymin = np.min(x), np.min(y)
+    x, y = x - xmin, y - ymin
 
     points = np.array([x, y]).T
     # points_s     = (points - points.mean(0))
@@ -422,14 +422,13 @@ def get_ordered_closed_region(points, logx=False, logy=False):
 
     # Return the ordered path indices and the corresponding points
     x_new, y_new = points[path].T
-
-    x_new = x_new * (xmax - xmin) + xmin
-    y_new = y_new * (ymax - ymin) + ymin
+    x_new, y_new = x_new + xmin, y_new + ymin
 
     if logx:
-        x_new = 10 ** (x_new)
+        x_new = sx * 10 ** (ssx * x_new)
     if logy:
-        y_new = 10 ** (y_new)
+        y_new = sy * 10 ** (ssy * y_new)
+
     return x_new, y_new
 
 
