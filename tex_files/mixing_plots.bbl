@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{43}%
+\begin{thebibliography}{46}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -70,12 +70,23 @@
   {\doibase 10.1016/0375-9474(90)90541-S} {\bibfield  {journal} {\bibinfo
   {journal} {Nucl. Phys. A}\ }\textbf {\bibinfo {volume} {518}},\ \bibinfo
   {pages} {149} (\bibinfo {year} {1990})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Aad}\ \emph {et~al.}(2025{\natexlab{a}})\citenamefont
+  {Aad} \emph {et~al.}}]{ATLAS:2025uah}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {Aad}} \emph {et~al.} (\bibinfo {collaboration} {ATLAS}),\ }\href {\doibase
+  10.1007/JHEP07(2025)196} {\bibfield  {journal} {\bibinfo  {journal} {JHEP}\
+  }\textbf {\bibinfo {volume} {07}},\ \bibinfo {pages} {196} (\bibinfo {year}
+  {2025}{\natexlab{a}})},\ \Eprint {http://arxiv.org/abs/2503.16213}
+  {arXiv:2503.16213 [hep-ex]} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Aad}\ \emph {et~al.}(2024{\natexlab{a}})\citenamefont
   {Aad} \emph {et~al.}}]{ATLAS:2024fcs}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
-  {Aad}} \emph {et~al.} (\bibinfo {collaboration} {ATLAS}),\ }\href@noop {} {\
-  (\bibinfo {year} {2024}{\natexlab{a}})},\ \Eprint
+  {Aad}} \emph {et~al.} (\bibinfo {collaboration} {ATLAS}),\ }\href {\doibase
+  10.1103/PhysRevD.110.112004} {\bibfield  {journal} {\bibinfo  {journal}
+  {Phys. Rev. D}\ }\textbf {\bibinfo {volume} {110}},\ \bibinfo {pages}
+  {112004} (\bibinfo {year} {2024}{\natexlab{a}})},\ \Eprint
   {http://arxiv.org/abs/2408.05000} {arXiv:2408.05000 [hep-ex]} \BibitemShut
   {NoStop}%
 \bibitem [{\citenamefont {Aad}\ \emph {et~al.}(2019)\citenamefont {Aad} \emph
@@ -101,9 +112,19 @@
   {Aad} \emph {et~al.}}]{ATLAS:2024erm}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
-  {Aad}} \emph {et~al.} (\bibinfo {collaboration} {ATLAS}),\ }\href@noop {} {\
-  (\bibinfo {year} {2024}{\natexlab{b}})},\ \Eprint
+  {Aad}} \emph {et~al.} (\bibinfo {collaboration} {ATLAS}),\ }\href {\doibase
+  10.1140/epjc/s10052-024-13190-x} {\bibfield  {journal} {\bibinfo  {journal}
+  {Eur. Phys. J. C}\ }\textbf {\bibinfo {volume} {84}},\ \bibinfo {pages}
+  {1309} (\bibinfo {year} {2024}{\natexlab{b}})},\ \Eprint
   {http://arxiv.org/abs/2403.15085} {arXiv:2403.15085 [hep-ex]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Aad}\ \emph {et~al.}(2025{\natexlab{b}})\citenamefont
+  {Aad} \emph {et~al.}}]{ATLAS:2025lva}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {Aad}} \emph {et~al.} (\bibinfo {collaboration} {ATLAS}),\ }\href@noop {} {\
+  (\bibinfo {year} {2025}{\natexlab{b}})},\ \Eprint
+  {http://arxiv.org/abs/2508.20929} {arXiv:2508.20929 [hep-ex]} \BibitemShut
   {NoStop}%
 \bibitem [{\citenamefont {Barouki}\ \emph {et~al.}(2022)\citenamefont
   {Barouki}, \citenamefont {Marocco},\ and\ \citenamefont
@@ -236,6 +257,14 @@
   {pages} {135599} (\bibinfo {year} {2020})},\ \Eprint
   {http://arxiv.org/abs/2005.09575} {arXiv:2005.09575 [hep-ex]} \BibitemShut
   {NoStop}%
+\bibitem [{\citenamefont {Bloch-Devaux}\ \emph {et~al.}(2025)\citenamefont
+  {Bloch-Devaux} \emph {et~al.}}]{NA62:2025csa}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {Bloch-Devaux}} \emph {et~al.} (\bibinfo {collaboration} {NA62}),\
+  }\href@noop {} {\  (\bibinfo {year} {2025})},\ \Eprint
+  {http://arxiv.org/abs/2507.07345} {arXiv:2507.07345 [hep-ex]} \BibitemShut
+  {NoStop}%
 \bibitem [{\citenamefont {Aguilar-Arevalo}\ \emph {et~al.}(2018)\citenamefont
   {Aguilar-Arevalo} \emph {et~al.}}]{PIENU:2017wbj}%
   \BibitemOpen
@@ -247,15 +276,16 @@
   {http://arxiv.org/abs/1712.03275} {arXiv:1712.03275 [hep-ex]} \BibitemShut
   {NoStop}%
 \bibitem [{\citenamefont {Blennow}\ \emph {et~al.}(2023)\citenamefont
-  {Blennow}, \citenamefont {Fern\'andez-Mart\'\i{}nez}, \citenamefont
-  {Hern\'andez-Garc\'\i{}a}, \citenamefont {L\'opez-Pav\'on}, \citenamefont
-  {Marcano},\ and\ \citenamefont {Naredo-Tuero}}]{Blennow:2023mqx}%
+  {Blennow}, \citenamefont {Fern{\'a}ndez-Mart{\'\i}nez}, \citenamefont
+  {Hern{\'a}ndez-Garc{\'\i}a}, \citenamefont {L{\'o}pez-Pav{\'o}n},
+  \citenamefont {Marcano},\ and\ \citenamefont
+  {Naredo-Tuero}}]{Blennow:2023mqx}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
   {Blennow}}, \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
-  {Fern\'andez-Mart\'\i{}nez}}, \bibinfo {author} {\bibfnamefont
-  {J.}~\bibnamefont {Hern\'andez-Garc\'\i{}a}}, \bibinfo {author}
-  {\bibfnamefont {J.}~\bibnamefont {L\'opez-Pav\'on}}, \bibinfo {author}
+  {Fern{\'a}ndez-Mart{\'\i}nez}}, \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Hern{\'a}ndez-Garc{\'\i}a}}, \bibinfo {author}
+  {\bibfnamefont {J.}~\bibnamefont {L{\'o}pez-Pav{\'o}n}}, \bibinfo {author}
   {\bibfnamefont {X.}~\bibnamefont {Marcano}}, \ and\ \bibinfo {author}
   {\bibfnamefont {D.}~\bibnamefont {Naredo-Tuero}},\ }\href {\doibase
   10.1007/JHEP08(2023)030} {\bibfield  {journal} {\bibinfo  {journal} {JHEP}\
@@ -395,12 +425,12 @@
   10.1103/PhysRevD.36.2624} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
   Rev. D}\ }\textbf {\bibinfo {volume} {36}},\ \bibinfo {pages} {2624}
   (\bibinfo {year} {1987})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Arg\"uelles}\ \emph {et~al.}(2022)\citenamefont
-  {Arg\"uelles}, \citenamefont {Foppiani},\ and\ \citenamefont
+\bibitem [{\citenamefont {Arg{\"u}elles}\ \emph {et~al.}(2022)\citenamefont
+  {Arg{\"u}elles}, \citenamefont {Foppiani},\ and\ \citenamefont
   {Hostert}}]{Arguelles:2021dqn}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.~A.}\ \bibnamefont
-  {Arg\"uelles}}, \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont
+  {Arg{\"u}elles}}, \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont
   {Foppiani}}, \ and\ \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
   {Hostert}},\ }\href {\doibase 10.1103/PhysRevD.105.095006} {\bibfield
   {journal} {\bibinfo  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume}
@@ -418,13 +448,13 @@
   {http://arxiv.org/abs/2106.13684} {arXiv:2106.13684 [hep-ex]} \BibitemShut
   {NoStop}%
 \bibitem [{\citenamefont {Dentler}\ \emph {et~al.}(2018)\citenamefont
-  {Dentler}, \citenamefont {Hern\'andez-Cabezudo}, \citenamefont {Kopp},
+  {Dentler}, \citenamefont {Hern{\'a}ndez-Cabezudo}, \citenamefont {Kopp},
   \citenamefont {Machado}, \citenamefont {Maltoni}, \citenamefont
   {Martinez-Soler},\ and\ \citenamefont {Schwetz}}]{Dentler:2018sju}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
-  {Dentler}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
-  {Hern\'andez-Cabezudo}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Dentler}}, \bibinfo {author} {\bibfnamefont {{\'A}.}~\bibnamefont
+  {Hern{\'a}ndez-Cabezudo}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
   {Kopp}}, \bibinfo {author} {\bibfnamefont {P.~A.~N.}\ \bibnamefont
   {Machado}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Maltoni}},
   \bibinfo {author} {\bibfnamefont {I.}~\bibnamefont {Martinez-Soler}}, \ and\
