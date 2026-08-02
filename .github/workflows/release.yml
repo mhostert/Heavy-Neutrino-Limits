@@ -1,0 +1,91 @@
+name: Release
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - src/HNLimits/__init__.py
+
+permissions:
+  contents: write
+  id-token: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Tag and publish
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/HNLimits
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Read package version
+        id: package
+        run: |
+          version="$(python - <<'PY'
+          import ast
+          from pathlib import Path
+
+          module = ast.parse(Path("src/HNLimits/__init__.py").read_text())
+          for node in module.body:
+              if not isinstance(node, ast.Assign):
+                  continue
+              if any(isinstance(target, ast.Name) and target.id == "__version__" for target in node.targets):
+                  print(ast.literal_eval(node.value))
+                  break
+          else:
+              raise SystemExit("Could not find HNLimits.__version__")
+          PY
+          )"
+          tag="v${version}"
+
+          git fetch --tags --force
+          if git rev-parse --verify --quiet "refs/tags/${tag}"; then
+            tag_commit="$(git rev-list -n 1 "${tag}")"
+            head_commit="$(git rev-parse HEAD)"
+            if [ "${tag_commit}" != "${head_commit}" ]; then
+              echo "Tag ${tag} already exists at ${tag_commit}, not current commit ${head_commit}."
+              exit 1
+            fi
+            echo "tag_exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "tag_exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
+          echo "version=${version}" >> "$GITHUB_OUTPUT"
+          echo "tag=${tag}" >> "$GITHUB_OUTPUT"
+
+      - name: Install build tools
+        run: python -m pip install --upgrade pip build
+
+      - name: Build distributions
+        run: python -m build
+
+      - name: Create version tag
+        if: steps.package.outputs.tag_exists == 'false'
+        run: |
+          tag="${{ steps.package.outputs.tag }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag -a "${tag}" -m "Release ${tag}"
+          git push origin "${tag}"
+
+      - name: Publish distributions
+        if: steps.package.outputs.tag_exists == 'false' || github.event_name == 'workflow_dispatch'
+        uses: pypa/gh-action-pypi-publish@release/v1

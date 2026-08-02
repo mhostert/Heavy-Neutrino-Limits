@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{46}%
+\begin{thebibliography}{48}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -70,15 +70,15 @@
   {\doibase 10.1016/0375-9474(90)90541-S} {\bibfield  {journal} {\bibinfo
   {journal} {Nucl. Phys. A}\ }\textbf {\bibinfo {volume} {518}},\ \bibinfo
   {pages} {149} (\bibinfo {year} {1990})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Aad}\ \emph {et~al.}(2025{\natexlab{a}})\citenamefont
-  {Aad} \emph {et~al.}}]{ATLAS:2025uah}%
+\bibitem [{\citenamefont {Aad}\ \emph {et~al.}(2025)\citenamefont {Aad} \emph
+  {et~al.}}]{ATLAS:2025uah}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
   {Aad}} \emph {et~al.} (\bibinfo {collaboration} {ATLAS}),\ }\href {\doibase
   10.1007/JHEP07(2025)196} {\bibfield  {journal} {\bibinfo  {journal} {JHEP}\
   }\textbf {\bibinfo {volume} {07}},\ \bibinfo {pages} {196} (\bibinfo {year}
-  {2025}{\natexlab{a}})},\ \Eprint {http://arxiv.org/abs/2503.16213}
-  {arXiv:2503.16213 [hep-ex]} \BibitemShut {NoStop}%
+  {2025})},\ \Eprint {http://arxiv.org/abs/2503.16213} {arXiv:2503.16213
+  [hep-ex]} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Aad}\ \emph {et~al.}(2024{\natexlab{a}})\citenamefont
   {Aad} \emph {et~al.}}]{ATLAS:2024fcs}%
   \BibitemOpen
@@ -118,12 +118,14 @@
   {1309} (\bibinfo {year} {2024}{\natexlab{b}})},\ \Eprint
   {http://arxiv.org/abs/2403.15085} {arXiv:2403.15085 [hep-ex]} \BibitemShut
   {NoStop}%
-\bibitem [{\citenamefont {Aad}\ \emph {et~al.}(2025{\natexlab{b}})\citenamefont
+\bibitem [{\citenamefont {Aad}\ \emph {et~al.}(2026{\natexlab{a}})\citenamefont
   {Aad} \emph {et~al.}}]{ATLAS:2025lva}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
-  {Aad}} \emph {et~al.} (\bibinfo {collaboration} {ATLAS}),\ }\href@noop {} {\
-  (\bibinfo {year} {2025}{\natexlab{b}})},\ \Eprint
+  {Aad}} \emph {et~al.} (\bibinfo {collaboration} {ATLAS}),\ }\href {\doibase
+  10.1140/epjc/s10052-025-15191-w} {\bibfield  {journal} {\bibinfo  {journal}
+  {Eur. Phys. J. C}\ }\textbf {\bibinfo {volume} {86}},\ \bibinfo {pages} {153}
+  (\bibinfo {year} {2026}{\natexlab{a}})},\ \Eprint
   {http://arxiv.org/abs/2508.20929} {arXiv:2508.20929 [hep-ex]} \BibitemShut
   {NoStop}%
 \bibitem [{\citenamefont {Barouki}\ \emph {et~al.}(2022)\citenamefont
@@ -257,12 +259,14 @@
   {pages} {135599} (\bibinfo {year} {2020})},\ \Eprint
   {http://arxiv.org/abs/2005.09575} {arXiv:2005.09575 [hep-ex]} \BibitemShut
   {NoStop}%
-\bibitem [{\citenamefont {Bloch-Devaux}\ \emph {et~al.}(2025)\citenamefont
+\bibitem [{\citenamefont {Bloch-Devaux}\ \emph {et~al.}(2026)\citenamefont
   {Bloch-Devaux} \emph {et~al.}}]{NA62:2025csa}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
-  {Bloch-Devaux}} \emph {et~al.} (\bibinfo {collaboration} {NA62}),\
-  }\href@noop {} {\  (\bibinfo {year} {2025})},\ \Eprint
+  {Bloch-Devaux}} \emph {et~al.} (\bibinfo {collaboration} {NA62}),\ }\href
+  {\doibase 10.1016/j.physletb.2025.140119} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Lett. B}\ }\textbf {\bibinfo {volume} {872}},\ \bibinfo
+  {pages} {140119} (\bibinfo {year} {2026})},\ \Eprint
   {http://arxiv.org/abs/2507.07345} {arXiv:2507.07345 [hep-ex]} \BibitemShut
   {NoStop}%
 \bibitem [{\citenamefont {Aguilar-Arevalo}\ \emph {et~al.}(2018)\citenamefont
@@ -310,6 +314,16 @@
   {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo
   {volume} {46}},\ \bibinfo {pages} {R885} (\bibinfo {year}
   {1992})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Abratenko}\ \emph {et~al.}(2024)\citenamefont
+  {Abratenko} \emph {et~al.}}]{MicroBooNE:2023eef}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Abratenko}} \emph {et~al.} (\bibinfo {collaboration} {MicroBooNE}),\ }\href
+  {\doibase 10.1103/PhysRevLett.132.041801} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {132}},\ \bibinfo
+  {pages} {041801} (\bibinfo {year} {2024})},\ \Eprint
+  {http://arxiv.org/abs/2310.07660} {arXiv:2310.07660 [hep-ex]} \BibitemShut
+  {NoStop}%
 \bibitem [{\citenamefont {Kelly}\ and\ \citenamefont
   {Machado}(2021)}]{Kelly:2021xbv}%
   \BibitemOpen
@@ -436,6 +450,14 @@
   {journal} {\bibinfo  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo {volume}
   {105}},\ \bibinfo {pages} {095006} (\bibinfo {year} {2022})},\ \Eprint
   {http://arxiv.org/abs/2109.03831} {arXiv:2109.03831 [hep-ph]} \BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Aad}\ \emph {et~al.}(2026{\natexlab{b}})\citenamefont
+  {Aad} \emph {et~al.}}]{ATLAS:2026ocd}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {Aad}} \emph {et~al.} (\bibinfo {collaboration} {ATLAS}),\ }\href@noop {} {\
+  (\bibinfo {year} {2026}{\natexlab{b}})},\ \Eprint
+  {http://arxiv.org/abs/2607.27307} {arXiv:2607.27307 [hep-ex]} \BibitemShut
   {NoStop}%
 \bibitem [{\citenamefont {Acciarri}\ \emph {et~al.}(2021)\citenamefont
   {Acciarri} \emph {et~al.}}]{ArgoNeuT:2021clc}%

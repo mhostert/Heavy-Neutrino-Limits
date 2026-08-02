@@ -1,9 +1,71 @@
 [build-system]
-requires = [
-    "setuptools>=42",
-    "wheel",
-]
+requires = ["setuptools>=77", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "HNLimits"
+dynamic = ["version"]
+description = "A collection of limits on heavy neutral leptons, including their nuSMEFT interactions"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    { name = "Enrique Fernandez-Martinez" },
+    { name = "Manuel Gonzalez-Lopez" },
+    { name = "Josu Hernandez-Garcia", email = "garcia.josu.hernandez@ttk.elte.hu" },
+    { name = "Matheus Hostert", email = "matheus-hostert@uiowa.edu" },
+    { name = "Jacobo Lopez-Pavon" },
+]
+maintainers = [
+    { name = "Matheus Hostert", email = "matheus-hostert@uiowa.edu" },
+]
+dependencies = [
+    "hepunits",
+    "matplotlib",
+    "mpmath",
+    "numpy",
+    "pandas>=1.0",
+    "particle",
+    "pylatex",
+    "requests",
+    "scipy",
+]
+classifiers = [
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering",
+]
+
+[project.optional-dependencies]
+testing = [
+    "pyarrow",
+    "pytest>=6.0",
+    "pytest-cov>=2.0",
+    "tox>=3.24",
+]
+docs = [
+    "pylatexenc",
+]
+
+[project.urls]
+Homepage = "https://github.com/mhostert/Heavy-Neutrino-Limits"
+Repository = "https://github.com/mhostert/Heavy-Neutrino-Limits"
+Issues = "https://github.com/mhostert/Heavy-Neutrino-Limits/issues"
+
+[tool.setuptools.dynamic]
+version = { attr = "HNLimits.__version__" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+HNLimits = ["include/**/*"]
 
 [tool.pytest.ini_options]
 addopts = "--cov=HNLimits"

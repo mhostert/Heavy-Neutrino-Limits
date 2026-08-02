@@ -11,6 +11,9 @@ import matplotlib.patches as patches
 import matplotlib.colors as mc
 from matplotlib.pyplot import cm
 
+PMNS_UNITARITY_FILL_ZORDER = -10
+PMNS_UNITARITY_CONTOUR_ZORDER = 4
+
 
 def log_interp1d(xx, yy, kind="linear", **kwargs):
     """Return an interpolating function using Scipy's interp1d for log-spaced data
@@ -49,7 +52,7 @@ def std_fig(ax_form=std_axes_form, figsize=std_figsize, rasterized=True):
         "legend.loc": "best",
     }
     plt.rcParams["text.latex.preamble"] = r"\usepackage{amsmath}\usepackage{amssymb}"
-    rc("font", **{"family": "serif", "serif": ["Computer Modern"]})
+    # rc("font", **{"family": "serif", "serif": ["Computer Modern"]})
     rc("text", usetex=True)
     rcParams.update(rcparams)
     matplotlib.rcParams["hatch.linewidth"] = 0.3
@@ -153,7 +156,7 @@ def std_plot_limits(
 
     labelpos_dic = {}
     for id, limit in case.limits.iterrows():
-        if limit.interp_func is not None:
+        if limit.interp_func is not None and np.nanmax(limit.interp_func(x)) > np.nanmin(limit.interp_func(x)):
             ilabel, ival = np.nanargmin(limit.interp_func(x)), np.nanmin(limit.interp_func(x))
             if ilabel is None or ival is None:
                 print("Could not find label position for ", id)
@@ -168,6 +171,7 @@ def std_plot_limits(
     df_order_in_x = case.limits.m4.apply(lambda x: np.mean(np.log10(x)[~np.isnan(x)]) if x is not None else 1)
     df_order_in_x = (df_order_in_x - np.min(df_order_in_x)) / np.max(df_order_in_x - np.min(df_order_in_x))
     df_order_in_x = df_order_in_x * (colormap_range[1] - colormap_range[0]) + colormap_range[0]
+    # df_order = df_order_in_x.copy()
 
     color_dic = dict(zip(case.limits.index, getattr(cm, colormap)(df_order_in_x)))  # a list of RGB tuples
     dash_dic = dict(zip(case.limits.index, (1 + len(color_dic.keys())) * [(1, (1, 0))]))
@@ -186,6 +190,12 @@ def std_plot_limits(
         if (id not in skip_ids) & (limit.interp_func is not None):
 
             limit_zorder = df_order[f"{id}"] / df_order.max()
+            contour_zorder = 3
+            edge_zorder = limit_zorder + 1
+            if "pmns_unitarity" in str(id).lower():
+                limit_zorder = PMNS_UNITARITY_FILL_ZORDER
+                contour_zorder = PMNS_UNITARITY_CONTOUR_ZORDER
+                edge_zorder = PMNS_UNITARITY_CONTOUR_ZORDER
 
             if len(color_only) > 0:
                 if id in color_only:
@@ -227,24 +237,25 @@ def std_plot_limits(
             if (limit.file_top == limit.file_bottom) and limit.m4 is not None and limit.ualpha4 is not None:
 
                 x_ordered, y_ordered = get_ordered_closed_region((limit.m4, limit.ualpha4), logx=False, logy=True)
-                ax.fill(x_ordered, y_ordered, edgecolor=contour_color, facecolor="None", linestyle=dash, zorder=3, lw=linewidth)
+                ax.fill(x_ordered, y_ordered, edgecolor=contour_color, facecolor="None", linestyle=dash, zorder=contour_zorder, lw=linewidth)
 
                 # Filling
-                if ("cosmo" in id) or (limit.year is None):
-                    continue
-                else:
-                    ax.fill(x_ordered, y_ordered, facecolor=fill_color, edgecolor="None", alpha=alpha, zorder=limit_zorder)
+                # if ("cosmo" in id) or (limit.year is None):
+                #     continue
+                # else:
+                ax.fill(x_ordered, y_ordered, facecolor=fill_color, edgecolor="None", alpha=alpha, zorder=limit_zorder)
 
             else:
-                ax.plot(x, limit.interp_func(x), color=contour_color, linestyle=dash, zorder=3, lw=linewidth)
-                ax.plot(x, limit.interp_func_top(x), color=contour_color, linestyle=dash, zorder=3, lw=linewidth)
+                ax.plot(x, limit.interp_func(x), color=contour_color, linestyle=dash, zorder=contour_zorder, lw=linewidth)
+                ax.plot(x, limit.interp_func_top(x), color=contour_color, linestyle=dash, zorder=contour_zorder, lw=linewidth)
 
                 # Filling
-                if ("cosmo" in id) or (limit.year is None):
+                # if ("cosmo" in id) or (limit.year is None):
+                if limit.year is None:
                     # continue
                     ax.fill_between(x, limit.interp_func(x), limit.interp_func_top(x), facecolor=fill_color, edgecolor="None", alpha=0.1, zorder=limit_zorder)
                     ax.fill_between(
-                        x, limit.interp_func(x), limit.interp_func_top(x), facecolor="None", edgecolor="black", alpha=1, linestyle=dash, zorder=limit_zorder + 1
+                        x, limit.interp_func(x), limit.interp_func_top(x), facecolor="None", edgecolor="black", alpha=1, linestyle=dash, zorder=edge_zorder
                     )
 
                 else:
