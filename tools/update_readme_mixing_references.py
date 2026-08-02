@@ -194,7 +194,7 @@ def format_reference(number: int, key: str, entry: dict[str, str]) -> str:
     if links:
         parts.append("; ".join(links))
 
-    return f"{number}. {'; '.join(part for part in parts if part)}."
+    return f'{number}. <a id="mixing-ref-{number}"></a>{"; ".join(part for part in parts if part)}.'
 
 
 def extract_figures(text: str) -> list[dict[str, str]]:
@@ -218,7 +218,7 @@ def extract_figures(text: str) -> list[dict[str, str]]:
 def replace_citations(caption: str, numbers: dict[str, int]) -> str:
     def citation(match: re.Match[str]) -> str:
         keys = [key.strip() for key in match.group(1).split(",")]
-        return " [" + ", ".join(str(numbers[key]) for key in keys) + "]"
+        return " [" + ", ".join(f"[{numbers[key]}](#mixing-ref-{numbers[key]})" for key in keys) + "]"
 
     caption = re.sub(r"~?\\cite\{([^}]+)\}", citation, caption)
     caption = caption.replace(r"\ ", " ")
