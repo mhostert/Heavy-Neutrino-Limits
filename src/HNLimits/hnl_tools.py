@@ -11,8 +11,36 @@ from math import sqrt
 
 from . import DEFAULT_SHEET
 
-dirac_to_majorana_dic = {"PS": 1, "BD": 1 / sqrt(2), "C": 1 / 2, "UPMNS": 1}
-majorana_to_dirac_dic = {"PS": 1, "BD": sqrt(2), "C": 2, "UPMNS": 1}
+# Factors relating a limit on |U|^2 quoted for one HNL nature to the other one.
+# They depend on how the observable scales with the mixing:
+#   PS    -- peak/kinematic searches, rate independent of the nature      -> 1
+#   BD    -- beam dump, rate ~ |U|^4 and twice the width for Majorana     -> sqrt(2)
+#   C     -- cosmology (BBN)                                             -> 2
+#   COLLIDER -- prompt LHC searches, rate ~ |U|^2 and twice the Majorana
+#            signal yield for the same mixing                             -> 2
+#   UPMNS -- PMNS unitarity, nature independent                           -> 1
+# NOTE: COLLIDER is only meaningful for searches that a Dirac HNL can also
+# produce. A lepton-number-violating (same-sign) search has no Dirac
+# counterpart at all, and a displaced search does not rescale by a constant
+# because the HNL lifetime changes -- see the comment in _rescaling.
+dirac_to_majorana_dic = {"PS": 1, "BD": 1 / sqrt(2), "C": 1 / 2, "COLLIDER": 1 / 2, "UPMNS": 1}
+majorana_to_dirac_dic = {"PS": 1, "BD": sqrt(2), "C": 2, "COLLIDER": 2, "UPMNS": 1}
+
+
+def _rescaling(table, df, from_nature, to_nature):
+    """Look up the |U|^2 rescaling for a limit, failing loudly on unknown types.
+
+    A bare KeyError here is hard to act on, because the fix is always to add the
+    new ``type`` to the tables above together with its scaling.
+    """
+    try:
+        return table[df["type"]]
+    except KeyError:
+        raise ValueError(
+            f"Cannot reinterpret limit '{df.name}' ({df['type']}) from {from_nature} to {to_nature}: "
+            f"no {from_nature}->{to_nature} scaling is defined for type '{df['type']}'. "
+            f"Known types: {sorted(table)}. Add it to the tables in hnl_tools.py."
+        ) from None
 
 # cl90_dict = {'1sigma': sqrt(4.61/2.30), 68.27: sqrt(4.61/2.30), 90: 1, 95: sqrt(4.61/5.99), '2sigma': sqrt(4.61/6.18), 95.45: sqrt(4.61/6.18), 99: sqrt(4.61/9.21)} # 2dof chi^2 relations
 cl90_dict = {
@@ -107,46 +135,46 @@ class Limits:
         suffix = "_top" if top else ""
         limit_path = df.file_top if top else df.file_bottom
 
-        if limit_path is None:
+        if self.invisible and not df.is_invisible:
+            # this limit does not apply to an invisible HNL -- drop it entirely.
+            # both the top and the bottom curve must be dropped together, so this
+            # is checked before the missing-file case below, which would otherwise
+            # leave a one-sided limit half-loaded.
+            m4, ualpha4, interp_func = None, None, None
+        elif limit_path is None:
             m4, ualpha4 = None, None
             interp_func = lambda x: np.ones(np.size(x))
         else:
             full_limit_path = os.path.join(global_path, pathlib.Path(limit_path))
             if not os.path.isfile(full_limit_path):
                 raise ValueError(f"Limit file {full_limit_path} does not exist.")
-            if self.invisible and not df.is_invisible:
-                m4, ualpha4, interp_func = None, None, None
-            else:
-                m4, ualpha4 = np.genfromtxt(full_limit_path, unpack=True)
+            m4, ualpha4 = np.genfromtxt(full_limit_path, unpack=True)
 
-                if df["CL"] in cl90_dict:
-                    # fix the CL to 90%CL
-                    ualpha4 = ualpha4 * cl90_dict[df["CL"]]
-                #                else:
-                #                    raise ValueError(f"CL of experimental data {df['CL']} not defined.")
-                if self.nature == "dirac":
-                    if df["hnl_type"] == "Majorana":
-                        # fix the Dirac bounds with the corresponding Majorana factor
-                        ualpha4 = ualpha4 * majorana_to_dirac_dic[df["type"]]
-                if self.nature == "majorana":
-                    if df["hnl_type"] == "Dirac":
-                        # fix the Dirac bounds with the corresponding Majorana factor
-                        ualpha4 = ualpha4 * dirac_to_majorana_dic[df["type"]]
+            if df["CL"] in cl90_dict:
+                # fix the CL to 90%CL
+                ualpha4 = ualpha4 * cl90_dict[df["CL"]]
+            #                else:
+            #                    raise ValueError(f"CL of experimental data {df['CL']} not defined.")
+            if self.nature == "dirac" and df["hnl_type"] == "Majorana":
+                # fix the Dirac bounds with the corresponding Majorana factor
+                ualpha4 = ualpha4 * _rescaling(majorana_to_dirac_dic, df, "majorana", "dirac")
+            if self.nature == "majorana" and df["hnl_type"] == "Dirac":
+                # fix the Dirac bounds with the corresponding Majorana factor
+                ualpha4 = ualpha4 * _rescaling(dirac_to_majorana_dic, df, "dirac", "majorana")
 
-                if df["units"] in unit_dict:
-                    # fix units to HEP units (MeV)
-                    m4 = m4 * unit_dict[df["units"]]
-                    m4 = m4 / 1000  # set units to GeV
+            if df["units"] not in unit_dict:
+                raise ValueError(f"HNL mass units of {df['units']} not defined.")
 
-                    # order data points
-                    order = np.argsort(m4)
-                    _m4 = m4[order]
-                    _ualpha4 = ualpha4[order]
-                    # interpolation
-                    interp_func = plot_tools.log_interp1d(_m4, _ualpha4, kind="linear", bounds_error=False, fill_value=None, assume_sorted=False)
+            # fix units to HEP units (MeV)
+            m4 = m4 * unit_dict[df["units"]]
+            m4 = m4 / 1000  # set units to GeV
 
-                else:
-                    raise ValueError(f"HNL mass units of {df['units']} not defined.")
+            # order data points
+            order = np.argsort(m4)
+            _m4 = m4[order]
+            _ualpha4 = ualpha4[order]
+            # interpolation
+            interp_func = plot_tools.log_interp1d(_m4, _ualpha4, kind="linear", bounds_error=False, fill_value=None, assume_sorted=False)
 
         df[f"m4{suffix}"] = m4
         df[f"ualpha4{suffix}"] = ualpha4
