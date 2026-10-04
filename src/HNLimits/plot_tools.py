@@ -11,6 +11,14 @@ import matplotlib.patches as patches
 import matplotlib.colors as mc
 from matplotlib.pyplot import cm
 
+import matplotlib
+import matplotlib.pyplot as plt
+from matplotlib import rc, rcParams
+import matplotlib.tri as tri
+from matplotlib import colors as mpl_colors
+from matplotlib.collections import PatchCollection
+import matplotlib.colors as mc
+
 PMNS_UNITARITY_FILL_ZORDER = -10
 PMNS_UNITARITY_CONTOUR_ZORDER = 4
 
@@ -40,6 +48,30 @@ fsize_annotate = 10
 std_figsize = (9, 3.75)
 std_axes_form = [0.085, 0.14, 0.9, 0.81]
 
+CB_color_cycle = [
+    "#377eb8",
+    "#f781bf",
+    "#4daf4a",
+    "#999999",
+    "#ff7f00",
+    "#a65628",
+    "#984ea3",
+    "#e41a1c",
+    "#dede00",
+]
+# CB_color_cycle = [
+#     "#377eb8",
+#     "#ff7f00",
+#     "#4daf4a",
+#     "#f781bf",
+#     "#a65628",
+#     "#984ea3",
+#     "#999999",
+#     "#e41a1c",
+#     "#dede00",
+# ]
+plt.rcParams["axes.prop_cycle"] = plt.cycler(color=CB_color_cycle)
+
 
 # standard figure creation
 def std_fig(ax_form=std_axes_form, figsize=std_figsize, rasterized=True):
@@ -68,6 +100,57 @@ def std_savefig(fig, path, dpi=500, **kwargs):
     if ".pdf" in path:
         fig.savefig(path.replace(".pdf", ".png"), dpi=dpi, **kwargs, bbox_inches="tight")
         fig.savefig(path.replace(".pdf", "_white.png"), dpi=dpi, facecolor="white", **kwargs, bbox_inches="tight")
+
+
+###########################
+def get_cmap_colors(name, ncolors, cmin=0, cmax=1, reverse=False):
+    try:
+        cmap = plt.get_cmap(name)
+    except ValueError:
+        cmap = build_cmap(name, reverse=reverse)
+    return cmap(np.linspace(cmin, cmax, ncolors, endpoint=True))
+
+
+def build_cmap(color, reverse=False):
+    cvals = [0, 1]
+    colors = [color, "white"]
+    if reverse:
+        colors = colors[::-1]
+
+    norm = plt.Normalize(min(cvals), max(cvals))
+    tuples = list(zip(map(norm, cvals), colors))
+    return mpl_colors.LinearSegmentedColormap.from_list("", tuples)
+
+
+# define an object that will be used by the legend
+class MulticolorPatch(object):
+    def __init__(self, colors):
+        self.colors = colors
+
+
+# define a handler for the MulticolorPatch object
+class MulticolorPatchHandler(object):
+    def legend_artist(self, legend, orig_handle, fontsize, handlebox):
+        width, height = handlebox.width, handlebox.height
+        patches = []
+        for i, c in enumerate(orig_handle.colors):
+            patches.append(
+                plt.Rectangle(
+                    [
+                        width / len(orig_handle.colors) * i - handlebox.xdescent,
+                        -handlebox.ydescent,
+                    ],
+                    width / len(orig_handle.colors),
+                    height,
+                    facecolor=c,
+                    edgecolor="none",
+                )
+            )
+
+        patch = PatchCollection(patches, match_original=True)
+
+        handlebox.add_artist(patch)
+        return patch
 
 
 def std_plot_limits(
@@ -187,7 +270,9 @@ def std_plot_limits(
     rot_dic.update(new_rotation)
 
     for id, limit in case.limits.iterrows():
-        if (id not in skip_ids) & (limit.interp_func is not None):
+        # both curves are needed: a limit dropped by the invisible filter has
+        # neither, and the fill below reads them together
+        if (id not in skip_ids) & (limit.interp_func is not None) & (limit.interp_func_top is not None):
 
             limit_zorder = df_order[f"{id}"] / df_order.max()
             contour_zorder = 3
@@ -370,77 +455,162 @@ def step_plot(ax, x, y, lw=1, color="red", label="signal", where="post", dashes=
     return ax.step(np.append(x, np.max(x) + x[-1]), np.append(y, 0.0), where=where, lw=lw, dashes=dashes, color=color, label=label, zorder=zorder)
 
 
+def _is_simple_polygon(pts):
+    """True if the closed polygon through ``pts`` (in order) has no crossings.
+
+    Checked edge by edge so memory stays O(n); only *proper* crossings count,
+    so shared endpoints of consecutive edges are not flagged.
+    """
+    n = len(pts)
+    if n < 4:
+        return True
+    a = pts
+    b = np.roll(pts, -1, axis=0)
+
+    def _cross(o1, o2, p):
+        return (o2[:, 0] - o1[:, 0]) * (p[:, 1] - o1[:, 1]) - (o2[:, 1] - o1[:, 1]) * (p[:, 0] - o1[:, 0])
+
+    for i in range(n):
+        # edges sharing a vertex with edge i can never cross it properly
+        j = np.arange(i + 1, n)
+        j = j[(j != (i + 1) % n) & ((j + 1) % n != i)]
+        if len(j) == 0:
+            continue
+        a_i = np.repeat(a[i][None, :], len(j), axis=0)
+        b_i = np.repeat(b[i][None, :], len(j), axis=0)
+        d1 = _cross(a[j], b[j], a_i)
+        d2 = _cross(a[j], b[j], b_i)
+        d3 = _cross(a_i, b_i, a[j])
+        d4 = _cross(a_i, b_i, b[j])
+        if (((d1 > 0) != (d2 > 0)) & ((d3 > 0) != (d4 > 0))).any():
+            return False
+    return True
+
+
+def _tour_length(dist, tour):
+    """Total length of the closed tour through the rows/cols of ``dist``."""
+    return dist[tour, np.roll(tour, -1)].sum()
+
+
+def _nearest_neighbor_tour(dist, start):
+    """Greedy nearest-neighbor tour, visiting every point exactly once."""
+    n = len(dist)
+    unvisited = np.ones(n, dtype=bool)
+    unvisited[start] = False
+    tour = [start]
+    current = start
+    for _ in range(n - 1):
+        # mask out everything already on the tour, then take the closest
+        candidates = np.where(unvisited, dist[current], np.inf)
+        current = int(np.argmin(candidates))
+        unvisited[current] = False
+        tour.append(current)
+    return np.array(tour)
+
+
+def _two_opt(dist, tour, max_moves=None):
+    """Remove crossings from a closed tour with 2-opt.
+
+    Reversing a segment whose end links cross always shortens the tour, so a
+    2-opt local optimum of a planar tour is a simple (non-self-intersecting)
+    polygon. That is what makes the filled region well defined.
+    """
+    n = len(tour)
+    if n < 4:
+        return tour
+    if max_moves is None:
+        max_moves = 4 * n
+    tour = tour.copy()
+    for _ in range(max_moves):
+        # edges of the tour: (tour[i], tour[i+1]) for i = 0 .. n-1 (cyclic)
+        a = tour
+        b = np.roll(tour, -1)
+        d_ab = dist[a, b]
+        # delta[i, j] = length change from reversing tour[i+1 : j+1]
+        delta = dist[np.ix_(a, a)] + dist[np.ix_(b, b)] - d_ab[:, None] - d_ab[None, :]
+        # only i < j are distinct moves, and adjacent edges cannot be improved
+        delta = np.triu(delta, k=2)
+        delta[0, n - 1] = 0.0
+        i, j = np.unravel_index(np.argmin(delta), delta.shape)
+        if delta[i, j] >= -1e-12:
+            break
+        tour[i + 1 : j + 1] = tour[i + 1 : j + 1][::-1]
+    return tour
+
+
 def get_ordered_closed_region(points, logx=False, logy=False):
-    x, y = points
-    # check for nans
-    if np.isnan(points).sum() > 0:
+    """Order a cloud of boundary points into a simple closed contour.
+
+    Digitized exclusion regions are stored as the points tracing their
+    boundary, but not necessarily in order. This orders them into a closed
+    polygon that can be handed straight to ``matplotlib.pyplot.fill``.
+
+    Ordering is done on axes rescaled to the unit square (in log space where
+    requested) so that "nearest" means nearest *as plotted*, and is refined
+    with 2-opt so the result never self-intersects. An input that already
+    traces a simple polygon is left in the order it was given.
+
+    Args:
+        points (tuple): ``(x, y)`` arrays of boundary points.
+        logx (bool, optional): order x logarithmically. Defaults to False.
+        logy (bool, optional): order y logarithmically. Defaults to False.
+
+    Returns:
+        tuple: ``(x, y)`` in the original units, ordered around the contour.
+    """
+    x = np.asarray(points[0], dtype=float)
+    y = np.asarray(points[1], dtype=float)
+
+    if x.shape != y.shape or x.ndim != 1:
+        raise ValueError("x and y must be 1D arrays of the same length.")
+    if np.isnan(x).any() or np.isnan(y).any():
         raise ValueError("NaN's were found in input data. Cannot order the contour.")
 
-    # check for repeated x-entries --
-    # this is an error because
-    x, mask_diff = np.unique(x, return_index=True)
-    y = y[mask_diff]
-
-    if logy:
-        if (y == 0).any():
-            raise ValueError("y values cannot contain any zeros in log mode.")
-        sy = 1  # np.sign(y)
-        ssy = 1  # (np.abs(y) < 1) * (-1) + (np.abs(y) > 1) * (1)
-        y = ssy * np.log10(y * sy)
+    # work in the space the region is actually plotted in
+    u, v = x, y
     if logx:
-        if (x == 0).any():
-            raise ValueError("x values cannot contain any zeros in log mode.")
-        sx = 1  # np.sign(x)
-        ssx = 1  # (x < 1) * (-1) + (x > 1) * (1)
-        x = ssx * np.log10(x * sx)
-
-    xmin, ymin = np.min(x), np.min(y)
-    x, y = x - xmin, y - ymin
-
-    points = np.array([x, y]).T
-    # points_s     = (points - points.mean(0))
-    # angles       = np.angle((points_s[:,0] + 1j*points_s[:,1]))
-    # points_sort  = points_s[angles.argsort()]
-    # points_sort += points.mean(0)
-
-    # if np.isnan(points_sort).sum()>0:
-    #     raise ValueError("NaN's were found in sorted points. Cannot order the contour.")
-    # # print(points.mean(0))
-    # # return points_sort
-    # tck, u = splprep(points_sort.T, u=None, s=0.0, per=0, k=1)
-    # # u_new = np.linspace(u.min(), u.max(), len(points[:,0]))
-    # x_new, y_new = splev(u, tck, der=0)
-    # # x_new, y_new = splev(u_new, tck, der=0)
-    dist_matrix = squareform(pdist(points))
-
-    # Set diagonal to a large number to avoid self-loop
-    np.fill_diagonal(dist_matrix, np.inf)
-
-    # Start from the first point
-    current_point = 0
-    path = [current_point]
-
-    # Find the nearest neighbor of each point
-    while len(path) < len(points):
-        # Find the nearest point that is not already in the path
-        nearest = np.argmin(dist_matrix[current_point])
-        # Add the nearest point to the path
-        path.append(nearest)
-        # Update the current point
-        current_point = nearest
-        # Mark the visited point so it's not revisited
-        dist_matrix[:, current_point] = np.inf
-
-    # Return the ordered path indices and the corresponding points
-    x_new, y_new = points[path].T
-    x_new, y_new = x_new + xmin, y_new + ymin
-
-    if logx:
-        x_new = sx * 10 ** (ssx * x_new)
+        if (x <= 0).any():
+            raise ValueError("x values must be positive in log mode.")
+        u = np.log10(x)
     if logy:
-        y_new = sy * 10 ** (ssy * y_new)
+        if (y <= 0).any():
+            raise ValueError("y values must be positive in log mode.")
+        v = np.log10(y)
 
-    return x_new, y_new
+    # drop repeated vertices -- repeated *coordinates* are kept, since the
+    # near-vertical walls of a closed region legitimately share x or y values
+    _, keep = np.unique(np.column_stack([u, v]), axis=0, return_index=True)
+    keep = np.sort(keep)
+    x, y, u, v = x[keep], y[keep], u[keep], v[keep]
+
+    if len(x) < 3:
+        return x, y
+
+    # rescale to the unit square so neither axis dominates the distances
+    def _unit(w):
+        span = np.ptp(w)
+        return (w - w.min()) / span if span > 0 else np.zeros_like(w)
+
+    scaled = np.column_stack([_unit(u), _unit(v)])
+
+    # a file stored in traced order is already the contour the author drew --
+    # keep it, so digitizing by hand always wins over the heuristic below
+    if _is_simple_polygon(scaled):
+        return x, y
+
+    # otherwise reconstruct the boundary: greedy tours from the extreme points,
+    # each cleaned up with 2-opt, and keep the shortest one found
+    dist = squareform(pdist(scaled))
+    starts = np.unique(np.r_[np.argmin(u), np.argmax(u), np.argmin(v), np.argmax(v), 0])
+
+    best, best_len = None, np.inf
+    for start in starts:
+        tour = _two_opt(dist, _nearest_neighbor_tour(dist, int(start)))
+        length = _tour_length(dist, tour)
+        if length < best_len:
+            best, best_len = tour, length
+
+    return x[best], y[best]
 
 
 ################################################

@@ -14,7 +14,7 @@ All limits are kept track in this [![Google Spreadsheets](https://img.shields.io
 
 Additions, comments, or suggestions should be directed to:
 * Josu Hernández-García (josu.hernandez@ific.uv.es)
-* Matheus Hostert (mhostert@g.harvard.edu)
+* Matheus Hostert (matheus-hostert@uiowa.edu)
 
 --- 
 **Citation info:**
@@ -70,7 +70,7 @@ Constraints on $|U_{\mu N}|^2$ as a function of the HNL mass $m_N$. Limits shown
 
 ![UtauN_majorana](plots/mixing/UtauN_majorana.png)
 
-Constraints on $|U_{\tau N}|^2$ as a function of the HNL mass $m_N$. Limits shown: ATLAS $\ell^\pm\tau^\pm$ [[41](#mixing-ref-41)], ATLAS $t\bar t$(2024) [[4](#mixing-ref-4)], ArgoNeuT [[42](#mixing-ref-42)], Atmospheric $\nu$ (Dentler et al) [[43](#mixing-ref-43)], BEBC(Barouki et al) [[9](#mixing-ref-9)], BaBar [[44](#mixing-ref-44)], Belle [[45](#mixing-ref-45)], Borexino (Plestid) [[46](#mixing-ref-46)], CHARM (Boiarska et al) [[47](#mixing-ref-47)], CHARM (Orloff et al) [[48](#mixing-ref-48)], CMS (2024-I) [[15](#mixing-ref-15)], CMS (2024-II) [[16](#mixing-ref-16)], Cosmology [[17](#mixing-ref-17)], DELPHI (long) [[18](#mixing-ref-18)], DELPHI (short) [[18](#mixing-ref-18)], PMNS Unitarity [[24](#mixing-ref-24)].
+Constraints on $|U_{\tau N}|^2$ as a function of the HNL mass $m_N$. Limits shown: ATLAS $\ell^\pm\tau^\pm$ [[41](#mixing-ref-41)], ATLAS $t\bar t$(2024) [[4](#mixing-ref-4)], ArgoNeuT [[42](#mixing-ref-42)], Atmospheric $\nu$ (Dentler et al) [[43](#mixing-ref-43)], BEBC(Barouki et al) [[9](#mixing-ref-9)], BaBar [[44](#mixing-ref-44)], Belle [[45](#mixing-ref-45)], Borexino (Plestid) [[46](#mixing-ref-46)], CHARM (Boiarska et al) [[47](#mixing-ref-47)], CHARM (Orloff et al) [[48](#mixing-ref-48)], CMS (2024-I) [[15](#mixing-ref-15)], CMS (2024-II) [[16](#mixing-ref-16)], Cosmology [[17](#mixing-ref-17)], DELPHI (long) [[18](#mixing-ref-18)], DELPHI (short) [[18](#mixing-ref-18)], PMNS Unitarity [[24](#mixing-ref-24)], Solar limits (Brdar et al) [[49](#mixing-ref-49)].
 
 #### References
 
@@ -122,6 +122,7 @@ Constraints on $|U_{\tau N}|^2$ as a function of the HNL mass $m_N$. Limits show
 46. <a id="mixing-ref-46"></a>Ryan Plestid; "Luminous solar neutrinos II: Mass-mixing portals"; Phys. Rev. D 104, 075028 (2021); [Erratum: Phys.Rev.D 105, 099901 (2022)]; [doi:10.1103/PhysRevD.104.075028](https://doi.org/10.1103/PhysRevD.104.075028); [arXiv:2010.09523](https://arxiv.org/abs/2010.09523).
 47. <a id="mixing-ref-47"></a>Iryna Boiarska, Alexey Boyarsky, Oleksii Mikulenko, and Maksym Ovchynnikov; "Constraints from the CHARM experiment on heavy neutral leptons with tau mixing"; Phys. Rev. D 104, 095019 (2021); [doi:10.1103/PhysRevD.104.095019](https://doi.org/10.1103/PhysRevD.104.095019); [arXiv:2107.14685](https://arxiv.org/abs/2107.14685).
 48. <a id="mixing-ref-48"></a>J. Orloff, Alexandre N. Rozanov, and C. Santoni; "Limits on the mixing of tau neutrino to heavy neutrinos"; Phys. Lett. B 550, 8-15 (2002); [doi:10.1016/S0370-2693(02)02769-7](https://doi.org/10.1016/S0370-2693(02)02769-7); [arXiv:hep-ph/0208075](https://arxiv.org/abs/hep-ph/0208075).
+49. <a id="mixing-ref-49"></a>Vedran Brdar, Samiur R. Mir, and Xun-Jie Xu; "Solar Constraints on Heavy Neutral Leptons with ν_τ Mixing"; (2026); [arXiv:2608.19319](https://arxiv.org/abs/2608.19319).
 
 <!-- END GENERATED MIXING REFERENCES -->
 ---
