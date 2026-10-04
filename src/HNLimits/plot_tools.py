@@ -11,6 +11,14 @@ import matplotlib.patches as patches
 import matplotlib.colors as mc
 from matplotlib.pyplot import cm
 
+import matplotlib
+import matplotlib.pyplot as plt
+from matplotlib import rc, rcParams
+import matplotlib.tri as tri
+from matplotlib import colors as mpl_colors
+from matplotlib.collections import PatchCollection
+import matplotlib.colors as mc
+
 PMNS_UNITARITY_FILL_ZORDER = -10
 PMNS_UNITARITY_CONTOUR_ZORDER = 4
 
@@ -64,6 +72,7 @@ CB_color_cycle = [
 # ]
 plt.rcParams["axes.prop_cycle"] = plt.cycler(color=CB_color_cycle)
 
+
 # standard figure creation
 def std_fig(ax_form=std_axes_form, figsize=std_figsize, rasterized=True):
     rcparams = {
@@ -91,6 +100,57 @@ def std_savefig(fig, path, dpi=500, **kwargs):
     if ".pdf" in path:
         fig.savefig(path.replace(".pdf", ".png"), dpi=dpi, **kwargs, bbox_inches="tight")
         fig.savefig(path.replace(".pdf", "_white.png"), dpi=dpi, facecolor="white", **kwargs, bbox_inches="tight")
+
+
+###########################
+def get_cmap_colors(name, ncolors, cmin=0, cmax=1, reverse=False):
+    try:
+        cmap = plt.get_cmap(name)
+    except ValueError:
+        cmap = build_cmap(name, reverse=reverse)
+    return cmap(np.linspace(cmin, cmax, ncolors, endpoint=True))
+
+
+def build_cmap(color, reverse=False):
+    cvals = [0, 1]
+    colors = [color, "white"]
+    if reverse:
+        colors = colors[::-1]
+
+    norm = plt.Normalize(min(cvals), max(cvals))
+    tuples = list(zip(map(norm, cvals), colors))
+    return mpl_colors.LinearSegmentedColormap.from_list("", tuples)
+
+
+# define an object that will be used by the legend
+class MulticolorPatch(object):
+    def __init__(self, colors):
+        self.colors = colors
+
+
+# define a handler for the MulticolorPatch object
+class MulticolorPatchHandler(object):
+    def legend_artist(self, legend, orig_handle, fontsize, handlebox):
+        width, height = handlebox.width, handlebox.height
+        patches = []
+        for i, c in enumerate(orig_handle.colors):
+            patches.append(
+                plt.Rectangle(
+                    [
+                        width / len(orig_handle.colors) * i - handlebox.xdescent,
+                        -handlebox.ydescent,
+                    ],
+                    width / len(orig_handle.colors),
+                    height,
+                    facecolor=c,
+                    edgecolor="none",
+                )
+            )
+
+        patch = PatchCollection(patches, match_original=True)
+
+        handlebox.add_artist(patch)
+        return patch
 
 
 def std_plot_limits(
