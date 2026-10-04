@@ -14,7 +14,7 @@ All limits are kept track in this [![Google Spreadsheets](https://img.shields.io
 
 Additions, comments, or suggestions should be directed to:
 * Josu Hernández-García (josu.hernandez@ific.uv.es)
-* Matheus Hostert (mhostert@g.harvard.edu)
+* Matheus Hostert (matheus-hostert@uiowa.edu)
 
 --- 
 **Citation info:**
